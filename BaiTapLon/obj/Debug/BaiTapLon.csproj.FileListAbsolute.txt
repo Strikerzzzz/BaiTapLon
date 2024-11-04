@@ -1,0 +1,9 @@
+F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\bin\Debug\BaiTapLon.exe.config
+F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\bin\Debug\BaiTapLon.exe
+F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\bin\Debug\BaiTapLon.pdb
+F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.csproj.AssemblyReference.cache
+F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.Properties.Resources.resources
+F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.csproj.GenerateResource.cache
+F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.csproj.CoreCompileInputs.cache
+F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.exe
+F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.pdb
