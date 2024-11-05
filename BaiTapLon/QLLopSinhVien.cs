@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BaiTapLon
 {
-    public partial class Form1 : Form
+    public partial class QLLopSinhVien : Form
     {
-        public Form1()
+        public QLLopSinhVien()
         {
             InitializeComponent();
         }

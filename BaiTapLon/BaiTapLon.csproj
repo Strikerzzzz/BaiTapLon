@@ -47,11 +47,35 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="QLDiem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="QLDiem.Designer.cs">
+      <DependentUpon>QLDiem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QLDiemDanh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QLDiemDanh.Designer.cs">
+      <DependentUpon>QLDiemDanh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QLLoaiDiem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QLLoaiDiem.Designer.cs">
+      <DependentUpon>QLLoaiDiem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QLLopSinhVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QLLopSinhVien.Designer.cs">
+      <DependentUpon>QLLopSinhVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLy.Designer.cs">
+      <DependentUpon>QuanLy.cs</DependentUpon>
     </Compile>
     <Compile Include="QLMonHoc.cs">
       <SubType>Form</SubType>
@@ -82,8 +106,23 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="QLDiem.resx">
+      <DependentUpon>QLDiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QLDiemDanh.resx">
+      <DependentUpon>QLDiemDanh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QLLoaiDiem.resx">
+      <DependentUpon>QLLoaiDiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QLLopSinhVien.resx">
+      <DependentUpon>QLLopSinhVien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QLSinhVien.resx">
       <DependentUpon>QLSinhVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLy.resx">
+      <DependentUpon>QuanLy.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
