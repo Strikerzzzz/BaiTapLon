@@ -9,3 +9,8 @@ F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.exe
 F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.pdb
 F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.QLSinhVien.resources
 F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.QuanLy.resources
+F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.QLDiem.resources
+F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.QLDiemDanh.resources
+F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.QLLoaiDiem.resources
+F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.QLLopSinhVien.resources
+F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.QLMonHoc.resources

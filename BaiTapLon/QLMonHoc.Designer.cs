@@ -30,22 +30,22 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtMaMon = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtTenMon = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtSoTinChi = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtLoaiMon = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtTongSoBuoiHoc = new System.Windows.Forms.TextBox();
+            this.txtTenMon = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtLoaiMon = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtMaMon = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dataGridViewQLMonHoc = new System.Windows.Forms.DataGridView();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
-            this.dataGridViewQLMonHoc = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQLMonHoc)).BeginInit();
@@ -80,37 +80,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nhập liệu";
             // 
-            // label2
+            // txtSoTinChi
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 20);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Mã môn";
-            // 
-            // txtMaMon
-            // 
-            this.txtMaMon.Location = new System.Drawing.Point(113, 46);
-            this.txtMaMon.Name = "txtMaMon";
-            this.txtMaMon.Size = new System.Drawing.Size(303, 27);
-            this.txtMaMon.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 99);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 20);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Tên môn";
-            // 
-            // txtTenMon
-            // 
-            this.txtTenMon.Location = new System.Drawing.Point(113, 96);
-            this.txtTenMon.Name = "txtTenMon";
-            this.txtTenMon.Size = new System.Drawing.Size(303, 27);
-            this.txtTenMon.TabIndex = 1;
+            this.txtSoTinChi.Location = new System.Drawing.Point(113, 146);
+            this.txtSoTinChi.Name = "txtSoTinChi";
+            this.txtSoTinChi.Size = new System.Drawing.Size(303, 27);
+            this.txtSoTinChi.TabIndex = 1;
             // 
             // label4
             // 
@@ -121,28 +96,19 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Số tín chỉ";
             // 
-            // txtSoTinChi
+            // txtTongSoBuoiHoc
             // 
-            this.txtSoTinChi.Location = new System.Drawing.Point(113, 146);
-            this.txtSoTinChi.Name = "txtSoTinChi";
-            this.txtSoTinChi.Size = new System.Drawing.Size(303, 27);
-            this.txtSoTinChi.TabIndex = 1;
+            this.txtTongSoBuoiHoc.Location = new System.Drawing.Point(604, 96);
+            this.txtTongSoBuoiHoc.Name = "txtTongSoBuoiHoc";
+            this.txtTongSoBuoiHoc.Size = new System.Drawing.Size(303, 27);
+            this.txtTongSoBuoiHoc.TabIndex = 1;
             // 
-            // label5
+            // txtTenMon
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(456, 49);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 20);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Loại môn";
-            // 
-            // txtLoaiMon
-            // 
-            this.txtLoaiMon.Location = new System.Drawing.Point(604, 46);
-            this.txtLoaiMon.Name = "txtLoaiMon";
-            this.txtLoaiMon.Size = new System.Drawing.Size(303, 27);
-            this.txtLoaiMon.TabIndex = 1;
+            this.txtTenMon.Location = new System.Drawing.Point(113, 96);
+            this.txtTenMon.Name = "txtTenMon";
+            this.txtTenMon.Size = new System.Drawing.Size(303, 27);
+            this.txtTenMon.TabIndex = 1;
             // 
             // label6
             // 
@@ -153,12 +119,46 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Tổng số buổi học";
             // 
-            // txtTongSoBuoiHoc
+            // label3
             // 
-            this.txtTongSoBuoiHoc.Location = new System.Drawing.Point(604, 96);
-            this.txtTongSoBuoiHoc.Name = "txtTongSoBuoiHoc";
-            this.txtTongSoBuoiHoc.Size = new System.Drawing.Size(303, 27);
-            this.txtTongSoBuoiHoc.TabIndex = 1;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(30, 99);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(74, 20);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Tên môn";
+            // 
+            // txtLoaiMon
+            // 
+            this.txtLoaiMon.Location = new System.Drawing.Point(604, 46);
+            this.txtLoaiMon.Name = "txtLoaiMon";
+            this.txtLoaiMon.Size = new System.Drawing.Size(303, 27);
+            this.txtLoaiMon.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(456, 49);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(78, 20);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Loại môn";
+            // 
+            // txtMaMon
+            // 
+            this.txtMaMon.Location = new System.Drawing.Point(113, 46);
+            this.txtMaMon.Name = "txtMaMon";
+            this.txtMaMon.Size = new System.Drawing.Size(303, 27);
+            this.txtMaMon.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(30, 49);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 20);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Mã môn";
             // 
             // groupBox2
             // 
@@ -170,6 +170,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Hiển thị";
             // 
+            // dataGridViewQLMonHoc
+            // 
+            this.dataGridViewQLMonHoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewQLMonHoc.Location = new System.Drawing.Point(8, 27);
+            this.dataGridViewQLMonHoc.Name = "dataGridViewQLMonHoc";
+            this.dataGridViewQLMonHoc.RowHeadersWidth = 51;
+            this.dataGridViewQLMonHoc.RowTemplate.Height = 24;
+            this.dataGridViewQLMonHoc.Size = new System.Drawing.Size(966, 248);
+            this.dataGridViewQLMonHoc.TabIndex = 0;
+            // 
             // btnThem
             // 
             this.btnThem.Location = new System.Drawing.Point(341, 276);
@@ -178,6 +188,7 @@
             this.btnThem.TabIndex = 3;
             this.btnThem.Text = "Thêm ";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnSua
             // 
@@ -187,6 +198,7 @@
             this.btnSua.TabIndex = 3;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnXoa
             // 
@@ -196,6 +208,7 @@
             this.btnXoa.TabIndex = 3;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnThoat
             // 
@@ -206,16 +219,6 @@
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
-            // 
-            // dataGridViewQLMonHoc
-            // 
-            this.dataGridViewQLMonHoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewQLMonHoc.Location = new System.Drawing.Point(8, 27);
-            this.dataGridViewQLMonHoc.Name = "dataGridViewQLMonHoc";
-            this.dataGridViewQLMonHoc.RowHeadersWidth = 51;
-            this.dataGridViewQLMonHoc.RowTemplate.Height = 24;
-            this.dataGridViewQLMonHoc.Size = new System.Drawing.Size(966, 248);
-            this.dataGridViewQLMonHoc.TabIndex = 0;
             // 
             // QLMonHoc
             // 

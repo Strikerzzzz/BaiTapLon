@@ -10,11 +10,14 @@ namespace BaiTapLon
 {
     internal class DataBase
     {
+        //Biến conn dùng để kết nối
         private static SqlConnection conn;
+        //Mở kết nối 
         public static void OpenConnect()
         {
             if (conn == null)
             {
+                // Pull về từ git thì sửa lại đi, cái này sau này fix cứng db vào hệ thống sau
                 conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=HeThongQuanLyDiem;Integrated Security=True");
             }
 
@@ -23,7 +26,7 @@ namespace BaiTapLon
                 conn.Open();
             }
         }
-
+        //Đóng kết nối
         public static void CloseConnect()
         {
             if (conn != null && conn.State == ConnectionState.Open)
@@ -35,19 +38,6 @@ namespace BaiTapLon
         {
             return conn;
         }
-
-        public bool InsertData(string query, SqlParameter[] parameters)
-        {
-            OpenConnect();
-            using (var command = new SqlCommand(query, GetConnection()))
-            {
-                command.Parameters.AddRange(parameters);
-                bool result = command.ExecuteNonQuery() > 0;
-                CloseConnect();
-                return result;
-            }
-        }
-
         public static DataTable GetData(string query, SqlParameter[] parameters = null)
         {
             OpenConnect();
@@ -65,19 +55,18 @@ namespace BaiTapLon
                 return dataTable;
             }
         }
-
+        /*
+        Ví dụ cách dùng:
+        string query = "INSERT INTO nhanvien (Hotennha nvien,NgaySinh, DiaChi, DienThoai) VALUES (@Hotennhanvien, @NgaySinh, @DiaChi, @DienThoai)";
+        SqlParameter[] parameters = {
+            new SqlParameter("@Hotennhanvien", txtHoTen.Text),
+            new SqlParameter("@NgaySinh", dateTimePickerNgaySinh.Value),
+            new SqlParameter("@DiaChi", txtDiaChi.Text),
+            new SqlParameter("@DienThoai", txtDienThoai.Text),
+        };
+        int result = new DataBase().UpdateData(query, parameters); NHỚ TRUYỀN ĐỦ 2 THAM SỐ (query, parameters)
+          */
         public bool UpdateData(string query, SqlParameter[] parameters)
-        {
-            OpenConnect();
-            using (var command = new SqlCommand(query, GetConnection()))
-            {
-                command.Parameters.AddRange(parameters);
-                bool result = command.ExecuteNonQuery() > 0;
-                CloseConnect();
-                return result;
-            }
-        }
-        public bool DeleteData(string query, SqlParameter[] parameters)
         {
             OpenConnect();
             using (var command = new SqlCommand(query, GetConnection()))
