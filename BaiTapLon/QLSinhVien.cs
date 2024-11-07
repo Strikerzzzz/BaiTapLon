@@ -39,7 +39,18 @@ namespace BaiTapLon
 
         private void QLSinhVien_Load(object sender, EventArgs e)
         {
-            //con Hoa làm cẩn thận không tao chặt đầu 
+            LoadDatabase();
+        }
+        void LoadDatabase()
+        {
+            try
+            {
+                this.dataGridViewQLSV.DataSource = DataBase.GetData("SELECT * FROM SinhVien where TrangThai = 'Initialize'");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi tải dữ liệu: " + ex.Message);
+            }
         }
     }
 }
