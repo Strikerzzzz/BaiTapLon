@@ -16,5 +16,10 @@ namespace BaiTapLon
         {
             InitializeComponent();
         }
+
+        private void QLLopSinhVien_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
