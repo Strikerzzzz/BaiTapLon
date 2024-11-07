@@ -145,12 +145,11 @@ namespace BaiTapLon
             }
             try
             {
-                string ID = dictLM.FirstOrDefault(x => x.Value == cbLm.SelectedValue.ToString()).Key;
                 string query = "UPDATE  MonHoc SET TenMon = @TenMon, SoTinChi = @SoTinChi, IDLoaiMon = @IDLoaiMon, TongSoBuoiHoc = @TongSoBuoiHoc WHERE MaMon = @MaMon";
                 SqlParameter[] parameters = {
                     new SqlParameter("@TenMon", txtTenMon.Text),
                     new SqlParameter("@SoTinChi", txtSoTinChi.Text),
-                   new SqlParameter("@IDLoaiMon", ID),
+                   new SqlParameter("@IDLoaiMon", cbLm.SelectedValue?.ToString()),
                     new SqlParameter("@TongSoBuoiHoc", txtTongSoBuoiHoc.Text),
                     new SqlParameter("@MaMon", txtMaMon.Text),
                 };
