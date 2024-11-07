@@ -30,3 +30,4 @@ D:\Study\C#\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.csproj.GenerateResource.cach
 D:\Study\C#\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.csproj.CoreCompileInputs.cache
 D:\Study\C#\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.exe
 D:\Study\C#\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.pdb
+D:\Study\C#\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.QLLopHoc.resources
