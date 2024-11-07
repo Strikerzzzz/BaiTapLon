@@ -46,6 +46,8 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnID = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -63,6 +65,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnID);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtMamon);
             this.groupBox1.Controls.Add(this.txtSinhvienmax);
             this.groupBox1.Controls.Add(this.txtKhoahoc);
@@ -218,6 +222,22 @@
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(456, 131);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 20);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "ID học kỳ :";
+            // 
+            // btnID
+            // 
+            this.btnID.Location = new System.Drawing.Point(552, 128);
+            this.btnID.Name = "btnID";
+            this.btnID.Size = new System.Drawing.Size(223, 27);
+            this.btnID.TabIndex = 11;
+            // 
             // QLLopHoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -263,5 +283,7 @@
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnThoat;
+        private System.Windows.Forms.TextBox btnID;
+        private System.Windows.Forms.Label label6;
     }
 }
