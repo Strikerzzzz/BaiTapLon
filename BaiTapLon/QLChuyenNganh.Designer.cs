@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtMaCN = new System.Windows.Forms.TextBox();
             this.txtTenCN = new System.Windows.Forms.TextBox();
+            this.txtMaCN = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
@@ -58,34 +58,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin chuyên ngành";
             // 
-            // groupBox2
+            // txtTenCN
             // 
-            this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Location = new System.Drawing.Point(94, 370);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(848, 208);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Hiển thị";
+            this.txtTenCN.Location = new System.Drawing.Point(648, 59);
+            this.txtTenCN.Name = "txtTenCN";
+            this.txtTenCN.Size = new System.Drawing.Size(163, 24);
+            this.txtTenCN.TabIndex = 3;
             // 
-            // label1
+            // txtMaCN
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(366, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(336, 29);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "QUẢN LÝ CHUYÊN NGÀNH";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(49, 65);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 18);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Mã chuyên ngành :";
+            this.txtMaCN.Location = new System.Drawing.Point(187, 59);
+            this.txtMaCN.Name = "txtMaCN";
+            this.txtMaCN.Size = new System.Drawing.Size(163, 24);
+            this.txtMaCN.TabIndex = 2;
             // 
             // label3
             // 
@@ -96,19 +81,24 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Tên chuyên ngành :";
             // 
-            // txtMaCN
+            // label2
             // 
-            this.txtMaCN.Location = new System.Drawing.Point(187, 59);
-            this.txtMaCN.Name = "txtMaCN";
-            this.txtMaCN.Size = new System.Drawing.Size(163, 24);
-            this.txtMaCN.TabIndex = 2;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(49, 65);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(132, 18);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Mã chuyên ngành :";
             // 
-            // txtTenCN
+            // groupBox2
             // 
-            this.txtTenCN.Location = new System.Drawing.Point(648, 59);
-            this.txtTenCN.Name = "txtTenCN";
-            this.txtTenCN.Size = new System.Drawing.Size(163, 24);
-            this.txtTenCN.TabIndex = 3;
+            this.groupBox2.Controls.Add(this.dataGridView1);
+            this.groupBox2.Location = new System.Drawing.Point(94, 370);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(848, 208);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Hiển thị";
             // 
             // dataGridView1
             // 
@@ -119,6 +109,16 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(805, 146);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label1.Location = new System.Drawing.Point(366, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(336, 29);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "QUẢN LÝ CHUYÊN NGÀNH";
             // 
             // btnThoat
             // 
@@ -171,6 +171,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Name = "QLChuyenNganh";
             this.Text = "QLChuyenNganh";
+            this.Load += new System.EventHandler(this.QLChuyenNganh_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
