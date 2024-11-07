@@ -146,6 +146,7 @@
             // 
             // txtMaMon
             // 
+            this.txtMaMon.Enabled = false;
             this.txtMaMon.Location = new System.Drawing.Point(113, 46);
             this.txtMaMon.Name = "txtMaMon";
             this.txtMaMon.Size = new System.Drawing.Size(303, 27);
@@ -179,6 +180,7 @@
             this.dataGridViewQLMonHoc.RowTemplate.Height = 24;
             this.dataGridViewQLMonHoc.Size = new System.Drawing.Size(966, 248);
             this.dataGridViewQLMonHoc.TabIndex = 0;
+            this.dataGridViewQLMonHoc.Click += new System.EventHandler(this.dataGridViewQLMonHoc_Click);
             // 
             // btnThem
             // 
@@ -234,6 +236,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Name = "QLMonHoc";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QLMonHoc";
             this.Load += new System.EventHandler(this.QLMonHoc_Load);
             this.groupBox1.ResumeLayout(false);

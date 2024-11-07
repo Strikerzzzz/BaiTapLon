@@ -17,7 +17,29 @@ namespace BaiTapLon
         {
             InitializeComponent();
         }
-
+        void Valid()
+        {
+            if (string.IsNullOrEmpty(txtTenMon.Text))
+            {
+                MessageBox.Show("Vui lòng nhập họ tên môn.");
+                return;
+            }
+            if (string.IsNullOrEmpty(txtSoTinChi.Text)  || !txtSoTinChi.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Vui lòng nhập số tín chỉ hợp lệ .");
+                return;
+            }
+            //if (string.IsNullOrEmpty(cbGioiTinh.Text))
+            //{
+            //    MessageBox.Show("Vui lòng chọn giới tính.");
+            //    return;
+            //}
+            if (string.IsNullOrEmpty(txtTongSoBuoiHoc.Text) || !txtTongSoBuoiHoc.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Vui lòng nhập số tín chỉ hợp lệ .");
+                return;
+            }
+        }
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -26,7 +48,7 @@ namespace BaiTapLon
         {
             try
             {
-                this.dataGridViewQLMonHoc.DataSource = DataBase.GetData("SELECT * FROM MonHoc where TrangThai = 'Initialize'");
+                this.dataGridViewQLMonHoc.DataSource = DataBase.GetData("SELECT MaMon, TenMon, SoTinChi, IDLoaiMon, TongSoBuoiHoc FROM MonHoc where TrangThai = 'Initialize'");
             }
             catch (Exception ex)
             {
@@ -43,11 +65,11 @@ namespace BaiTapLon
         {
             try
             {
-                string query = "INSERT INTO MonHoc (TenMon, SoTinChi, LoaiMon, TongSoBuoiHoc, TrangThai) VALUES (@TenMon, @SoTinChi, @LoaiMon, @TongSoBuoiHoc, @TrangThai)";
+                string query = "INSERT INTO MonHoc (TenMon, SoTinChi,  TongSoBuoiHoc, TrangThai) VALUES (@TenMon, @SoTinChi, @TongSoBuoiHoc, @TrangThai)";
                 SqlParameter[] parameters = {
                     new SqlParameter("@TenMon", txtTenMon.Text),
                     new SqlParameter("@SoTinChi", txtSoTinChi.Text),
-                    new SqlParameter("@LoaiMon", txtLoaiMon.Text),
+                   // new SqlParameter("@LoaiMon",""),
                     new SqlParameter("@TongSoBuoiHoc", txtTongSoBuoiHoc.Text),
                     new SqlParameter("@TrangThai", "Initialize"),
                 };
@@ -136,6 +158,22 @@ namespace BaiTapLon
             catch (Exception ex)
             {
                 MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+            }
+        }
+
+        private void dataGridViewQLMonHoc_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                txtMaMon.Text = dataGridViewQLMonHoc.CurrentRow.Cells[0].Value.ToString();
+                txtTenMon.Text = dataGridViewQLMonHoc.CurrentRow.Cells[1].Value.ToString();
+                txtSoTinChi.Text = dataGridViewQLMonHoc.CurrentRow.Cells[2].Value.ToString();
+                txtLoaiMon.Text = dataGridViewQLMonHoc.CurrentRow.Cells[3].Value.ToString();
+                txtTongSoBuoiHoc.Text = dataGridViewQLMonHoc.CurrentRow.Cells[4].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi hiển thị thông tin môn học: " + ex.Message);
             }
         }
     }
