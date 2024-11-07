@@ -16,5 +16,21 @@ namespace BaiTapLon
         {
             InitializeComponent();
         }
+        void LoadDatabase()
+        {
+            try
+            {
+                this.dataGridView1.DataSource = DataBase.GetData("SELECT * FROM ChuyenNganh where TrangThai = 'Initialize'");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi tải dữ liệu: " + ex.Message);
+            }
+        }
+
+        private void QLChuyenNganh_Load(object sender, EventArgs e)
+        {
+            LoadDatabase();
+        }
     }
 }
