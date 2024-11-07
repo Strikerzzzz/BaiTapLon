@@ -137,33 +137,6 @@ namespace BaiTapLon
             {
                 MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
             }
-            
-            //if (lsvNhanVien.SelectedItems.Count > 0 && DialogResult.Yes == MessageBox.Show("Bạn có chắc là muốn xóa?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
-            //{
-            //    ListViewItem selectedItem = lsvNhanVien.SelectedItems[0];
-            //    DataTable dt = DataBase.GetData("SELECT * FROM nhanvien");
-            //    int maNhanVien = Convert.ToInt32(dt.Rows[selectedItem.Index]["MaNhanVien"]);
-
-            //    string query = "DELETE FROM nhanvien WHERE MaNhanVien = @MaNhanVien";
-            //    SqlParameter[] parameters = {
-            //        new SqlParameter("@MaNhanVien", maNhanVien)
-            //    };
-
-            //    bool result = new DataBase().DeleteData(query, parameters);
-            //    if (result)
-            //    {
-            //        MessageBox.Show("Xóa nhân viên thành công!");
-            //        LoadListView();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Xóa nhân viên thất bại.");
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Vui lòng chọn nhân viên để xóa.");
-            //}
         }
     }
 }
