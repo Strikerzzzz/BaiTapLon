@@ -36,7 +36,6 @@
             this.txtTenMon = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtLoaiMon = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtMaMon = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,6 +45,12 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
+            this.MaMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoTinChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LoaiMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongSoBuoiHoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cbLm = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQLMonHoc)).BeginInit();
@@ -63,13 +68,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbLm);
             this.groupBox1.Controls.Add(this.txtSoTinChi);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtTongSoBuoiHoc);
             this.groupBox1.Controls.Add(this.txtTenMon);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtLoaiMon);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtMaMon);
             this.groupBox1.Controls.Add(this.label2);
@@ -128,13 +133,6 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Tên môn";
             // 
-            // txtLoaiMon
-            // 
-            this.txtLoaiMon.Location = new System.Drawing.Point(604, 46);
-            this.txtLoaiMon.Name = "txtLoaiMon";
-            this.txtLoaiMon.Size = new System.Drawing.Size(303, 27);
-            this.txtLoaiMon.TabIndex = 1;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -174,6 +172,12 @@
             // dataGridViewQLMonHoc
             // 
             this.dataGridViewQLMonHoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewQLMonHoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaMon,
+            this.TenMon,
+            this.SoTinChi,
+            this.LoaiMon,
+            this.TongSoBuoiHoc});
             this.dataGridViewQLMonHoc.Location = new System.Drawing.Point(8, 27);
             this.dataGridViewQLMonHoc.Name = "dataGridViewQLMonHoc";
             this.dataGridViewQLMonHoc.RowHeadersWidth = 51;
@@ -222,6 +226,54 @@
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
+            // MaMon
+            // 
+            this.MaMon.DataPropertyName = "MaMon";
+            this.MaMon.HeaderText = "Mã môn";
+            this.MaMon.MinimumWidth = 6;
+            this.MaMon.Name = "MaMon";
+            this.MaMon.Width = 225;
+            // 
+            // TenMon
+            // 
+            this.TenMon.DataPropertyName = "TenMon";
+            this.TenMon.HeaderText = "Tên môn";
+            this.TenMon.MinimumWidth = 6;
+            this.TenMon.Name = "TenMon";
+            this.TenMon.Width = 125;
+            // 
+            // SoTinChi
+            // 
+            this.SoTinChi.DataPropertyName = "SoTinChi";
+            this.SoTinChi.HeaderText = "Số tín chỉ";
+            this.SoTinChi.MinimumWidth = 6;
+            this.SoTinChi.Name = "SoTinChi";
+            this.SoTinChi.Width = 125;
+            // 
+            // LoaiMon
+            // 
+            this.LoaiMon.DataPropertyName = "LoaiMon";
+            this.LoaiMon.HeaderText = "Loại môn";
+            this.LoaiMon.MinimumWidth = 6;
+            this.LoaiMon.Name = "LoaiMon";
+            this.LoaiMon.Width = 225;
+            // 
+            // TongSoBuoiHoc
+            // 
+            this.TongSoBuoiHoc.DataPropertyName = "TongSoBuoiHoc";
+            this.TongSoBuoiHoc.HeaderText = "Tổng số buổi học";
+            this.TongSoBuoiHoc.MinimumWidth = 6;
+            this.TongSoBuoiHoc.Name = "TongSoBuoiHoc";
+            this.TongSoBuoiHoc.Width = 200;
+            // 
+            // cbLm
+            // 
+            this.cbLm.FormattingEnabled = true;
+            this.cbLm.Location = new System.Drawing.Point(604, 44);
+            this.cbLm.Name = "cbLm";
+            this.cbLm.Size = new System.Drawing.Size(303, 28);
+            this.cbLm.TabIndex = 2;
+            // 
             // QLMonHoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -260,7 +312,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtTongSoBuoiHoc;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtLoaiMon;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnThem;
@@ -268,5 +319,11 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.DataGridView dataGridViewQLMonHoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaMon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenMon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoTinChi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LoaiMon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongSoBuoiHoc;
+        private System.Windows.Forms.ComboBox cbLm;
     }
 }
