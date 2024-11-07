@@ -35,3 +35,6 @@ F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.QLLopHo
 F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.QLChuyenNganh.resources
 F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.QLHocKy.resources
 F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.QLLoaiMon.resources
+D:\Study\C#\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.QLChuyenNganh.resources
+D:\Study\C#\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.QLHocKy.resources
+D:\Study\C#\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.QLLoaiMon.resources
