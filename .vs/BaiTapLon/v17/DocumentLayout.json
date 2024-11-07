@@ -7,16 +7,16 @@
       "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\qlmonhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\baitaplon\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\baitaplon\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\baitaplon\\qlmonhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\qlmonhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\baitaplon\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\baitaplon\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +38,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "DataBase.cs",
               "DocumentMoniker": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\DataBase.cs",
               "RelativeDocumentMoniker": "BaiTapLon\\DataBase.cs",
@@ -46,8 +46,7 @@
               "RelativeToolTip": "BaiTapLon\\DataBase.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAAkwEcAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T05:38:33.943Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-07T05:38:33.943Z"
             },
             {
               "$type": "Document",
@@ -57,7 +56,7 @@
               "RelativeDocumentMoniker": "BaiTapLon\\QLMonHoc.cs",
               "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\QLMonHoc.cs",
               "RelativeToolTip": "BaiTapLon\\QLMonHoc.cs",
-              "ViewState": "AgIAAGEAAAAAAAAAAAAwwHkAAABBAAAAAAAAAA==",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAswDkAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T05:38:17.832Z",
               "EditorCaption": ""
@@ -71,18 +70,20 @@
               "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\QLMonHoc.cs [Design]",
               "RelativeToolTip": "BaiTapLon\\QLMonHoc.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T05:38:16.136Z"
+              "WhenOpened": "2024-11-07T05:38:16.136Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "QuanLy.cs [Design]",
               "DocumentMoniker": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\QuanLy.cs",
               "RelativeDocumentMoniker": "BaiTapLon\\QuanLy.cs",
               "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\QuanLy.cs [Design]",
               "RelativeToolTip": "BaiTapLon\\QuanLy.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T05:29:06.829Z"
+              "WhenOpened": "2024-11-07T05:29:06.829Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }
