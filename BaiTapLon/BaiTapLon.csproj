@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase.cs" />
+    <Compile Include="QLChuyenNganh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QLChuyenNganh.Designer.cs">
+      <DependentUpon>QLChuyenNganh.cs</DependentUpon>
+    </Compile>
     <Compile Include="QLDiem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,11 +65,23 @@
     <Compile Include="QLDiemDanh.Designer.cs">
       <DependentUpon>QLDiemDanh.cs</DependentUpon>
     </Compile>
+    <Compile Include="QLHocKy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QLHocKy.Designer.cs">
+      <DependentUpon>QLHocKy.cs</DependentUpon>
+    </Compile>
     <Compile Include="QLLoaiDiem.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="QLLoaiDiem.Designer.cs">
       <DependentUpon>QLLoaiDiem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QLLoaiMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QLLoaiMon.Designer.cs">
+      <DependentUpon>QLLoaiMon.cs</DependentUpon>
     </Compile>
     <Compile Include="QLLopSinhVien.cs">
       <SubType>Form</SubType>
@@ -106,14 +124,23 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="QLChuyenNganh.resx">
+      <DependentUpon>QLChuyenNganh.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QLDiem.resx">
       <DependentUpon>QLDiem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QLDiemDanh.resx">
       <DependentUpon>QLDiemDanh.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="QLHocKy.resx">
+      <DependentUpon>QLHocKy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QLLoaiDiem.resx">
       <DependentUpon>QLLoaiDiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QLLoaiMon.resx">
+      <DependentUpon>QLLoaiMon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QLLopHoc.resx">
       <DependentUpon>QLLopHoc.cs</DependentUpon>
