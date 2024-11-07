@@ -34,6 +34,10 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.dataGridViewQLSV = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtSDT = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cboMaChuyenNganh = new System.Windows.Forms.ComboBox();
+            this.cboKhoaHoc = new System.Windows.Forms.ComboBox();
             this.txtSoCCCD = new System.Windows.Forms.TextBox();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -53,10 +57,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cboKhoaHoc = new System.Windows.Forms.ComboBox();
-            this.cboMaChuyenNganh = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtSDT = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQLSV)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -151,6 +151,40 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin chi tiết";
+            // 
+            // txtSDT
+            // 
+            this.txtSDT.Location = new System.Drawing.Point(210, 326);
+            this.txtSDT.Name = "txtSDT";
+            this.txtSDT.Size = new System.Drawing.Size(367, 27);
+            this.txtSDT.TabIndex = 23;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(32, 329);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(106, 20);
+            this.label12.TabIndex = 22;
+            this.label12.Text = "Số điện thoại";
+            // 
+            // cboMaChuyenNganh
+            // 
+            this.cboMaChuyenNganh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMaChuyenNganh.FormattingEnabled = true;
+            this.cboMaChuyenNganh.Location = new System.Drawing.Point(847, 218);
+            this.cboMaChuyenNganh.Name = "cboMaChuyenNganh";
+            this.cboMaChuyenNganh.Size = new System.Drawing.Size(375, 28);
+            this.cboMaChuyenNganh.TabIndex = 21;
+            // 
+            // cboKhoaHoc
+            // 
+            this.cboKhoaHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboKhoaHoc.FormattingEnabled = true;
+            this.cboKhoaHoc.Location = new System.Drawing.Point(847, 274);
+            this.cboKhoaHoc.Name = "cboKhoaHoc";
+            this.cboKhoaHoc.Size = new System.Drawing.Size(375, 28);
+            this.cboKhoaHoc.TabIndex = 20;
             // 
             // txtSoCCCD
             // 
@@ -310,39 +344,6 @@
             this.label1.Size = new System.Drawing.Size(258, 29);
             this.label1.TabIndex = 7;
             this.label1.Text = "QUẢN LÝ SINH VIÊN";
-            // 
-            // cboKhoaHoc
-            // 
-            this.cboKhoaHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboKhoaHoc.FormattingEnabled = true;
-            this.cboKhoaHoc.Location = new System.Drawing.Point(847, 274);
-            this.cboKhoaHoc.Name = "cboKhoaHoc";
-            this.cboKhoaHoc.Size = new System.Drawing.Size(375, 28);
-            this.cboKhoaHoc.TabIndex = 20;
-            // 
-            // cboMaChuyenNganh
-            // 
-            this.cboMaChuyenNganh.FormattingEnabled = true;
-            this.cboMaChuyenNganh.Location = new System.Drawing.Point(847, 218);
-            this.cboMaChuyenNganh.Name = "cboMaChuyenNganh";
-            this.cboMaChuyenNganh.Size = new System.Drawing.Size(375, 28);
-            this.cboMaChuyenNganh.TabIndex = 21;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(32, 329);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(106, 20);
-            this.label12.TabIndex = 22;
-            this.label12.Text = "Số điện thoại";
-            // 
-            // txtSDT
-            // 
-            this.txtSDT.Location = new System.Drawing.Point(210, 326);
-            this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(367, 27);
-            this.txtSDT.TabIndex = 23;
             // 
             // QLSinhVien
             // 
