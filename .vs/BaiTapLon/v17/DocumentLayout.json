@@ -46,7 +46,8 @@
               "RelativeToolTip": "BaiTapLon\\DataBase.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAAkwEcAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T05:38:33.943Z"
+              "WhenOpened": "2024-11-07T05:38:33.943Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -56,7 +57,7 @@
               "RelativeDocumentMoniker": "BaiTapLon\\QLMonHoc.cs",
               "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\QLMonHoc.cs",
               "RelativeToolTip": "BaiTapLon\\QLMonHoc.cs",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAswDkAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwDIAAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T05:38:17.832Z",
               "EditorCaption": ""
@@ -70,8 +71,7 @@
               "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\QLMonHoc.cs [Design]",
               "RelativeToolTip": "BaiTapLon\\QLMonHoc.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T05:38:16.136Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-11-07T05:38:16.136Z"
             },
             {
               "$type": "Document",
