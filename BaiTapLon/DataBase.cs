@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BaiTapLon
 {
@@ -18,7 +19,7 @@ namespace BaiTapLon
             if (conn == null)
             {
                 // Pull về từ git thì sửa lại đi, cái này sau này fix cứng db vào hệ thống sau
-                conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=HeThongQuanLyDiem;Integrated Security=True");
+                conn = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Application.StartupPath}\HeThongQuanLyDiem.mdf;Integrated Security=True;Connect Timeout=30");
             }
 
             if (conn.State == ConnectionState.Closed)
