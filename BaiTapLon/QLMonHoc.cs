@@ -22,7 +22,7 @@ namespace BaiTapLon
         {
             if (string.IsNullOrEmpty(txtTenMon.Text))
             {
-                MessageBox.Show("Vui lòng nhập họ tên môn.");
+                MessageBox.Show("Vui lòng nhập tên môn.");
                 return false;
             }
             if (string.IsNullOrEmpty(txtSoTinChi.Text)  || !txtSoTinChi.Text.All(char.IsDigit))
@@ -149,7 +149,7 @@ namespace BaiTapLon
                 SqlParameter[] parameters = {
                     new SqlParameter("@TenMon", txtTenMon.Text),
                     new SqlParameter("@SoTinChi", txtSoTinChi.Text),
-                   new SqlParameter("@IDLoaiMon", cbLm.SelectedValue?.ToString()),
+                    new SqlParameter("@IDLoaiMon", cbLm.SelectedValue?.ToString()),
                     new SqlParameter("@TongSoBuoiHoc", txtTongSoBuoiHoc.Text),
                     new SqlParameter("@MaMon", txtMaMon.Text),
                 };

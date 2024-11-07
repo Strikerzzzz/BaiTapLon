@@ -127,7 +127,7 @@ namespace BaiTapLon
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count == 0)
+            if (String.IsNullOrEmpty(txtMaCN.Text))
             {
                 MessageBox.Show("Vui lòng chọn chuyên ngành cần xoá.");
                 return;

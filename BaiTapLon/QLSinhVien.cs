@@ -76,10 +76,6 @@ namespace BaiTapLon
             }
             cboKhoaHoc.Items.Insert(0, "Chọn khóa học");
             cboKhoaHoc.SelectedIndex = 0;
-
-            cboMaChuyenNganh.Items.Add("Chọn mã chuyên ngành"); 
-            cboMaChuyenNganh.SelectedIndex = 0;
-
             LoadDatabase();
 
             DataTable dt = DataBase.GetData("SELECT MaChuyenNganh, TenChuyenNganh FROM ChuyenNganh where TrangThai = 'Initialize'");
@@ -303,7 +299,7 @@ namespace BaiTapLon
                 MessageBox.Show("Địa chỉ không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if (cboGioiTinh.SelectedIndex == 0 || cboKhoaHoc.SelectedIndex == 0 || cboMaChuyenNganh.SelectedIndex == 0)
+            if (cboGioiTinh.SelectedIndex == 0 || cboKhoaHoc.SelectedIndex == 0)
             {
                 MessageBox.Show("Vui lòng chọn đầy đủ thông tin về giới tính, khóa học và chuyên ngành.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
