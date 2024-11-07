@@ -1,38 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\",
+  "WorkspaceRootPath": "BaiTapLon\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|f:\\learn\\university\\thlt.net\\btl\\baitaplon\\baitaplon\\qllophoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\qllophoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\baitaplon\\qllophoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\qllophoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\baitaplon\\qllopsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\qllopsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\baitaplon\\qlmonhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|BaiTapLon\\baitaplon\\qlmonhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\qlmonhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\baitaplon\\qlsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\qlsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\baitaplon\\qlsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\qlsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\baitaplon\\qlmonhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|BaiTapLon\\baitaplon\\qlmonhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\qlmonhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\baitaplon\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|BaiTapLon\\baitaplon\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|BaiTapLon\\baitaplon\\qllopsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\qllopsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|BaiTapLon\\baitaplon\\qlsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\qlsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|baitaplon\\baitaplon\\qlsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\qlsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|BaiTapLon\\baitaplon\\qllophoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\qllophoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|BaiTapLon\\baitaplon\\qllophoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\qllophoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,95 +54,100 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "QLLopHoc.cs",
-              "DocumentMoniker": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\QLLopHoc.cs",
+              "DocumentMoniker": "BaiTapLon\\BaiTapLon\\QLLopHoc.cs",
               "RelativeDocumentMoniker": "BaiTapLon\\QLLopHoc.cs",
-              "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\QLLopHoc.cs",
+              "ToolTip": "BaiTapLon\\BaiTapLon\\QLLopHoc.cs",
               "RelativeToolTip": "BaiTapLon\\QLLopHoc.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T02:55:04.645Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-07T02:55:04.645Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "QLLopHoc.cs [Design]",
-              "DocumentMoniker": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\QLLopHoc.cs",
+              "DocumentMoniker": "BaiTapLon\\BaiTapLon\\QLLopHoc.cs",
               "RelativeDocumentMoniker": "BaiTapLon\\QLLopHoc.cs",
-              "ToolTip": "D:\\Study\\C#\\BaiTapLon\\BaiTapLon\\QLLopHoc.cs [Design]",
+              "ToolTip": "BaiTapLon\\QLLopHoc.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T02:55:03.417Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "QLSinhVien.cs",
-              "DocumentMoniker": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\QLSinhVien.cs",
+              "DocumentMoniker": "BaiTapLon\\BaiTapLon\\QLSinhVien.cs",
               "RelativeDocumentMoniker": "BaiTapLon\\QLSinhVien.cs",
-              "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\QLSinhVien.cs",
+              "ToolTip": "BaiTapLon\\BaiTapLon\\QLSinhVien.cs",
               "RelativeToolTip": "BaiTapLon\\QLSinhVien.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAnwBYAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T02:46:11.697Z"
+              "WhenOpened": "2024-11-07T02:46:11.697Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "QLSinhVien.cs [Design]",
-              "DocumentMoniker": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\QLSinhVien.cs",
+              "DocumentMoniker": "BaiTapLon\\BaiTapLon\\QLSinhVien.cs",
               "RelativeDocumentMoniker": "BaiTapLon\\QLSinhVien.cs",
-              "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\QLSinhVien.cs [Design]",
+              "ToolTip": "BaiTapLon\\BaiTapLon\\QLSinhVien.cs [Design]",
               "RelativeToolTip": "BaiTapLon\\QLSinhVien.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T02:45:57.53Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "QLLopSinhVien.cs [Design]",
-              "DocumentMoniker": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\QLLopSinhVien.cs",
-              "RelativeDocumentMoniker": "BaiTapLon\\QLLopSinhVien.cs",
-              "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\QLLopSinhVien.cs [Design]",
-              "RelativeToolTip": "BaiTapLon\\QLLopSinhVien.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T02:45:52.864Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "DataBase.cs",
-              "DocumentMoniker": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\DataBase.cs",
-              "RelativeDocumentMoniker": "BaiTapLon\\DataBase.cs",
-              "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\DataBase.cs",
-              "RelativeToolTip": "BaiTapLon\\DataBase.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAkwEkAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T10:12:08.007Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "QLMonHoc.cs",
-              "DocumentMoniker": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\QLMonHoc.cs",
-              "RelativeDocumentMoniker": "BaiTapLon\\QLMonHoc.cs",
-              "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\QLMonHoc.cs",
-              "RelativeToolTip": "BaiTapLon\\QLMonHoc.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAmwDcAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T15:20:27.698Z"
+              "WhenOpened": "2024-11-07T02:45:57.53Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "QLMonHoc.cs [Design]",
-              "DocumentMoniker": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\QLMonHoc.cs",
+              "Title": "QLLopSinhVien.cs [Design]",
+              "DocumentMoniker": "BaiTapLon\\BaiTapLon\\QLLopSinhVien.cs",
+              "RelativeDocumentMoniker": "BaiTapLon\\QLLopSinhVien.cs",
+              "ToolTip": "BaiTapLon\\BaiTapLon\\QLLopSinhVien.cs [Design]",
+              "RelativeToolTip": "BaiTapLon\\QLLopSinhVien.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-07T02:45:52.864Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DataBase.cs",
+              "DocumentMoniker": "BaiTapLon\\BaiTapLon\\DataBase.cs",
+              "RelativeDocumentMoniker": "BaiTapLon\\DataBase.cs",
+              "ToolTip": "BaiTapLon\\BaiTapLon\\DataBase.cs",
+              "RelativeToolTip": "BaiTapLon\\DataBase.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAkwEkAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T10:12:08.007Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "QLMonHoc.cs",
+              "DocumentMoniker": "BaiTapLon\\BaiTapLon\\QLMonHoc.cs",
               "RelativeDocumentMoniker": "BaiTapLon\\QLMonHoc.cs",
-              "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\QLMonHoc.cs [Design]",
+              "ToolTip": "BaiTapLon\\BaiTapLon\\QLMonHoc.cs",
+              "RelativeToolTip": "BaiTapLon\\QLMonHoc.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAmwDcAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T15:20:27.698Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "QLMonHoc.cs [Design]",
+              "DocumentMoniker": "BaiTapLon\\BaiTapLon\\QLMonHoc.cs",
+              "RelativeDocumentMoniker": "BaiTapLon\\QLMonHoc.cs",
+              "ToolTip": "BaiTapLon\\BaiTapLon\\QLMonHoc.cs [Design]",
               "RelativeToolTip": "BaiTapLon\\QLMonHoc.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T15:20:26.143Z"
+              "WhenOpened": "2024-11-06T15:20:26.143Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }
