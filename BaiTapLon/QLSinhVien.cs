@@ -21,5 +21,25 @@ namespace BaiTapLon
         {
             this.Close();
         }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void QLSinhVien_Load(object sender, EventArgs e)
+        {
+            //con Hoa làm cẩn thận không tao chặt đầu 
+        }
     }
 }
