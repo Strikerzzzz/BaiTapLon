@@ -153,7 +153,7 @@ namespace BaiTapLon
                 {
                     return;
                 }
-                string ID = dictLM.FirstOrDefault(x => x.Value == cboMaChuyenNganh.SelectedValue.ToString()).Key;
+               
                 string query = "UPDATE  SinhVien SET HoDem = @HoDem, Ten = @Ten, Email = @Email, CCCD = @CCCD, SoDienThoai = @SoDienThoai, GioiTinh = @GioiTinh, NgaySinh = @NgaySinh, DiaChi = @DiaChi,MaChuyenNganh = @MaChuyenNganh, KhoaHoc = @KhoaHoc WHERE MaSV = @MaSV";
                 SqlParameter[] parameters = {
                     new SqlParameter("@HoDem", txtHoDem.Text),
@@ -164,7 +164,7 @@ namespace BaiTapLon
                     new SqlParameter("@GioiTinh", cboGioiTinh.Text),
                     new SqlParameter("@NgaySinh", dateTimePickerNS.Value),
                     new SqlParameter("@DiaChi", txtDiaChi.Text),
-                    new SqlParameter("@MaChuyenNganh", ID),
+                    new SqlParameter("@MaChuyenNganh",  cboMaChuyenNganh.SelectedValue?.ToString()),
                     new SqlParameter("@KhoaHoc", cboKhoaHoc.Text),
                     new SqlParameter("@MaSV", txtMaSV.Text),
                 };
