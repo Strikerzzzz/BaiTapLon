@@ -115,6 +115,9 @@
     <EmbeddedResource Include="QLLoaiDiem.resx">
       <DependentUpon>QLLoaiDiem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="QLLopHoc.resx">
+      <DependentUpon>QLLopHoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QLLopSinhVien.resx">
       <DependentUpon>QLLopSinhVien.cs</DependentUpon>
     </EmbeddedResource>

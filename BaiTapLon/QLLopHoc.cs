@@ -37,9 +37,9 @@ namespace BaiTapLon
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnThoat_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }
