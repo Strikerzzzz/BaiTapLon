@@ -65,5 +65,26 @@ namespace BaiTapLon
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void chuyênNgànhToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            QLChuyenNganh frm = new QLChuyenNganh();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void họcKỳToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            QLHocKy frm = new QLHocKy();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void loạiMônToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            QLLoaiMon frm = new QLLoaiMon();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }
