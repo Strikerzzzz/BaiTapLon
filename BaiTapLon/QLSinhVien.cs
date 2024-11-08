@@ -69,15 +69,15 @@ namespace BaiTapLon
             cboGioiTinh.Items.Add("Nam");
             cboGioiTinh.Items.Add("Nữ");
             cboGioiTinh.SelectedIndex = 0;
-
+            cboKhoaHoc.Items.Add("Chọn khóa học");
             for (int i = 1; i <= 19; i++)
             {
                 cboKhoaHoc.Items.Add("Khóa " + i);
             }
-            cboKhoaHoc.Items.Insert(0, "Chọn khóa học");
             cboKhoaHoc.SelectedIndex = 0;
             LoadDatabase();
-
+            dictLM.Add("-1","Chọn chuyên ngành");
+            cboMaChuyenNganh.Items.Add("Chọn chuyên ngành");
             DataTable dt = DataBase.GetData("SELECT MaChuyenNganh, TenChuyenNganh FROM ChuyenNganh where TrangThai = 'Initialize'");
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -299,7 +299,7 @@ namespace BaiTapLon
                 MessageBox.Show("Địa chỉ không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if (cboGioiTinh.SelectedIndex == 0 || cboKhoaHoc.SelectedIndex == 0)
+            if (cboGioiTinh.SelectedIndex == 0 || cboKhoaHoc.SelectedIndex == 0|| cboMaChuyenNganh.SelectedIndex ==0)
             {
                 MessageBox.Show("Vui lòng chọn đầy đủ thông tin về giới tính, khóa học và chuyên ngành.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
