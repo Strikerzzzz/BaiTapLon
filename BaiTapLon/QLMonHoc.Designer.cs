@@ -30,6 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbLm = new System.Windows.Forms.ComboBox();
             this.txtSoTinChi = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTongSoBuoiHoc = new System.Windows.Forms.TextBox();
@@ -41,16 +42,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridViewQLMonHoc = new System.Windows.Forms.DataGridView();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnThoat = new System.Windows.Forms.Button();
             this.MaMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoTinChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LoaiMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongSoBuoiHoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cbLm = new System.Windows.Forms.ComboBox();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnThoat = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQLMonHoc)).BeginInit();
@@ -84,6 +84,14 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nhập liệu";
+            // 
+            // cbLm
+            // 
+            this.cbLm.FormattingEnabled = true;
+            this.cbLm.Location = new System.Drawing.Point(604, 44);
+            this.cbLm.Name = "cbLm";
+            this.cbLm.Size = new System.Drawing.Size(303, 28);
+            this.cbLm.TabIndex = 2;
             // 
             // txtSoTinChi
             // 
@@ -171,6 +179,8 @@
             // 
             // dataGridViewQLMonHoc
             // 
+            this.dataGridViewQLMonHoc.AllowUserToAddRows = false;
+            this.dataGridViewQLMonHoc.AllowUserToDeleteRows = false;
             this.dataGridViewQLMonHoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewQLMonHoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaMon,
@@ -180,51 +190,12 @@
             this.TongSoBuoiHoc});
             this.dataGridViewQLMonHoc.Location = new System.Drawing.Point(8, 27);
             this.dataGridViewQLMonHoc.Name = "dataGridViewQLMonHoc";
+            this.dataGridViewQLMonHoc.RowHeadersVisible = false;
             this.dataGridViewQLMonHoc.RowHeadersWidth = 51;
             this.dataGridViewQLMonHoc.RowTemplate.Height = 24;
             this.dataGridViewQLMonHoc.Size = new System.Drawing.Size(966, 248);
             this.dataGridViewQLMonHoc.TabIndex = 0;
             this.dataGridViewQLMonHoc.Click += new System.EventHandler(this.dataGridViewQLMonHoc_Click);
-            // 
-            // btnThem
-            // 
-            this.btnThem.Location = new System.Drawing.Point(341, 276);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(127, 43);
-            this.btnThem.TabIndex = 3;
-            this.btnThem.Text = "Thêm ";
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
-            // btnSua
-            // 
-            this.btnSua.Location = new System.Drawing.Point(513, 276);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(127, 43);
-            this.btnSua.TabIndex = 3;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.Location = new System.Drawing.Point(686, 276);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(127, 43);
-            this.btnXoa.TabIndex = 3;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // btnThoat
-            // 
-            this.btnThoat.Location = new System.Drawing.Point(858, 276);
-            this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(127, 43);
-            this.btnThoat.TabIndex = 3;
-            this.btnThoat.Text = "Thoát";
-            this.btnThoat.UseVisualStyleBackColor = true;
-            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // MaMon
             // 
@@ -266,13 +237,45 @@
             this.TongSoBuoiHoc.Name = "TongSoBuoiHoc";
             this.TongSoBuoiHoc.Width = 200;
             // 
-            // cbLm
+            // btnThem
             // 
-            this.cbLm.FormattingEnabled = true;
-            this.cbLm.Location = new System.Drawing.Point(604, 44);
-            this.cbLm.Name = "cbLm";
-            this.cbLm.Size = new System.Drawing.Size(303, 28);
-            this.cbLm.TabIndex = 2;
+            this.btnThem.Location = new System.Drawing.Point(341, 276);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(127, 43);
+            this.btnThem.TabIndex = 3;
+            this.btnThem.Text = "Thêm ";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // btnSua
+            // 
+            this.btnSua.Location = new System.Drawing.Point(513, 276);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(127, 43);
+            this.btnSua.TabIndex = 3;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(686, 276);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(127, 43);
+            this.btnXoa.TabIndex = 3;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnThoat
+            // 
+            this.btnThoat.Location = new System.Drawing.Point(858, 276);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(127, 43);
+            this.btnThoat.TabIndex = 3;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // QLMonHoc
             // 

@@ -36,12 +36,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.IDLoaiMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LoaiMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
-            this.IDLoaiMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LoaiMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -119,17 +119,36 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDLoaiMon,
             this.LoaiMon});
             this.dataGridView1.Location = new System.Drawing.Point(4, 23);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(672, 213);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
+            // 
+            // IDLoaiMon
+            // 
+            this.IDLoaiMon.DataPropertyName = "IDLoaiMon";
+            this.IDLoaiMon.HeaderText = "Mã loại môn";
+            this.IDLoaiMon.MinimumWidth = 6;
+            this.IDLoaiMon.Name = "IDLoaiMon";
+            this.IDLoaiMon.Width = 125;
+            // 
+            // LoaiMon
+            // 
+            this.LoaiMon.DataPropertyName = "LoaiMon";
+            this.LoaiMon.HeaderText = "Loại môn";
+            this.LoaiMon.MinimumWidth = 6;
+            this.LoaiMon.Name = "LoaiMon";
+            this.LoaiMon.Width = 325;
             // 
             // btnThoat
             // 
@@ -170,22 +189,6 @@
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
-            // IDLoaiMon
-            // 
-            this.IDLoaiMon.DataPropertyName = "IDLoaiMon";
-            this.IDLoaiMon.HeaderText = "Mã loại môn";
-            this.IDLoaiMon.MinimumWidth = 6;
-            this.IDLoaiMon.Name = "IDLoaiMon";
-            this.IDLoaiMon.Width = 125;
-            // 
-            // LoaiMon
-            // 
-            this.LoaiMon.DataPropertyName = "LoaiMon";
-            this.LoaiMon.HeaderText = "Loại môn";
-            this.LoaiMon.MinimumWidth = 6;
-            this.LoaiMon.Name = "LoaiMon";
-            this.LoaiMon.Width = 325;
             // 
             // QLLoaiMon
             // 
