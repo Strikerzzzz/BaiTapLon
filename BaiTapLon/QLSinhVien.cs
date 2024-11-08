@@ -277,31 +277,49 @@ namespace BaiTapLon
             if (string.IsNullOrEmpty(txtHoDem.Text) || string.IsNullOrEmpty(txtTen.Text))
             {
                 MessageBox.Show("Họ và tên không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtHoDem.Focus();
                 return false;
             }
             if (!IsValidEmail(txtEmail.Text))
             {
                 MessageBox.Show("Email không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEmail.Focus();
                 return false;
             }
             if (string.IsNullOrEmpty(txtSoCCCD.Text) || txtSoCCCD.Text.Length != 12)
             {
                 MessageBox.Show("Số CCCD không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSoCCCD.Focus();
                 return false;
             }
             if (string.IsNullOrEmpty(txtSDT.Text) || !Regex.IsMatch(txtSDT.Text, @"^\d{10}$"))
             {
                 MessageBox.Show("Số điện thoại không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSDT.Focus();
                 return false;
             }
             if (string.IsNullOrEmpty(txtDiaChi.Text))
             {
                 MessageBox.Show("Địa chỉ không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtDiaChi.Focus();
                 return false;
             }
-            if (cboGioiTinh.SelectedIndex == 0 || cboKhoaHoc.SelectedIndex == 0|| cboMaChuyenNganh.SelectedIndex ==0)
+            if (cboGioiTinh.SelectedIndex == 0)
             {
-                MessageBox.Show("Vui lòng chọn đầy đủ thông tin về giới tính, khóa học và chuyên ngành.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng chọn đầy đủ thông tin về giới tính.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboGioiTinh.Focus();
+                return false;
+            }
+            if ( cboKhoaHoc.SelectedIndex == 0 )
+            {
+                MessageBox.Show("Vui lòng chọn đầy đủ thông tin về khóa học", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboKhoaHoc.Focus();
+                return false;
+            }
+            if (cboMaChuyenNganh.SelectedIndex == 0)
+            {
+                MessageBox.Show("Vui lòng chọn đầy đủ thông tin về chuyên ngành.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboMaChuyenNganh.Focus();
                 return false;
             }
             if (dateTimePickerNS.Value >= DateTime.Now)

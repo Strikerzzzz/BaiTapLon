@@ -319,9 +319,9 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(690, 220);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(140, 20);
+            this.label11.Size = new System.Drawing.Size(145, 20);
             this.label11.TabIndex = 16;
-            this.label11.Text = "Mã chuyên ngành";
+            this.label11.Text = "Tên chuyên ngành";
             // 
             // dateTimePickerNS
             // 
