@@ -40,6 +40,8 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
+            this.MaChuyenNganh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenChuyenNganh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -104,6 +106,9 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaChuyenNganh,
+            this.TenChuyenNganh});
             this.dataGridView1.Location = new System.Drawing.Point(21, 38);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
@@ -162,6 +167,24 @@
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
+            // MaChuyenNganh
+            // 
+            this.MaChuyenNganh.DataPropertyName = "MaChuyenNganh";
+            this.MaChuyenNganh.HeaderText = "Mã chuyên ngành";
+            this.MaChuyenNganh.MaxInputLength = 327671;
+            this.MaChuyenNganh.MinimumWidth = 6;
+            this.MaChuyenNganh.Name = "MaChuyenNganh";
+            this.MaChuyenNganh.Width = 300;
+            // 
+            // TenChuyenNganh
+            // 
+            this.TenChuyenNganh.DataPropertyName = "TenChuyenNganh";
+            this.TenChuyenNganh.HeaderText = "Tên chuyên ngành";
+            this.TenChuyenNganh.MaxInputLength = 327671;
+            this.TenChuyenNganh.MinimumWidth = 6;
+            this.TenChuyenNganh.Name = "TenChuyenNganh";
+            this.TenChuyenNganh.Width = 300;
+            // 
             // QLChuyenNganh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -201,5 +224,7 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaChuyenNganh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenChuyenNganh;
     }
 }

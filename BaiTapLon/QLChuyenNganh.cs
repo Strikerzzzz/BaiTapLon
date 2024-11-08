@@ -21,7 +21,7 @@ namespace BaiTapLon
         {
             try
             {
-                this.dataGridView1.DataSource = DataBase.GetData("SELECT * FROM ChuyenNganh where TrangThai = 'Initialize'");
+                this.dataGridView1.DataSource = DataBase.GetData("SELECT MaChuyenNganh,TenChuyenNganh FROM ChuyenNganh where TrangThai = 'Initialize'");
             }
             catch (Exception ex)
             {
