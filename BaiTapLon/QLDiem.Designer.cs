@@ -36,6 +36,10 @@
             this.txtGiaTriDiem = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cboTenLoaiDiem = new System.Windows.Forms.ComboBox();
+            this.cboTenMon = new System.Windows.Forms.ComboBox();
+            this.cboTenSV = new System.Windows.Forms.ComboBox();
+            this.txtLanThi = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -44,10 +48,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnXoa = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.cboTenSV = new System.Windows.Forms.ComboBox();
-            this.cboTenMon = new System.Windows.Forms.ComboBox();
-            this.cboTenLoaiDiem = new System.Windows.Forms.ComboBox();
-            this.txtLanThi = new System.Windows.Forms.TextBox();
             this.IDDiem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenSinhVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,6 +68,7 @@
             this.btnThoat.TabIndex = 19;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btnSua
             // 
@@ -78,6 +79,7 @@
             this.btnSua.TabIndex = 17;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
@@ -109,6 +111,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(855, 205);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
             // 
             // groupBox2
             // 
@@ -157,6 +160,37 @@
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin điểm";
+            // 
+            // cboTenLoaiDiem
+            // 
+            this.cboTenLoaiDiem.FormattingEnabled = true;
+            this.cboTenLoaiDiem.Location = new System.Drawing.Point(544, 33);
+            this.cboTenLoaiDiem.Name = "cboTenLoaiDiem";
+            this.cboTenLoaiDiem.Size = new System.Drawing.Size(276, 28);
+            this.cboTenLoaiDiem.TabIndex = 12;
+            // 
+            // cboTenMon
+            // 
+            this.cboTenMon.FormattingEnabled = true;
+            this.cboTenMon.Location = new System.Drawing.Point(137, 116);
+            this.cboTenMon.Name = "cboTenMon";
+            this.cboTenMon.Size = new System.Drawing.Size(276, 28);
+            this.cboTenMon.TabIndex = 12;
+            // 
+            // cboTenSV
+            // 
+            this.cboTenSV.FormattingEnabled = true;
+            this.cboTenSV.Location = new System.Drawing.Point(137, 74);
+            this.cboTenSV.Name = "cboTenSV";
+            this.cboTenSV.Size = new System.Drawing.Size(276, 28);
+            this.cboTenSV.TabIndex = 12;
+            // 
+            // txtLanThi
+            // 
+            this.txtLanThi.Location = new System.Drawing.Point(544, 117);
+            this.txtLanThi.Name = "txtLanThi";
+            this.txtLanThi.Size = new System.Drawing.Size(276, 27);
+            this.txtLanThi.TabIndex = 11;
             // 
             // label5
             // 
@@ -221,6 +255,7 @@
             this.btnXoa.TabIndex = 18;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // label1
             // 
@@ -231,37 +266,6 @@
             this.label1.Size = new System.Drawing.Size(194, 29);
             this.label1.TabIndex = 13;
             this.label1.Text = "QUẢN LÝ ĐIỂM";
-            // 
-            // cboTenSV
-            // 
-            this.cboTenSV.FormattingEnabled = true;
-            this.cboTenSV.Location = new System.Drawing.Point(137, 74);
-            this.cboTenSV.Name = "cboTenSV";
-            this.cboTenSV.Size = new System.Drawing.Size(276, 28);
-            this.cboTenSV.TabIndex = 12;
-            // 
-            // cboTenMon
-            // 
-            this.cboTenMon.FormattingEnabled = true;
-            this.cboTenMon.Location = new System.Drawing.Point(137, 116);
-            this.cboTenMon.Name = "cboTenMon";
-            this.cboTenMon.Size = new System.Drawing.Size(276, 28);
-            this.cboTenMon.TabIndex = 12;
-            // 
-            // cboTenLoaiDiem
-            // 
-            this.cboTenLoaiDiem.FormattingEnabled = true;
-            this.cboTenLoaiDiem.Location = new System.Drawing.Point(544, 33);
-            this.cboTenLoaiDiem.Name = "cboTenLoaiDiem";
-            this.cboTenLoaiDiem.Size = new System.Drawing.Size(276, 28);
-            this.cboTenLoaiDiem.TabIndex = 12;
-            // 
-            // txtLanThi
-            // 
-            this.txtLanThi.Location = new System.Drawing.Point(544, 117);
-            this.txtLanThi.Name = "txtLanThi";
-            this.txtLanThi.Size = new System.Drawing.Size(276, 27);
-            this.txtLanThi.TabIndex = 11;
             // 
             // IDDiem
             // 
@@ -285,7 +289,7 @@
             this.TenMon.HeaderText = "Tên môn";
             this.TenMon.MinimumWidth = 6;
             this.TenMon.Name = "TenMon";
-            this.TenMon.Width = 170;
+            this.TenMon.Width = 200;
             // 
             // TenLoaiDiem
             // 
@@ -326,6 +330,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Name = "QLDiem";
             this.Text = "QLDiem";
+            this.Load += new System.EventHandler(this.QLDiem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
