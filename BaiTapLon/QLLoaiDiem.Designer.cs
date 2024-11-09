@@ -36,7 +36,6 @@
             this.txtTenLoaiDiem = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnThem = new System.Windows.Forms.Button();
@@ -44,10 +43,8 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.IDLoaiDiem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenLoaiDiem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TiLe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cbTenMon = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -57,7 +54,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(268, 9);
+            this.label1.Location = new System.Drawing.Point(160, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(258, 29);
             this.label1.TabIndex = 0;
@@ -65,17 +62,15 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.cbTenMon);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.txtTiLe);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.txtTenLoaiDiem);
             this.groupBox2.Controls.Add(this.txtID);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Location = new System.Drawing.Point(12, 51);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(853, 151);
+            this.groupBox2.Size = new System.Drawing.Size(564, 182);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin loại điểm";
@@ -83,7 +78,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(416, 43);
+            this.label6.Location = new System.Drawing.Point(11, 89);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(114, 20);
             this.label6.TabIndex = 3;
@@ -91,7 +86,7 @@
             // 
             // txtTiLe
             // 
-            this.txtTiLe.Location = new System.Drawing.Point(541, 97);
+            this.txtTiLe.Location = new System.Drawing.Point(136, 128);
             this.txtTiLe.Name = "txtTiLe";
             this.txtTiLe.Size = new System.Drawing.Size(289, 27);
             this.txtTiLe.TabIndex = 8;
@@ -99,7 +94,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 47);
+            this.label7.Location = new System.Drawing.Point(27, 47);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(98, 20);
             this.label7.TabIndex = 1;
@@ -107,7 +102,7 @@
             // 
             // txtTenLoaiDiem
             // 
-            this.txtTenLoaiDiem.Location = new System.Drawing.Point(541, 40);
+            this.txtTenLoaiDiem.Location = new System.Drawing.Point(136, 86);
             this.txtTenLoaiDiem.Name = "txtTenLoaiDiem";
             this.txtTenLoaiDiem.Size = new System.Drawing.Size(289, 27);
             this.txtTenLoaiDiem.TabIndex = 7;
@@ -115,36 +110,27 @@
             // txtID
             // 
             this.txtID.Enabled = false;
-            this.txtID.Location = new System.Drawing.Point(126, 44);
+            this.txtID.Location = new System.Drawing.Point(136, 44);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(276, 27);
+            this.txtID.Size = new System.Drawing.Size(289, 27);
             this.txtID.TabIndex = 5;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(484, 104);
+            this.label8.Location = new System.Drawing.Point(79, 135);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 20);
             this.label8.TabIndex = 4;
             this.label8.Tag = "";
             this.label8.Text = "Tỉ lệ ";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(36, 104);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(74, 20);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Tên môn";
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 258);
+            this.groupBox1.Location = new System.Drawing.Point(12, 289);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(853, 286);
+            this.groupBox1.Size = new System.Drawing.Size(564, 286);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hiển thị";
@@ -156,7 +142,6 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDLoaiDiem,
-            this.TenMon,
             this.TenLoaiDiem,
             this.TiLe});
             this.dataGridView1.Location = new System.Drawing.Point(11, 26);
@@ -164,13 +149,13 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(836, 254);
+            this.dataGridView1.Size = new System.Drawing.Size(538, 254);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(306, 208);
+            this.btnThem.Location = new System.Drawing.Point(17, 239);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(115, 44);
             this.btnThem.TabIndex = 7;
@@ -180,7 +165,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(454, 208);
+            this.btnSua.Location = new System.Drawing.Point(165, 239);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(115, 44);
             this.btnSua.TabIndex = 8;
@@ -190,7 +175,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(602, 208);
+            this.btnXoa.Location = new System.Drawing.Point(313, 239);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(115, 44);
             this.btnXoa.TabIndex = 9;
@@ -200,7 +185,7 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(750, 208);
+            this.btnThoat.Location = new System.Drawing.Point(461, 239);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(115, 44);
             this.btnThoat.TabIndex = 10;
@@ -215,14 +200,6 @@
             this.IDLoaiDiem.MinimumWidth = 6;
             this.IDLoaiDiem.Name = "IDLoaiDiem";
             this.IDLoaiDiem.Width = 125;
-            // 
-            // TenMon
-            // 
-            this.TenMon.DataPropertyName = "TenMon";
-            this.TenMon.HeaderText = "Tên môn";
-            this.TenMon.MinimumWidth = 6;
-            this.TenMon.Name = "TenMon";
-            this.TenMon.Width = 225;
             // 
             // TenLoaiDiem
             // 
@@ -240,19 +217,11 @@
             this.TiLe.Name = "TiLe";
             this.TiLe.Width = 150;
             // 
-            // cbTenMon
-            // 
-            this.cbTenMon.FormattingEnabled = true;
-            this.cbTenMon.Location = new System.Drawing.Point(126, 101);
-            this.cbTenMon.Name = "cbTenMon";
-            this.cbTenMon.Size = new System.Drawing.Size(276, 28);
-            this.cbTenMon.TabIndex = 9;
-            // 
             // QLLoaiDiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(877, 560);
+            this.ClientSize = new System.Drawing.Size(587, 593);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
@@ -283,7 +252,6 @@
         private System.Windows.Forms.TextBox txtTenLoaiDiem;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnThem;
@@ -291,9 +259,7 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDLoaiDiem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenMon;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenLoaiDiem;
         private System.Windows.Forms.DataGridViewTextBoxColumn TiLe;
-        private System.Windows.Forms.ComboBox cbTenMon;
     }
 }

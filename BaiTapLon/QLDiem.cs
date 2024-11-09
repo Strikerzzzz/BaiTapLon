@@ -16,5 +16,10 @@ namespace BaiTapLon
         {
             InitializeComponent();
         }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
