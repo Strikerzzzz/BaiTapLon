@@ -115,11 +115,11 @@
     <Compile Include="QLSinhVien.Designer.cs">
       <DependentUpon>QLSinhVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="TRLoaiMon.cs">
+    <Compile Include="ThungRac.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TRLoaiMon.Designer.cs">
-      <DependentUpon>TRLoaiMon.cs</DependentUpon>
+    <Compile Include="ThungRac.Designer.cs">
+      <DependentUpon>ThungRac.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -163,8 +163,8 @@
     <EmbeddedResource Include="QuanLy.resx">
       <DependentUpon>QuanLy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TRLoaiMon.resx">
-      <DependentUpon>TRLoaiMon.cs</DependentUpon>
+    <EmbeddedResource Include="ThungRac.resx">
+      <DependentUpon>ThungRac.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
