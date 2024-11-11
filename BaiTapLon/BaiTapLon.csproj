@@ -115,6 +115,12 @@
     <Compile Include="QLSinhVien.Designer.cs">
       <DependentUpon>QLSinhVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="TRLoaiMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TRLoaiMon.Designer.cs">
+      <DependentUpon>TRLoaiMon.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -156,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLy.resx">
       <DependentUpon>QuanLy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TRLoaiMon.resx">
+      <DependentUpon>TRLoaiMon.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
