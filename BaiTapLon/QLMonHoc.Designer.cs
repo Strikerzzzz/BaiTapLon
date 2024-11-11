@@ -42,15 +42,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridViewQLMonHoc = new System.Windows.Forms.DataGridView();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnThoat = new System.Windows.Forms.Button();
             this.MaMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoTinChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LoaiMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongSoBuoiHoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnThoat = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQLMonHoc)).BeginInit();
@@ -197,46 +197,6 @@
             this.dataGridViewQLMonHoc.TabIndex = 0;
             this.dataGridViewQLMonHoc.Click += new System.EventHandler(this.dataGridViewQLMonHoc_Click);
             // 
-            // MaMon
-            // 
-            this.MaMon.DataPropertyName = "MaMon";
-            this.MaMon.HeaderText = "Mã môn";
-            this.MaMon.MinimumWidth = 6;
-            this.MaMon.Name = "MaMon";
-            this.MaMon.Width = 225;
-            // 
-            // TenMon
-            // 
-            this.TenMon.DataPropertyName = "TenMon";
-            this.TenMon.HeaderText = "Tên môn";
-            this.TenMon.MinimumWidth = 6;
-            this.TenMon.Name = "TenMon";
-            this.TenMon.Width = 125;
-            // 
-            // SoTinChi
-            // 
-            this.SoTinChi.DataPropertyName = "SoTinChi";
-            this.SoTinChi.HeaderText = "Số tín chỉ";
-            this.SoTinChi.MinimumWidth = 6;
-            this.SoTinChi.Name = "SoTinChi";
-            this.SoTinChi.Width = 125;
-            // 
-            // LoaiMon
-            // 
-            this.LoaiMon.DataPropertyName = "LoaiMon";
-            this.LoaiMon.HeaderText = "Loại môn";
-            this.LoaiMon.MinimumWidth = 6;
-            this.LoaiMon.Name = "LoaiMon";
-            this.LoaiMon.Width = 225;
-            // 
-            // TongSoBuoiHoc
-            // 
-            this.TongSoBuoiHoc.DataPropertyName = "TongSoBuoiHoc";
-            this.TongSoBuoiHoc.HeaderText = "Tổng số buổi học";
-            this.TongSoBuoiHoc.MinimumWidth = 6;
-            this.TongSoBuoiHoc.Name = "TongSoBuoiHoc";
-            this.TongSoBuoiHoc.Width = 200;
-            // 
             // btnThem
             // 
             this.btnThem.Location = new System.Drawing.Point(341, 276);
@@ -276,6 +236,46 @@
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+            // 
+            // MaMon
+            // 
+            this.MaMon.DataPropertyName = "MaMon";
+            this.MaMon.HeaderText = "Mã môn";
+            this.MaMon.MinimumWidth = 6;
+            this.MaMon.Name = "MaMon";
+            this.MaMon.Width = 125;
+            // 
+            // TenMon
+            // 
+            this.TenMon.DataPropertyName = "TenMon";
+            this.TenMon.HeaderText = "Tên môn";
+            this.TenMon.MinimumWidth = 6;
+            this.TenMon.Name = "TenMon";
+            this.TenMon.Width = 225;
+            // 
+            // SoTinChi
+            // 
+            this.SoTinChi.DataPropertyName = "SoTinChi";
+            this.SoTinChi.HeaderText = "Số tín chỉ";
+            this.SoTinChi.MinimumWidth = 6;
+            this.SoTinChi.Name = "SoTinChi";
+            this.SoTinChi.Width = 125;
+            // 
+            // LoaiMon
+            // 
+            this.LoaiMon.DataPropertyName = "LoaiMon";
+            this.LoaiMon.HeaderText = "Loại môn";
+            this.LoaiMon.MinimumWidth = 6;
+            this.LoaiMon.Name = "LoaiMon";
+            this.LoaiMon.Width = 225;
+            // 
+            // TongSoBuoiHoc
+            // 
+            this.TongSoBuoiHoc.DataPropertyName = "TongSoBuoiHoc";
+            this.TongSoBuoiHoc.HeaderText = "Tổng số buổi học";
+            this.TongSoBuoiHoc.MinimumWidth = 6;
+            this.TongSoBuoiHoc.Name = "TongSoBuoiHoc";
+            this.TongSoBuoiHoc.Width = 200;
             // 
             // QLMonHoc
             // 
@@ -322,11 +322,11 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.DataGridView dataGridViewQLMonHoc;
+        private System.Windows.Forms.ComboBox cbLm;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaMon;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenMon;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoTinChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn LoaiMon;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongSoBuoiHoc;
-        private System.Windows.Forms.ComboBox cbLm;
     }
 }

@@ -47,6 +47,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase.cs" />
+    <Compile Include="NC4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NC4.Designer.cs">
+      <DependentUpon>NC4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NC5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NC5.Designer.cs">
+      <DependentUpon>NC5.cs</DependentUpon>
+    </Compile>
     <Compile Include="QLChuyenNganh.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +133,12 @@
     <Compile Include="ThungRac.Designer.cs">
       <DependentUpon>ThungRac.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="NC4.resx">
+      <DependentUpon>NC4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NC5.resx">
+      <DependentUpon>NC5.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
