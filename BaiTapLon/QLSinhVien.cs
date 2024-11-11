@@ -322,7 +322,7 @@ namespace BaiTapLon
                 cboMaChuyenNganh.Focus();
                 return false;
             }
-            if (dateTimePickerNS.Value >= DateTime.Now)
+            if (dateTimePickerNS.Value > DateTime.Now)
             {
                 MessageBox.Show("Ngày sinh không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
