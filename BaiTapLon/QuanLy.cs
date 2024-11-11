@@ -86,10 +86,9 @@ namespace BaiTapLon
             frm.MdiParent = this;
             frm.Show();
         }
-
-        private void loạiMônToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void thungfToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TRLoaiMon frm = new TRLoaiMon();
+            ThungRac frm = new ThungRac();
             frm.MdiParent = this;
             frm.Show();
         }
