@@ -1,4 +1,5 @@
 ﻿using BaiTapLon.Controller;
+using BaiTapLon.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,7 +45,12 @@ namespace BaiTapLon
                 return;
             }
 
-            bool result = ChuyenNganhController.AddChuyenNganh(txtTenCN.Text);
+            ChuyenNganh chuyenNganh = new ChuyenNganh
+            {
+                TenChuyenNganh = txtTenCN.Text
+            };
+
+            bool result = ChuyenNganhController.AddChuyenNganh(chuyenNganh);
             MessageBox.Show(result ? "Thêm chuyên ngành thành công!" : "Thêm chuyên ngành thất bại.");
             if (result) LoadDatabase();
             ClearFields();
@@ -52,13 +58,19 @@ namespace BaiTapLon
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtMaCN.Text))
+            if (string.IsNullOrEmpty(txtMaCN.Text) || string.IsNullOrEmpty(txtTenCN.Text))
             {
-                MessageBox.Show("Vui lòng chọn chuyên ngành cần sửa.");
+                MessageBox.Show("Vui lòng nhập mã và tên chuyên ngành.");
                 return;
             }
 
-            bool result = ChuyenNganhController.UpdateChuyenNganh(txtMaCN.Text, txtTenCN.Text);
+            ChuyenNganh chuyenNganh = new ChuyenNganh
+            {
+                MaChuyenNganh = txtMaCN.Text,
+                TenChuyenNganh = txtTenCN.Text
+            };
+
+            bool result = ChuyenNganhController.UpdateChuyenNganh(chuyenNganh);
             MessageBox.Show(result ? "Sửa chuyên ngành thành công!" : "Sửa chuyên ngành thất bại.");
             if (result) LoadDatabase();
             ClearFields();

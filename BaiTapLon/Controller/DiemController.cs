@@ -8,5 +8,6 @@ namespace BaiTapLon.Controller
 {
     internal class DiemController
     {
+
     }
 }
