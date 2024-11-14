@@ -33,10 +33,10 @@
             this.btnThoat = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.MaLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KhoaHoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
@@ -96,16 +96,6 @@
             this.dgv.Size = new System.Drawing.Size(707, 180);
             this.dgv.TabIndex = 1;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(191, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(350, 29);
-            this.label1.TabIndex = 31;
-            this.label1.Text = "LIỆT KÊ LỚP THEO HỌC KỲ";
-            // 
             // MaLop
             // 
             this.MaLop.DataPropertyName = "MaLop";
@@ -129,6 +119,16 @@
             this.KhoaHoc.MinimumWidth = 6;
             this.KhoaHoc.Name = "KhoaHoc";
             this.KhoaHoc.Width = 125;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label1.Location = new System.Drawing.Point(191, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(350, 29);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "LIỆT KÊ LỚP THEO HỌC KỲ";
             // 
             // NC6
             // 

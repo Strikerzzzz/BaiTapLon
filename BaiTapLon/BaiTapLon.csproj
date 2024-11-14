@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -67,6 +68,18 @@
     <Compile Include="Model\LopSinhVien.cs" />
     <Compile Include="Model\MonHoc.cs" />
     <Compile Include="Model\SinhVien.cs" />
+    <Compile Include="View\NangCao\NC1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\NangCao\NC1.Designer.cs">
+      <DependentUpon>NC1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\NangCao\NC2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\NangCao\NC2.Designer.cs">
+      <DependentUpon>NC2.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\NangCao\NC4.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +97,18 @@
     </Compile>
     <Compile Include="View\NangCao\NC6.Designer.cs">
       <DependentUpon>NC6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\NangCao\NC7.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\NangCao\NC7.Designer.cs">
+      <DependentUpon>NC7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\NangCao\NC8.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\NangCao\NC8.Designer.cs">
+      <DependentUpon>NC8.cs</DependentUpon>
     </Compile>
     <Compile Include="View\QLChuyenNganh.cs">
       <SubType>Form</SubType>
@@ -159,6 +184,12 @@
     <Compile Include="View\ThungRac.Designer.cs">
       <DependentUpon>ThungRac.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\NangCao\NC1.resx">
+      <DependentUpon>NC1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\NangCao\NC2.resx">
+      <DependentUpon>NC2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\NangCao\NC4.resx">
       <DependentUpon>NC4.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,6 +207,12 @@
     </Compile>
     <EmbeddedResource Include="View\NangCao\NC6.resx">
       <DependentUpon>NC6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\NangCao\NC7.resx">
+      <DependentUpon>NC7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\NangCao\NC8.resx">
+      <DependentUpon>NC8.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\QLChuyenNganh.resx">
       <DependentUpon>QLChuyenNganh.cs</DependentUpon>
