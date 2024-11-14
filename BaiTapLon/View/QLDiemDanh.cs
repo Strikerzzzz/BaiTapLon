@@ -47,16 +47,26 @@ namespace BaiTapLon
 
         private void LoadClasses()
         {
-            dictML.Add("-1", "Chọn tên lớp ");
-            cboTenLop.Items.Add("Chọn tên lớp");
-            DataTable dt = DataBase.GetData("SELECT MaLop, TenLop FROM LopHoc where TrangThai = 'Initialize'");
-            diemDanhController.LoadListDB(dt, diemDanhController.dictML);
+            try
+            {
+                cboTenLop.Items.Clear();
+                cboTenLop.Enabled = false;
 
-            cboTenLop.DataSource = new BindingSource(diemDanhController.dictML, null);
-            cboTenLop.DisplayMember = "Value";
-            cboTenLop.ValueMember = "Key";
-            cboTenSV.Enabled = false;
+                dictML.Add("-1", "Chọn tên lớp ");
+                DataTable dt = DataBase.GetData("SELECT MaLop, TenLop FROM LopHoc WHERE TrangThai = 'Initialize'");
+                diemDanhController.LoadListDB(dt, dictML);
+
+                cboTenLop.DataSource = new BindingSource(dictML, null);
+                cboTenLop.DisplayMember = "Value";
+                cboTenLop.ValueMember = "Key";
+                cboTenLop.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải danh sách lớp: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void btnThem_Click(object sender, EventArgs e)
         {
@@ -106,18 +116,20 @@ namespace BaiTapLon
         }
         private bool ValidateFields()
         {
-            if (cboTenLop.SelectedIndex == 0)
+            if (cboTenLop.SelectedValue == null || cboTenLop.SelectedValue.ToString() == "-1")
             {
                 MessageBox.Show("Vui lòng chọn lớp.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cboTenLop.Focus();
                 return false;
             }
-            if (cboTenSV.SelectedIndex == 0)
+
+            if (cboTenSV.SelectedValue == null || cboTenSV.SelectedValue.ToString() == "-1")
             {
                 MessageBox.Show("Vui lòng chọn sinh viên.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cboTenSV.Focus();
                 return false;
             }
+
             if (dateTimePickerNgayDD.Value > DateTime.Now)
             {
                 MessageBox.Show("Ngày điểm danh không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -126,90 +138,72 @@ namespace BaiTapLon
 
             return true;
         }
+
         private void cboTenLop_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboTenLop.SelectedIndex != 0)
+            try
             {
-                cboTenSV.Enabled = true;
-                // Xoá dữ liệu cũ
-                cboTenSV.DataSource = null;
-                cboTenSV.Items.Clear();
-
-                // Tạo mới Dictionary cho sinh viên
-                dictSV = new Dictionary<string, string>();
-                dictSV.Add("-1", "Chọn tên sinh viên");
-
-                // Truy vấn dữ liệu sinh viên
-                DataTable dt1 = DataBase.GetData("SELECT sv.MaSV, CONCAT(sv.HoDem, ' ', sv.Ten, '-', sv.MaSV) " +
-                    "FROM LopHoc_SinhVien ls " +
-                    "JOIN SinhVien sv ON sv.MaSV = ls.MaSV " +
-                    $"WHERE ls.MaLop = '{cboTenLop.SelectedValue.ToString()}' AND ls.TrangThai = 'Initialize'");
-
-                // Kiểm tra dữ liệu và nạp vào Dictionary
-                if (dt1 != null && dt1.Rows.Count > 0)
+                if (cboTenLop.SelectedIndex > 0)
                 {
-                    foreach (DataRow row in dt1.Rows)
-                    {
-                        string maSV = row["MaSV"].ToString();
-                        string tenSV = row[1].ToString();
+                    cboTenSV.Enabled = true;
+                    cboTenSV.DataSource = null;
 
-                        // Kiểm tra và tránh trùng lặp
-                        if (!dictSV.ContainsKey(maSV))
-                        {
-                            dictSV.Add(maSV, tenSV);
-                        }
-                    }
+                    dictSV = new Dictionary<string, string> { { "-1", "Chọn tên sinh viên" } };
+                    DataTable dt = diemDanhController.LoadSinhVienTheoLop(int.Parse(cboTenLop.SelectedValue.ToString()));
+                    diemDanhController.LoadListDB(dt, dictSV);
+
+                    cboTenSV.DataSource = new BindingSource(dictSV, null);
+                    cboTenSV.DisplayMember = "Value";
+                    cboTenSV.ValueMember = "Key";
                 }
                 else
                 {
-                    MessageBox.Show("Không có dữ liệu tên sinh viên.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    cboTenSV.Enabled = false;
                 }
-
-                // Thiết lập DataSource cho ComboBox
-                cboTenSV.DataSource = new BindingSource(dictSV, null);
-                cboTenSV.DisplayMember = "Value";
-                cboTenSV.ValueMember = "Key";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi thay đổi lớp: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void dataGridView1_Click(object sender, EventArgs e)
         {
             try
             {
                 if (dataGridView1.CurrentRow != null)
                 {
-                    txtID.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                    string ID, ten;
-                    ten = dataGridView1.CurrentRow.Cells[1].Value?.ToString();
-                    ID = dictSV.FirstOrDefault(x => x.Value == ten).Key;
-                    if (!string.IsNullOrEmpty(ID))
+                    txtID.Text = dataGridView1.CurrentRow.Cells[0].Value?.ToString();
+
+                    // Lấy tên lớp và mã lớp từ hàng hiện tại của dataGridView
+                    string tenLop = dataGridView1.CurrentRow.Cells[2].Value?.ToString();
+                    string maLop = dictML.FirstOrDefault(x => x.Value == tenLop).Key;
+
+                    // Nếu lớp học chưa được chọn, chọn lớp và tải sinh viên
+                    if (cboTenLop.SelectedValue == null || cboTenLop.SelectedValue.ToString() != maLop)
                     {
-                        cboTenSV.SelectedValue = ID;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Không tìm thấy mã sinh viên cho tên: " + ID);
-                    }
-                    ten = dataGridView1.CurrentRow.Cells[2].Value?.ToString();
-                    ID = dictML.FirstOrDefault(x => x.Value == ten).Key;
-                    if (!string.IsNullOrEmpty(ID))
-                    {
-                        cboTenLop.SelectedValue = ID;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Không tìm thấy mã lớp cho tên: " + ID);
+                        cboTenLop.SelectedValue = maLop ?? "-1";
+                        // Gọi hàm LoadSinhVienTheoLop để tải sinh viên theo lớp
+                        cboTenLop_SelectedIndexChanged(null, null);
                     }
 
-                    dateTimePickerNgayDD.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-                    cboTT.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                    // Lấy tên sinh viên và mã sinh viên
+                    string tenSV = dataGridView1.CurrentRow.Cells[1].Value?.ToString();
+                    string maSV = dictSV.FirstOrDefault(x => x.Value == tenSV).Key;
+                    cboTenSV.SelectedValue = maSV ?? "-1";
+
+                    // Cài đặt giá trị cho các trường còn lại
+                    dateTimePickerNgayDD.Value = DateTime.TryParse(dataGridView1.CurrentRow.Cells[3].Value?.ToString(), out var ngay) ? ngay : DateTime.Now;
+                    cboTT.Text = dataGridView1.CurrentRow.Cells[4].Value?.ToString() ?? "Không";
                 }
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi hiển thị thông tin điểm danh: " + ex.Message);
+                MessageBox.Show("Lỗi khi hiển thị thông tin điểm danh: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
     }
 }

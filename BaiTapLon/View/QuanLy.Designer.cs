@@ -44,6 +44,7 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.mônHọcThuộcLoạiMônToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lớpTheoMônHọcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lớpTheoHọcKỳToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -158,7 +159,8 @@
             // 
             this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mônHọcThuộcLoạiMônToolStripMenuItem,
-            this.lớpTheoMônHọcToolStripMenuItem});
+            this.lớpTheoMônHọcToolStripMenuItem,
+            this.lớpTheoHọcKỳToolStripMenuItem});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(87, 24);
             this.toolStripMenuItem2.Text = "Nâng cao";
@@ -176,6 +178,13 @@
             this.lớpTheoMônHọcToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
             this.lớpTheoMônHọcToolStripMenuItem.Text = "Lớp theo môn học";
             this.lớpTheoMônHọcToolStripMenuItem.Click += new System.EventHandler(this.lớpTheoMônHọcToolStripMenuItem_Click);
+            // 
+            // lớpTheoHọcKỳToolStripMenuItem
+            // 
+            this.lớpTheoHọcKỳToolStripMenuItem.Name = "lớpTheoHọcKỳToolStripMenuItem";
+            this.lớpTheoHọcKỳToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
+            this.lớpTheoHọcKỳToolStripMenuItem.Text = "Lớp theo học kỳ";
+            this.lớpTheoHọcKỳToolStripMenuItem.Click += new System.EventHandler(this.lớpTheoHọcKỳToolStripMenuItem_Click);
             // 
             // QuanLy
             // 
@@ -214,6 +223,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem mônHọcThuộcLoạiMônToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lớpTheoMônHọcToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lớpTheoHọcKỳToolStripMenuItem;
     }
 }
 

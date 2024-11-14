@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaiTapLon.View.NangCao;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -103,6 +104,13 @@ namespace BaiTapLon
         private void lớpTheoMônHọcToolStripMenuItem_Click(object sender, EventArgs e)
         {
             NC5 frm = new NC5();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void lớpTheoHọcKỳToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NC6 frm = new NC6();
             frm.MdiParent = this;
             frm.Show();
         }
