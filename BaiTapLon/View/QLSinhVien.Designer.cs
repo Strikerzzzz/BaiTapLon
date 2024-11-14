@@ -50,7 +50,6 @@
             this.cboMaChuyenNganh = new System.Windows.Forms.ComboBox();
             this.cboKhoaHoc = new System.Windows.Forms.ComboBox();
             this.txtSoCCCD = new System.Windows.Forms.TextBox();
-            this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.dateTimePickerNS = new System.Windows.Forms.DateTimePicker();
             this.cboGioiTinh = new System.Windows.Forms.ComboBox();
@@ -68,6 +67,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.cboDiaChi = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQLSV)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -232,6 +232,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cboDiaChi);
             this.groupBox1.Controls.Add(this.txtSDT);
             this.groupBox1.Controls.Add(this.btnThoat);
             this.groupBox1.Controls.Add(this.label12);
@@ -241,7 +242,6 @@
             this.groupBox1.Controls.Add(this.cboKhoaHoc);
             this.groupBox1.Controls.Add(this.btnThem);
             this.groupBox1.Controls.Add(this.txtSoCCCD);
-            this.groupBox1.Controls.Add(this.txtDiaChi);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.dateTimePickerNS);
             this.groupBox1.Controls.Add(this.cboGioiTinh);
@@ -306,13 +306,6 @@
             this.txtSoCCCD.Name = "txtSoCCCD";
             this.txtSoCCCD.Size = new System.Drawing.Size(367, 27);
             this.txtSoCCCD.TabIndex = 19;
-            // 
-            // txtDiaChi
-            // 
-            this.txtDiaChi.Location = new System.Drawing.Point(847, 163);
-            this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(375, 27);
-            this.txtDiaChi.TabIndex = 17;
             // 
             // label11
             // 
@@ -459,6 +452,15 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "QUẢN LÝ SINH VIÊN";
             // 
+            // cboDiaChi
+            // 
+            this.cboDiaChi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDiaChi.FormattingEnabled = true;
+            this.cboDiaChi.Location = new System.Drawing.Point(847, 164);
+            this.cboDiaChi.Name = "cboDiaChi";
+            this.cboDiaChi.Size = new System.Drawing.Size(375, 28);
+            this.cboDiaChi.TabIndex = 24;
+            // 
             // QLSinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -490,7 +492,6 @@
         private System.Windows.Forms.DataGridView dataGridViewQLSV;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtSoCCCD;
-        private System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DateTimePicker dateTimePickerNS;
         private System.Windows.Forms.ComboBox cboGioiTinh;
@@ -523,5 +524,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn KhoaHoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenChuyenNganh;
+        private System.Windows.Forms.ComboBox cboDiaChi;
     }
 }
