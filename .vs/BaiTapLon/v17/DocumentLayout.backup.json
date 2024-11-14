@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|f:\\learn\\university\\thlt.net\\btl\\baitaplon\\baitaplon\\view\\qlloaimon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\view\\qlloaimon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|f:\\learn\\university\\thlt.net\\btl\\baitaplon\\baitaplon\\controller\\loaimoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\controller\\loaimoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|f:\\learn\\university\\thlt.net\\btl\\baitaplon\\baitaplon\\view\\nangcao\\nc6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\view\\nangcao\\nc6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,27 +27,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "QLLoaiMon.cs",
-              "DocumentMoniker": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\View\\QLLoaiMon.cs",
-              "RelativeDocumentMoniker": "BaiTapLon\\View\\QLLoaiMon.cs",
-              "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\View\\QLLoaiMon.cs",
-              "RelativeToolTip": "BaiTapLon\\View\\QLLoaiMon.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Title": "NC6.cs",
+              "DocumentMoniker": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\View\\NangCao\\NC6.cs",
+              "RelativeDocumentMoniker": "BaiTapLon\\View\\NangCao\\NC6.cs",
+              "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\View\\NangCao\\NC6.cs",
+              "RelativeToolTip": "BaiTapLon\\View\\NangCao\\NC6.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T08:36:24.45Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LoaiMonController.cs",
-              "DocumentMoniker": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\Controller\\LoaiMonController.cs",
-              "RelativeDocumentMoniker": "BaiTapLon\\Controller\\LoaiMonController.cs",
-              "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\Controller\\LoaiMonController.cs",
-              "RelativeToolTip": "BaiTapLon\\Controller\\LoaiMonController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAABbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T08:36:08.605Z",
+              "WhenOpened": "2024-11-14T09:35:52.905Z",
               "EditorCaption": ""
             }
           ]

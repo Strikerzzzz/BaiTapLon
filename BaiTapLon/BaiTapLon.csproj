@@ -67,17 +67,23 @@
     <Compile Include="Model\LopSinhVien.cs" />
     <Compile Include="Model\MonHoc.cs" />
     <Compile Include="Model\SinhVien.cs" />
-    <Compile Include="View\NC4.cs">
+    <Compile Include="View\NangCao\NC4.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\NC4.Designer.cs">
+    <Compile Include="View\NangCao\NC4.Designer.cs">
       <DependentUpon>NC4.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\NC5.cs">
+    <Compile Include="View\NangCao\NC5.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\NC5.Designer.cs">
+    <Compile Include="View\NangCao\NC5.Designer.cs">
       <DependentUpon>NC5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\NangCao\NC6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\NangCao\NC6.Designer.cs">
+      <DependentUpon>NC6.cs</DependentUpon>
     </Compile>
     <Compile Include="View\QLChuyenNganh.cs">
       <SubType>Form</SubType>
@@ -153,10 +159,10 @@
     <Compile Include="View\ThungRac.Designer.cs">
       <DependentUpon>ThungRac.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\NC4.resx">
+    <EmbeddedResource Include="View\NangCao\NC4.resx">
       <DependentUpon>NC4.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\NC5.resx">
+    <EmbeddedResource Include="View\NangCao\NC5.resx">
       <DependentUpon>NC5.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -168,6 +174,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\NangCao\NC6.resx">
+      <DependentUpon>NC6.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\QLChuyenNganh.resx">
       <DependentUpon>QLChuyenNganh.cs</DependentUpon>
     </EmbeddedResource>

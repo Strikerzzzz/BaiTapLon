@@ -77,7 +77,8 @@ namespace BaiTapLon.Controller
         }
         public DataTable LoadSinhVienTheoLop(int maLop)
         {
-            string query = "SELECT MaSV, CONCAT(HoDem, ' ', Ten, '-', MaSV) AS TenSinhVien FROM SinhVien WHERE MaLop = @MaLop AND TrangThai = 'Initialize'";
+            string query = "SELECT sv.MaSV, CONCAT(sv.HoDem, ' ', sv.Ten, '-', sv.MaSV) AS TenSinhVien FROM LopHoc_SinhVien ls " +
+                "LEFT JOIN SinhVien sv ON ls.MaSV = sv.MaSV  WHERE MaLop = @MaLop AND ls.TrangThai = 'Initialize'";
             SqlParameter[] parameters = {
                 new SqlParameter("@MaLop", maLop)
             };
