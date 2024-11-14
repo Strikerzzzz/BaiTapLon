@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BaiTapLon.Controller;
+using BaiTapLon.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,17 +16,22 @@ namespace BaiTapLon
 {
     public partial class QLHocKy : Form
     {
-        private string[] years = Enumerable.Range(2000, 1001).Select(year => "Năm " + year).ToArray();
+        private HocKyController hocKyController;
+        private string[] years = Enumerable.Range(2000, DateTime.Now.Year - 2000 + 1)
+                                           .Select(year => "Năm " + year)
+                                           .ToArray();
 
         public QLHocKy()
         {
             InitializeComponent();
+            hocKyController = new HocKyController();
         }
-        void LoadDatabase()
+
+        private void LoadDatabase()
         {
             try
             {
-                this.dataGridView1.DataSource = DataBase.GetData("SELECT IDHocKy, TenHocKy, Nam FROM HocKy where TrangThai = 'Initialize'");
+                dataGridView1.DataSource = hocKyController.GetAllHocKy();
             }
             catch (Exception ex)
             {
@@ -34,136 +41,91 @@ namespace BaiTapLon
 
         private void QLHocKy_Load(object sender, EventArgs e)
         {
-            cboTenHocKy.Items.Add("Chọn tên học kỳ");
-            cboTenHocKy.Items.Add("Học kỳ 1");
-            cboTenHocKy.Items.Add("Học kỳ 2");
-            cboTenHocKy.Items.Add("Học kỳ phụ");
+            cboTenHocKy.Items.AddRange(new string[] { "Chọn tên học kỳ", "Học kỳ 1", "Học kỳ 2", "Học kỳ phụ" });
             cboTenHocKy.SelectedIndex = 0;
-           
-            cboNam.DataSource = new BindingSource(this.years, null);
+            cboNam.DataSource = new BindingSource(years, null);
             LoadDatabase();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            try
+            if (cboTenHocKy.SelectedIndex == 0)
             {
-                if (cboTenHocKy.SelectedIndex == 0)
-                {
-                    MessageBox.Show("Vui lòng chọn thông tin về tên học kỳ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                int nam;
-                string yearString = cboNam.Text.Replace("Năm ", ""); 
-
-                if (!int.TryParse(yearString, out nam))
-                {
-                    MessageBox.Show("Năm không hợp lệ, vui lòng chọn một năm hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                string query = "INSERT INTO HocKy (TenHocKy, Nam, TrangThai) VALUES (@TenHocKy,@Nam, 'Initialize')";
-                SqlParameter[] parameters = {
-                    new SqlParameter("@TenHocKy", cboTenHocKy.Text),
-                    new SqlParameter("@Nam",nam)
-                };
-
-                bool result = new DataBase().UpdateData(query, parameters);
-
-                if (result)
-                {
-                    MessageBox.Show("Thêm học kỳ thành công!");
-                    LoadDatabase();
-                    ClearFields();
-                }
-                else
-                {
-                    MessageBox.Show("Thêm học kỳ thất bại.");
-                }
+                MessageBox.Show("Vui lòng chọn thông tin về tên học kỳ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            catch (SqlException ex)
+
+            int nam = int.Parse(cboNam.Text.Replace("Năm ", ""));
+            var hocKy = new HocKy { TenHocKy = cboTenHocKy.Text, Nam = nam };
+
+            if (hocKyController.AddHocKy(hocKy))
             {
-                MessageBox.Show("Lỗi cơ sở dữ liệu: " + ex.Message);
+                MessageBox.Show("Thêm học kỳ thành công!");
+                LoadDatabase();
+                ClearFields();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+                MessageBox.Show("Thêm học kỳ thất bại.");
             }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            try
+            if (string.IsNullOrWhiteSpace(txtID.Text))
             {
-                if (!ValidateFields())
-                {
-                    return;
-                }
-                int nam;
-                string yearString = cboNam.Text.Replace("Năm ", "");
+                MessageBox.Show("Vui lòng chọn mã học kỳ cần sửa!!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-                if (!int.TryParse(yearString, out nam))
-                {
-                    MessageBox.Show("Năm không hợp lệ, vui lòng chọn một năm hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                string query = "UPDATE  HocKy SET TenHocKy = @TenHocKy, Nam = @Nam WHERE IDHocKy = @IDHocKy";
-                SqlParameter[] parameters = {
-                    new SqlParameter("@TenHocKy", cboTenHocKy.Text),
-                    new SqlParameter("@Nam", nam),
-                    new SqlParameter("@IDHocKy", txtID.Text),
-                };
-                bool result = new DataBase().UpdateData(query, parameters);
-                if (result)
-                {
-                    MessageBox.Show("Sửa học kỳ thành công!");
-                    LoadDatabase();
-                    ClearFields();
-                }
-                else
-                {
-                    MessageBox.Show("Sửa học kỳ thất bại.");
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Lỗi cơ sở dữ liệu: " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
-            }
-        }
+            if (!ValidateFields()) return;
 
-        private void ClearFields()
-        {
-            txtID.Text = "";
-            cboTenHocKy.SelectedIndex = 0;
-            cboNam.SelectedIndex = 0;
+            int nam = int.Parse(cboNam.Text.Replace("Năm ", ""));
+            var hocKy = new HocKy
+            {
+                IDHocKy = int.Parse(txtID.Text),
+                TenHocKy = cboTenHocKy.Text,
+                Nam = nam
+            };
+
+            if (hocKyController.UpdateHocKy(hocKy))
+            {
+                MessageBox.Show("Sửa học kỳ thành công!");
+                LoadDatabase();
+                ClearFields();
+            }
+            else
+            {
+                MessageBox.Show("Sửa học kỳ thất bại.");
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtID.Text))
+            {
+                MessageBox.Show("Vui lòng chọn mã học kỳ cần xóa!!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             try
             {
-                string query = "UPDATE HocKy SET TrangThai = 'Deleted' WHERE IDHocKy = @IDHocKy";
-                SqlParameter[] parameters = {
-                    new SqlParameter("@IDHocKy", txtID.Text)
-                };
-                bool result = new DataBase().UpdateData(query, parameters);
-                if (result)
+                int idHocKy = int.Parse(txtID.Text);
+
+                if (hocKyController.DeleteHocKy(idHocKy))
                 {
                     MessageBox.Show("Xóa học kỳ thành công!");
                     LoadDatabase();
+                    ClearFields();
                 }
                 else
                 {
                     MessageBox.Show("Xóa học kỳ thất bại.");
                 }
             }
-            catch (SqlException ex)
+            catch (FormatException)
             {
-                MessageBox.Show("Lỗi cơ sở dữ liệu: " + ex.Message);
+                MessageBox.Show("Mã học kỳ không hợp lệ. Vui lòng chọn học kỳ hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -173,18 +135,18 @@ namespace BaiTapLon
 
         private void dataGridView1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                txtID.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                cboTenHocKy.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                cboNam.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi hiển thị thông tin học kỳ: " + ex.Message);
-            }
+            txtID.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            cboTenHocKy.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            cboNam.Text = "Năm " + dataGridView1.CurrentRow.Cells[2].Value.ToString();
         }
 
+        private void ClearFields()
+        {
+            txtID.Text = "";
+            cboTenHocKy.SelectedIndex = 0;
+            cboNam.SelectedIndex = 0;
+        }
+        
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -197,12 +159,10 @@ namespace BaiTapLon
                 return false;
             }
 
-            int currentYear = DateTime.Now.Year;
-            string selectedYearStr = cboNam.SelectedItem.ToString();
-            int selectedYear = int.Parse(selectedYearStr.Replace("Năm ", ""));
-            if (selectedYear > currentYear)
+            int selectedYear = int.Parse(cboNam.Text.Replace("Năm ", ""));
+            if (selectedYear > DateTime.Now.Year)
             {
-                MessageBox.Show($"Năm không được lớn hơn năm hiện tại ({currentYear}).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Năm không được lớn hơn năm hiện tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
