@@ -8,5 +8,7 @@ namespace BaiTapLon.Model
 {
     internal class ChuyenNganh
     {
+        public string MaChuyenNganh { get; set; }
+        public string TenChuyenNganh { get; set; }
     }
 }
