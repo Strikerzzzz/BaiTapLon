@@ -15,6 +15,20 @@ namespace BaiTapLon
     public partial class QLSinhVien : Form
     {
         Dictionary<string, string> dictLM = new Dictionary<string, string>();
+        string[] provinces = new string[]
+        {
+             "--- Chọn Địa Chỉ ---", "An Giang", "Bà Rịa-Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bến Tre", "Bình Định",
+            "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cao Bằng", "Cần Thơ",
+            "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai",
+            "Đồng Tháp", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương",
+            "Hải Phòng", "Hòa Bình", "Hồ Chí Minh", "Hậu Giang", "Hưng Yên", "Khánh Hòa",
+            "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai",
+            "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ",
+            "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh",
+            "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên",
+            "Thanh Hóa", "Thừa Thiên-Huế", "Tiền Giang", "Trà Vinh", "Tuyên Quang",
+            "Vĩnh Long", "Vĩnh Phúc", "Yên Bái"
+        };
         public QLSinhVien()
         {
             InitializeComponent();
@@ -75,6 +89,10 @@ namespace BaiTapLon
                 cboKhoaHoc.Items.Add("Khóa " + i);
             }
             cboKhoaHoc.SelectedIndex = 0;
+
+            cboDiaChi.Items.AddRange(provinces);
+            cboDiaChi.SelectedIndex = 0;
+
             LoadDatabase();
             dictLM.Add("-1","Chọn chuyên ngành");
             cboMaChuyenNganh.Items.Add("Chọn chuyên ngành");
@@ -113,7 +131,7 @@ namespace BaiTapLon
                     new SqlParameter("@SoDienThoai", txtSDT.Text),
                     new SqlParameter("@GioiTinh", cboGioiTinh.Text),
                     new SqlParameter("@NgaySinh", dateTimePickerNS.Value),
-                    new SqlParameter("@DiaChi", txtDiaChi.Text),
+                    new SqlParameter("@DiaChi", cboDiaChi.Text),
                     new SqlParameter("@MaChuyenNganh", cboMaChuyenNganh.SelectedValue?.ToString()),
                     new SqlParameter("@KhoaHoc", cboKhoaHoc.Text),
                     new SqlParameter("@TrangThai", "Initialize"),
@@ -159,7 +177,7 @@ namespace BaiTapLon
                     new SqlParameter("@SoDienThoai", txtSDT.Text),
                     new SqlParameter("@GioiTinh", cboGioiTinh.Text),
                     new SqlParameter("@NgaySinh", dateTimePickerNS.Value),
-                    new SqlParameter("@DiaChi", txtDiaChi.Text),
+                    new SqlParameter("@DiaChi", cboDiaChi.Text),
                     new SqlParameter("@MaChuyenNganh",  cboMaChuyenNganh.SelectedValue?.ToString()),
                     new SqlParameter("@KhoaHoc", cboKhoaHoc.Text),
                     new SqlParameter("@MaSV", txtMaSV.Text),
@@ -198,7 +216,7 @@ namespace BaiTapLon
                 txtSDT.Text = dataGridViewQLSV.CurrentRow.Cells[5].Value.ToString();
                 cboGioiTinh.Text = dataGridViewQLSV.CurrentRow.Cells[6].Value.ToString();
                 dateTimePickerNS.Text = dataGridViewQLSV.CurrentRow.Cells[7].Value.ToString();
-                txtDiaChi.Text = dataGridViewQLSV.CurrentRow.Cells[8].Value.ToString();
+                cboDiaChi.Text = dataGridViewQLSV.CurrentRow.Cells[8].Value.ToString();
 
                 string MaChuyenNganh = dataGridViewQLSV.CurrentRow.Cells[9].Value?.ToString();
                 string ID = dictLM.FirstOrDefault(x => x.Value == MaChuyenNganh).Key;
@@ -224,16 +242,15 @@ namespace BaiTapLon
         {
             try
             {
-                if (dataGridViewQLSV.SelectedRows.Count == 0)
+                if (string.IsNullOrEmpty(txtMaSV.Text))
                 {
-                    MessageBox.Show("Vui lòng chọn sinh viên cần xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return; 
+                    MessageBox.Show("Vui lòng chọn sinh viên cần xóa.");
+                    return;
                 }
-                string maSV = dataGridViewQLSV.SelectedRows[0].Cells["MaSV"].Value.ToString();
-                string query = "UPDATE SinhVien SET TrangThai = @TrangThai WHERE MaSV = @MaSV";
+                string query = "UPDATE SinhVien SET TrangThai = 'Deleted' WHERE MaSV = @MaSV";
                 SqlParameter[] parameters = {
-                    new SqlParameter("@MaSV", maSV),
-                    new SqlParameter("@TrangThai", "Deleted"),
+                    new SqlParameter("@MaSV", txtMaSV.Text),
+                    
                 };
                 bool result = new DataBase().UpdateData(query, parameters);
 
@@ -265,8 +282,8 @@ namespace BaiTapLon
             txtEmail.Text = string.Empty;
             txtSoCCCD.Text = string.Empty;
             txtSDT.Text = string.Empty;
-            txtDiaChi.Text = string.Empty;
             txtMaSV.Text = string.Empty;
+            cboDiaChi.SelectedIndex = 0;
             cboGioiTinh.SelectedIndex = 0; 
             cboKhoaHoc.SelectedIndex = 0; 
             cboMaChuyenNganh.SelectedIndex = 0; 
@@ -298,10 +315,10 @@ namespace BaiTapLon
                 txtSDT.Focus();
                 return false;
             }
-            if (string.IsNullOrEmpty(txtDiaChi.Text))
+            if (string.IsNullOrEmpty(cboDiaChi.Text))
             {
                 MessageBox.Show("Địa chỉ không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtDiaChi.Focus();
+                cboDiaChi.Focus();
                 return false;
             }
             if (cboGioiTinh.SelectedIndex == 0)

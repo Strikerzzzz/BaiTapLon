@@ -41,3 +41,6 @@ D:\Study\C#\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.QLLoaiMon.resources
 F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.ThungRac.resources
 F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.NC4.resources
 F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.NC5.resources
+D:\Study\C#\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.NC4.resources
+D:\Study\C#\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.NC5.resources
+D:\Study\C#\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.ThungRac.resources
