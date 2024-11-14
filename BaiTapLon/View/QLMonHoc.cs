@@ -1,4 +1,5 @@
 ﻿using BaiTapLon.Controller;
+using BaiTapLon.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,14 +40,36 @@ namespace BaiTapLon
 
         void LoadDatabase()
         {
-            dataGridViewQLMonHoc.DataSource = MonHocController.GetAllMonHoc();
+            // Chuyển đổi dữ liệu từ List<MonHoc> sang DataTable để gán cho DataSource của DataGridView
+            List<MonHoc> monHocs = MonHocController.GetAllMonHoc();
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("MaMon");
+            dataTable.Columns.Add("TenMon");
+            dataTable.Columns.Add("SoTinChi");
+            dataTable.Columns.Add("LoaiMon");
+            dataTable.Columns.Add("TongSoBuoiHoc");
+
+            foreach (var monHoc in monHocs)
+            {
+                dataTable.Rows.Add(monHoc.MaMon, monHoc.TenMon, monHoc.SoTinChi, monHoc.IDLoaiMon, monHoc.TongSoBuoiHoc);
+            }
+
+            dataGridViewQLMonHoc.DataSource = dataTable;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
             if (Valid())
             {
-                bool result = MonHocController.AddMonHoc(txtTenMon.Text, int.Parse(txtSoTinChi.Text), cbLm.SelectedValue.ToString(), int.Parse(txtTongSoBuoiHoc.Text));
+                var monHoc = new MonHoc
+                {
+                    TenMon = txtTenMon.Text,
+                    SoTinChi = int.Parse(txtSoTinChi.Text),
+                    IDLoaiMon = cbLm.SelectedValue.ToString(),
+                    TongSoBuoiHoc = int.Parse(txtTongSoBuoiHoc.Text)
+                };
+
+                bool result = MonHocController.AddMonHoc(monHoc);
                 MessageBox.Show(result ? "Thêm thành công!" : "Thêm thất bại.");
                 LoadDatabase();
             }
@@ -56,7 +79,16 @@ namespace BaiTapLon
         {
             if (Valid())
             {
-                bool result = MonHocController.UpdateMonHoc(txtMaMon.Text, txtTenMon.Text, int.Parse(txtSoTinChi.Text), cbLm.SelectedValue.ToString(), int.Parse(txtTongSoBuoiHoc.Text));
+                var monHoc = new MonHoc
+                {
+                    MaMon = txtMaMon.Text,
+                    TenMon = txtTenMon.Text,
+                    SoTinChi = int.Parse(txtSoTinChi.Text),
+                    IDLoaiMon = cbLm.SelectedValue.ToString(),
+                    TongSoBuoiHoc = int.Parse(txtTongSoBuoiHoc.Text)
+                };
+
+                bool result = MonHocController.UpdateMonHoc(monHoc);
                 MessageBox.Show(result ? "Sửa thành công!" : "Sửa thất bại.");
                 LoadDatabase();
             }
@@ -68,19 +100,21 @@ namespace BaiTapLon
             MessageBox.Show(result ? "Xóa thành công!" : "Xóa thất bại.");
             LoadDatabase();
         }
+
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
         private void dataGridViewQLMonHoc_Click(object sender, EventArgs e)
         {
             if (dataGridViewQLMonHoc.CurrentRow != null)
             {
-                txtMaMon.Text = dataGridViewQLMonHoc.CurrentRow.Cells[0].Value.ToString();
-                txtTenMon.Text = dataGridViewQLMonHoc.CurrentRow.Cells[1].Value.ToString();
-                txtSoTinChi.Text = dataGridViewQLMonHoc.CurrentRow.Cells[2].Value.ToString();
-                cbLm.SelectedValue = dictLM.FirstOrDefault(x => x.Value == dataGridViewQLMonHoc.CurrentRow.Cells[3].Value.ToString()).Key;
-                txtTongSoBuoiHoc.Text = dataGridViewQLMonHoc.CurrentRow.Cells[4].Value.ToString();
+                txtMaMon.Text = dataGridViewQLMonHoc.CurrentRow.Cells["MaMon"].Value.ToString();
+                txtTenMon.Text = dataGridViewQLMonHoc.CurrentRow.Cells["TenMon"].Value.ToString();
+                txtSoTinChi.Text = dataGridViewQLMonHoc.CurrentRow.Cells["SoTinChi"].Value.ToString();
+                cbLm.SelectedValue = dictLM.FirstOrDefault(x => x.Value == dataGridViewQLMonHoc.CurrentRow.Cells["LoaiMon"].Value.ToString()).Key;
+                txtTongSoBuoiHoc.Text = dataGridViewQLMonHoc.CurrentRow.Cells["TongSoBuoiHoc"].Value.ToString();
             }
         }
 

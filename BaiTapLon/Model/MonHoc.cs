@@ -17,11 +17,10 @@ namespace BaiTapLon.Model
             TongSoBuoiHoc = tongSoBuoiHoc;
         }
         public MonHoc() { }
-
-        private string MaMon { get; set; }
-        private string TenMon { get; set; }
-        private int SoTinChi { get; set; }
-        private string IDLoaiMon { get; set; }
-        private int TongSoBuoiHoc { get; set; }
+        public string MaMon { get; set; }
+        public string TenMon { get; set; }
+        public int SoTinChi { get; set; }
+        public string IDLoaiMon { get; set; }
+        public int TongSoBuoiHoc { get; set; }
     }
 }
