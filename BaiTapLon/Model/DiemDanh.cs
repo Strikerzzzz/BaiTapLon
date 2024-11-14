@@ -8,5 +8,10 @@ namespace BaiTapLon.Model
 {
     internal class DiemDanh
     {
+        public int IDDiemDanh { get; set; }
+        public int MaSV { get; set; }
+        public int MaLop { get; set; }
+        public DateTime NgayDiemDanh { get; set; }
+        public string TTDiemDanh { get; set; }
     }
 }

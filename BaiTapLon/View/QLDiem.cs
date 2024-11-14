@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BaiTapLon.Controller;
+using BaiTapLon.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,176 +15,103 @@ namespace BaiTapLon
 {
     public partial class QLDiem : Form
     {
+        private DiemController _controller = new DiemController();
+
         public QLDiem()
         {
             InitializeComponent();
         }
-        Dictionary<string, string> dictMH = new Dictionary<string, string>();
-        Dictionary<string, string> dictLD = new Dictionary<string, string>();
-        Dictionary<string, string> dictSV = new Dictionary<string, string>();
+
         private void QLDiem_Load(object sender, EventArgs e)
         {
+            LoadComboBoxData();
             LoadDatabase();
+        }
+
+        private void LoadComboBoxData()
+        {
             DataTable dt;
             // Môn học
             dt = DataBase.GetData("SELECT MaMon, TenMon FROM MonHoc where TrangThai = 'Initialize'");
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                LoadListDB(dt, dictMH);
-            }
-            else
-            {
-                MessageBox.Show("Không có dữ liệu tên môn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            cboTenMon.DataSource = new BindingSource(dictMH, null);
+            _controller.LoadListDB(dt, _controller.dictMH);
+            cboTenMon.DataSource = new BindingSource(_controller.dictMH, null);
             cboTenMon.DisplayMember = "Value";
             cboTenMon.ValueMember = "Key";
             // Loại điểm
             dt = DataBase.GetData("SELECT IDLoaiDiem, TenLoaiDiem FROM LoaiDiem where TrangThai = 'Initialize'");
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                LoadListDB(dt, dictLD);
-            }
-            else
-            {
-                MessageBox.Show("Không có dữ liệu tên môn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            cboTenLoaiDiem.DataSource = new BindingSource(dictLD, null);
+            _controller.LoadListDB(dt, _controller.dictLD);
+            cboTenLoaiDiem.DataSource = new BindingSource(_controller.dictLD, null);
             cboTenLoaiDiem.DisplayMember = "Value";
             cboTenLoaiDiem.ValueMember = "Key";
             // Sinh viên
             dt = DataBase.GetData("SELECT MaSV, CONCAT(HoDem, ' ', Ten,'-',MaSV) FROM SinhVien where TrangThai = 'Initialize'");
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                LoadListDB(dt, dictSV);
-            }
-            else
-            {
-                MessageBox.Show("Không có dữ liệu tên môn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            cboTenSV.DataSource = new BindingSource(dictSV, null);
+            _controller.LoadListDB(dt, _controller.dictSV);
+            cboTenSV.DataSource = new BindingSource(_controller.dictSV, null);
             cboTenSV.DisplayMember = "Value";
             cboTenSV.ValueMember = "Key";
         }
-        void LoadDatabase()
+
+        private void LoadDatabase()
         {
-            try
-            {
-                this.dataGridView1.DataSource = DataBase.GetData("SELECT IDDiem, CONCAT(sv.HoDem, ' ', sv.Ten,'-',sv.MaSV) AS TenSinhVien, mh.TenMon, ld.TenLoaiDiem, GiaTriDiem, LanThi FROM Diem d " +
-                    "LEFT JOIN MonHoc mh on d.MaMon = mh.MaMon " +
-                    "LEFT JOIN LoaiDiem ld on d.IDLoaiDiem = ld.IDLoaiDiem " +
-                    "LEFT JOIN SinhVien sv on d.MaSV = sv.MaSV " +
-                    "where d.TrangThai = 'Initialize'");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            this.dataGridView1.DataSource = _controller.LoadDiemData();
         }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (!Valid())
+            Diem diem = new Diem
             {
-                return;
-            }
-            try
-            {
-                string query = "INSERT INTO Diem (MaSV, MaMon, IDLoaiDiem, GiaTriDiem, LanThi, TrangThai) VALUES (@MaSV, @MaMon, @IDLoaiDiem, @GiaTriDiem, @LanThi, 'Initialize')";
-                SqlParameter[] parameters = {
-                    new SqlParameter("@MaSV", cboTenSV.SelectedValue?.ToString()),
-                    new SqlParameter("@MaMon", cboTenMon.SelectedValue?.ToString()),
-                    new SqlParameter("@IDLoaiDiem", cboTenLoaiDiem.SelectedValue?.ToString()),
-                    new SqlParameter("@GiaTriDiem", txtGiaTriDiem.Text),
-                    new SqlParameter("@LanThi", txtLanThi.Text),
-                };
+                MaSV = cboTenSV.SelectedValue?.ToString(),
+                MaMon = cboTenMon.SelectedValue?.ToString(),
+                IDLoaiDiem = cboTenLoaiDiem.SelectedValue?.ToString(),
+                GiaTriDiem = double.Parse(txtGiaTriDiem.Text),
+                LanThi = int.Parse(txtLanThi.Text)
+            };
 
-                bool result = new DataBase().UpdateData(query, parameters);
-
-                if (result)
-                {
-                    MessageBox.Show("Thêm điểm thành công!");
-                    LoadDatabase();
-                }
-                else
-                {
-                    MessageBox.Show("Thêm điểm thất bại.");
-                }
-            }
-            catch (SqlException ex)
+            if (_controller.AddDiem(diem))
             {
-                MessageBox.Show("Lỗi cơ sở dữ liệu: " + ex.Message);
+                MessageBox.Show("Thêm điểm thành công!");
+                LoadDatabase();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+                MessageBox.Show("Thêm điểm thất bại.");
             }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (!Valid())
+            Diem diem = new Diem
             {
-                return;
+                IDDiem = int.Parse(txtID.Text),
+                MaSV = cboTenSV.SelectedValue?.ToString(),
+                MaMon = cboTenMon.SelectedValue?.ToString(),
+                IDLoaiDiem = cboTenLoaiDiem.SelectedValue?.ToString(),
+                GiaTriDiem = double.Parse(txtGiaTriDiem.Text),
+                LanThi = int.Parse(txtLanThi.Text)
+            };
+
+            if (_controller.UpdateDiem(diem))
+            {
+                MessageBox.Show("Sửa điểm thành công!");
+                LoadDatabase();
             }
-            try
+            else
             {
-                string query = "UPDATE  Diem SET MaSV = @MaSV, MaMon = @MaMon, " +
-                    "IDLoaiDiem = @IDLoaiDiem, GiaTriDiem = @GiaTriDiem, LanThi = @LanThi WHERE IDDiem = @IDDiem";
-                SqlParameter[] parameters = {
-                    new SqlParameter("@MaSV", cboTenSV.SelectedValue?.ToString()),
-                    new SqlParameter("@MaMon", cboTenMon.SelectedValue?.ToString()),
-                    new SqlParameter("@IDLoaiDiem", cboTenLoaiDiem.SelectedValue?.ToString()),
-                    new SqlParameter("@GiaTriDiem", txtGiaTriDiem.Text),
-                    new SqlParameter("@LanThi", txtLanThi.Text),
-                    new SqlParameter("@IDDiem", txtID.Text),
-                };
-                bool result = new DataBase().UpdateData(query, parameters);
-                if (result)
-                {
-                    MessageBox.Show("Sửa điểm thành công!");
-                    LoadDatabase();
-                }
-                else
-                {
-                    MessageBox.Show("Sửa điểm thất bại.");
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Lỗi cơ sở dữ liệu: " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+                MessageBox.Show("Sửa điểm thất bại.");
             }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            try
+            int idDiem = int.Parse(txtID.Text);
+            if (_controller.DeleteDiem(idDiem))
             {
-                string query = "UPDATE Diem SET TrangThai = 'Deleted' WHERE IDDiem = @IDDiem";
-                SqlParameter[] parameters = {
-                new SqlParameter("@IDDiem", txtID.Text)
-            };
-                bool result = new DataBase().UpdateData(query, parameters);
-                if (result)
-                {
-                    MessageBox.Show("Xóa thành công!");
-                    LoadDatabase();
-                }
-                else
-                {
-                    MessageBox.Show("Xóa thất bại.");
-                }
+                MessageBox.Show("Xóa thành công!");
+                LoadDatabase();
             }
-            catch (SqlException ex)
+            else
             {
-                MessageBox.Show("Lỗi cơ sở dữ liệu: " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+                MessageBox.Show("Xóa thất bại.");
             }
         }
 
@@ -190,95 +119,61 @@ namespace BaiTapLon
         {
             this.Close();
         }
-        bool Valid()
-        {
-            if (string.IsNullOrEmpty(txtLanThi.Text) || !txtLanThi.Text.All(char.IsDigit))
-            {
-                MessageBox.Show("Vui lòng nhập lần thi hợp lệ.");
-                return false;
-            }
-            if (string.IsNullOrEmpty(txtGiaTriDiem.Text) || !double.TryParse(txtGiaTriDiem.Text, out _))
-            {
-                MessageBox.Show("Vui lòng nhập giá trị điểm hợp lệ.");
-                return false;
-            }
-            return true;
-        }
-        void LoadListDB(DataTable dt, Dictionary<string, string> dict)
-        {
-            try
-            {
-                if (dt != null && dt.Rows.Count > 0)
-                {
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        string ma = row[0].ToString();
-                        string ten = row[1].ToString();
-
-                        if (!dict.ContainsKey(ma))
-                        {
-                            dict.Add(ma, ten);
-                        }
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Dữ liệu không tồn tại hoặc rỗng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi tải danh sách: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void dataGridView1_Click(object sender, EventArgs e)
         {
             try
             {
                 if (dataGridView1.CurrentRow != null)
                 {
+                    // Lấy giá trị từ hàng hiện tại trong DataGridView
                     txtID.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                    string ID, ten;
-                    ten = dataGridView1.CurrentRow.Cells[1].Value?.ToString();
-                    ID = dictSV.FirstOrDefault(x => x.Value == ten).Key;
-                    if (!string.IsNullOrEmpty(ID))
+
+                    // Hiển thị thông tin Sinh viên
+                    string tenSinhVien = dataGridView1.CurrentRow.Cells[1].Value?.ToString();
+                    string maSV = _controller.dictSV.FirstOrDefault(x => x.Value == tenSinhVien).Key;
+                    if (!string.IsNullOrEmpty(maSV))
                     {
-                        cboTenSV.SelectedValue = ID;
+                        cboTenSV.SelectedValue = maSV;
                     }
                     else
                     {
-                        MessageBox.Show("Không tìm thấy mã sinh viên cho tên: " + ID);
+                        MessageBox.Show("Không tìm thấy mã sinh viên cho tên: " + tenSinhVien);
                     }
-                    ten = dataGridView1.CurrentRow.Cells[2].Value?.ToString();
-                    ID = dictMH.FirstOrDefault(x => x.Value == ten).Key;
-                    if (!string.IsNullOrEmpty(ID))
+
+                    // Hiển thị thông tin Môn học
+                    string tenMon = dataGridView1.CurrentRow.Cells[2].Value?.ToString();
+                    string maMon = _controller.dictMH.FirstOrDefault(x => x.Value == tenMon).Key;
+                    if (!string.IsNullOrEmpty(maMon))
                     {
-                        cboTenMon.SelectedValue = ID;
+                        cboTenMon.SelectedValue = maMon;
                     }
                     else
                     {
-                        MessageBox.Show("Không tìm thấy mã môn cho tên: " + ID);
+                        MessageBox.Show("Không tìm thấy mã môn học cho tên: " + tenMon);
                     }
-                    ten = dataGridView1.CurrentRow.Cells[3].Value?.ToString();
-                    ID = dictLD.FirstOrDefault(x => x.Value == ten).Key;
-                    if (!string.IsNullOrEmpty(ID))
+
+                    // Hiển thị thông tin Loại điểm
+                    string tenLoaiDiem = dataGridView1.CurrentRow.Cells[3].Value?.ToString();
+                    string idLoaiDiem = _controller.dictLD.FirstOrDefault(x => x.Value == tenLoaiDiem).Key;
+                    if (!string.IsNullOrEmpty(idLoaiDiem))
                     {
-                        cboTenLoaiDiem.SelectedValue = ID;
+                        cboTenLoaiDiem.SelectedValue = idLoaiDiem;
                     }
                     else
                     {
-                        MessageBox.Show("Không tìm thấy mã loại điểms cho tên: " + ID);
+                        MessageBox.Show("Không tìm thấy mã loại điểm cho tên: " + tenLoaiDiem);
                     }
+
+                    // Hiển thị Giá trị điểm và Lần thi
                     txtGiaTriDiem.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
                     txtLanThi.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
                 }
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi hiển thị thông tin môn học: " + ex.Message);
+                MessageBox.Show("Lỗi khi hiển thị thông tin điểm: " + ex.Message);
             }
         }
+
     }
 }
