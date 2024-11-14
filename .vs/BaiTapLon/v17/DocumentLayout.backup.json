@@ -3,8 +3,36 @@
   "WorkspaceRootPath": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|f:\\learn\\university\\thlt.net\\btl\\baitaplon\\baitaplon\\view\\nangcao\\nc6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\view\\nangcao\\nc6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|f:\\learn\\university\\thlt.net\\btl\\baitaplon\\baitaplon\\view\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\view\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|f:\\learn\\university\\thlt.net\\btl\\baitaplon\\baitaplon\\view\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\view\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|f:\\learn\\university\\thlt.net\\btl\\baitaplon\\baitaplon\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|f:\\learn\\university\\thlt.net\\btl\\baitaplon\\baitaplon\\view\\nangcao\\nc8.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\view\\nangcao\\nc8.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|f:\\learn\\university\\thlt.net\\btl\\baitaplon\\baitaplon\\view\\nangcao\\nc7.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\view\\nangcao\\nc7.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|f:\\learn\\university\\thlt.net\\btl\\baitaplon\\baitaplon\\view\\nangcao\\nc2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\view\\nangcao\\nc2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|f:\\learn\\university\\thlt.net\\btl\\baitaplon\\baitaplon\\view\\nangcao\\nc1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\view\\nangcao\\nc1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|f:\\learn\\university\\thlt.net\\btl\\baitaplon\\baitaplon\\view\\nangcao\\nc6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A23A3311-40BA-4F79-9E22-11B3138EA167}|BaiTapLon\\BaiTapLon.csproj|solutionrelative:baitaplon\\view\\nangcao\\nc6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,15 +55,100 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "NC6.cs",
+              "Title": "QuanLy.cs",
+              "DocumentMoniker": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\View\\QuanLy.cs",
+              "RelativeDocumentMoniker": "BaiTapLon\\View\\QuanLy.cs",
+              "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\View\\QuanLy.cs",
+              "RelativeToolTip": "BaiTapLon\\View\\QuanLy.cs",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAAAIwAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T10:02:09.929Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "QuanLy.cs [Design]",
+              "DocumentMoniker": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\View\\QuanLy.cs",
+              "RelativeDocumentMoniker": "BaiTapLon\\View\\QuanLy.cs",
+              "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\View\\QuanLy.cs [Design]",
+              "RelativeToolTip": "BaiTapLon\\View\\QuanLy.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T09:58:56.849Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\Program.cs",
+              "RelativeDocumentMoniker": "BaiTapLon\\Program.cs",
+              "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\Program.cs",
+              "RelativeToolTip": "BaiTapLon\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T09:58:55.247Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "NC6.cs [Design]",
               "DocumentMoniker": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\View\\NangCao\\NC6.cs",
               "RelativeDocumentMoniker": "BaiTapLon\\View\\NangCao\\NC6.cs",
-              "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\View\\NangCao\\NC6.cs",
-              "RelativeToolTip": "BaiTapLon\\View\\NangCao\\NC6.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
+              "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\View\\NangCao\\NC6.cs [Design]",
+              "RelativeToolTip": "BaiTapLon\\View\\NangCao\\NC6.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T09:35:52.905Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-14T09:57:50.957Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NC8.cs [Design]",
+              "DocumentMoniker": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\View\\NangCao\\NC8.cs",
+              "RelativeDocumentMoniker": "BaiTapLon\\View\\NangCao\\NC8.cs",
+              "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\View\\NangCao\\NC8.cs [Design]",
+              "RelativeToolTip": "BaiTapLon\\View\\NangCao\\NC8.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T09:57:46.085Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NC7.cs [Design]",
+              "DocumentMoniker": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\View\\NangCao\\NC7.cs",
+              "RelativeDocumentMoniker": "BaiTapLon\\View\\NangCao\\NC7.cs",
+              "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\View\\NangCao\\NC7.cs [Design]",
+              "RelativeToolTip": "BaiTapLon\\View\\NangCao\\NC7.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T09:57:35.707Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "NC2.cs [Design]",
+              "DocumentMoniker": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\View\\NangCao\\NC2.cs",
+              "RelativeDocumentMoniker": "BaiTapLon\\View\\NangCao\\NC2.cs",
+              "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\View\\NangCao\\NC2.cs [Design]",
+              "RelativeToolTip": "BaiTapLon\\View\\NangCao\\NC2.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T09:57:22.425Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "NC1.cs [Design]",
+              "DocumentMoniker": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\View\\NangCao\\NC1.cs",
+              "RelativeDocumentMoniker": "BaiTapLon\\View\\NangCao\\NC1.cs",
+              "ToolTip": "F:\\learn\\university\\THLT.Net\\BTL\\BaiTapLon\\BaiTapLon\\View\\NangCao\\NC1.cs [Design]",
+              "RelativeToolTip": "BaiTapLon\\View\\NangCao\\NC1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T09:57:05.153Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

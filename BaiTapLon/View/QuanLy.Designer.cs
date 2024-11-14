@@ -45,6 +45,10 @@
             this.mônHọcThuộcLoạiMônToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lớpTheoMônHọcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lớpTheoHọcKỳToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.danhSáchĐãĐangHọcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sinhViênTheoChuyênGànhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sinhViênPassTrượtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sinhViênPassTrượt8ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -158,9 +162,13 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.danhSáchĐãĐangHọcToolStripMenuItem,
+            this.sinhViênTheoChuyênGànhToolStripMenuItem,
             this.mônHọcThuộcLoạiMônToolStripMenuItem,
             this.lớpTheoMônHọcToolStripMenuItem,
-            this.lớpTheoHọcKỳToolStripMenuItem});
+            this.lớpTheoHọcKỳToolStripMenuItem,
+            this.sinhViênPassTrượtToolStripMenuItem,
+            this.sinhViênPassTrượt8ToolStripMenuItem});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(87, 24);
             this.toolStripMenuItem2.Text = "Nâng cao";
@@ -185,6 +193,34 @@
             this.lớpTheoHọcKỳToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
             this.lớpTheoHọcKỳToolStripMenuItem.Text = "Lớp theo học kỳ";
             this.lớpTheoHọcKỳToolStripMenuItem.Click += new System.EventHandler(this.lớpTheoHọcKỳToolStripMenuItem_Click);
+            // 
+            // danhSáchĐãĐangHọcToolStripMenuItem
+            // 
+            this.danhSáchĐãĐangHọcToolStripMenuItem.Name = "danhSáchĐãĐangHọcToolStripMenuItem";
+            this.danhSáchĐãĐangHọcToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
+            this.danhSáchĐãĐangHọcToolStripMenuItem.Text = "Danh sách đã/ đang học";
+            this.danhSáchĐãĐangHọcToolStripMenuItem.Click += new System.EventHandler(this.danhSáchĐãĐangHọcToolStripMenuItem_Click);
+            // 
+            // sinhViênTheoChuyênGànhToolStripMenuItem
+            // 
+            this.sinhViênTheoChuyênGànhToolStripMenuItem.Name = "sinhViênTheoChuyênGànhToolStripMenuItem";
+            this.sinhViênTheoChuyênGànhToolStripMenuItem.Size = new System.Drawing.Size(280, 26);
+            this.sinhViênTheoChuyênGànhToolStripMenuItem.Text = "Sinh viên theo chuyên ngành";
+            this.sinhViênTheoChuyênGànhToolStripMenuItem.Click += new System.EventHandler(this.sinhViênTheoChuyênGànhToolStripMenuItem_Click);
+            // 
+            // sinhViênPassTrượtToolStripMenuItem
+            // 
+            this.sinhViênPassTrượtToolStripMenuItem.Name = "sinhViênPassTrượtToolStripMenuItem";
+            this.sinhViênPassTrượtToolStripMenuItem.Size = new System.Drawing.Size(280, 26);
+            this.sinhViênPassTrượtToolStripMenuItem.Text = "Sinh viên pass trượt 7";
+            this.sinhViênPassTrượtToolStripMenuItem.Click += new System.EventHandler(this.sinhViênPassTrượtToolStripMenuItem_Click);
+            // 
+            // sinhViênPassTrượt8ToolStripMenuItem
+            // 
+            this.sinhViênPassTrượt8ToolStripMenuItem.Name = "sinhViênPassTrượt8ToolStripMenuItem";
+            this.sinhViênPassTrượt8ToolStripMenuItem.Size = new System.Drawing.Size(280, 26);
+            this.sinhViênPassTrượt8ToolStripMenuItem.Text = "Sinh viên pass trượt 8";
+            this.sinhViênPassTrượt8ToolStripMenuItem.Click += new System.EventHandler(this.sinhViênPassTrượt8ToolStripMenuItem_Click);
             // 
             // QuanLy
             // 
@@ -224,6 +260,10 @@
         private System.Windows.Forms.ToolStripMenuItem mônHọcThuộcLoạiMônToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lớpTheoMônHọcToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lớpTheoHọcKỳToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem danhSáchĐãĐangHọcToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sinhViênTheoChuyênGànhToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sinhViênPassTrượtToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sinhViênPassTrượt8ToolStripMenuItem;
     }
 }
 

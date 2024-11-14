@@ -114,5 +114,33 @@ namespace BaiTapLon
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void danhSáchĐãĐangHọcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NC1 frm = new NC1();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void sinhViênTheoChuyênGànhToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NC2 frm = new NC2();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void sinhViênPassTrượtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NC7 frm = new NC7();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void sinhViênPassTrượt8ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NC8 frm = new NC8();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }
