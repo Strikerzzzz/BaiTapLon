@@ -46,97 +46,117 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataBase.cs" />
-    <Compile Include="NC4.cs">
+    <Compile Include="Controller\ChuyenNganhController.cs" />
+    <Compile Include="Controller\DiemController.cs" />
+    <Compile Include="Controller\DiemDanhController.cs" />
+    <Compile Include="Controller\HocKyController.cs" />
+    <Compile Include="Controller\LoaiDiemController.cs" />
+    <Compile Include="Controller\LoaiMonController.cs" />
+    <Compile Include="Controller\LopHocController.cs" />
+    <Compile Include="Controller\LopSinhVienController.cs" />
+    <Compile Include="Controller\MonHocController.cs" />
+    <Compile Include="Controller\SinhVienController.cs" />
+    <Compile Include="Model\ChuyenNganh.cs" />
+    <Compile Include="Model\DataBase.cs" />
+    <Compile Include="Model\Diem.cs" />
+    <Compile Include="Model\DiemDanh.cs" />
+    <Compile Include="Model\HocKy.cs" />
+    <Compile Include="Model\LoaiDiem.cs" />
+    <Compile Include="Model\LoaiMon.cs" />
+    <Compile Include="Model\LopHoc.cs" />
+    <Compile Include="Model\LopSinhVien.cs" />
+    <Compile Include="Model\MonHoc.cs" />
+    <Compile Include="Model\SinhVien.cs" />
+    <Compile Include="View\NC4.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NC4.Designer.cs">
+    <Compile Include="View\NC4.Designer.cs">
       <DependentUpon>NC4.cs</DependentUpon>
     </Compile>
-    <Compile Include="NC5.cs">
+    <Compile Include="View\NC5.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NC5.Designer.cs">
+    <Compile Include="View\NC5.Designer.cs">
       <DependentUpon>NC5.cs</DependentUpon>
     </Compile>
-    <Compile Include="QLChuyenNganh.cs">
+    <Compile Include="View\QLChuyenNganh.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QLChuyenNganh.Designer.cs">
+    <Compile Include="View\QLChuyenNganh.Designer.cs">
       <DependentUpon>QLChuyenNganh.cs</DependentUpon>
     </Compile>
-    <Compile Include="QLDiem.cs">
+    <Compile Include="View\QLDiem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QLDiem.Designer.cs">
+    <Compile Include="View\QLDiem.Designer.cs">
       <DependentUpon>QLDiem.cs</DependentUpon>
     </Compile>
-    <Compile Include="QLDiemDanh.cs">
+    <Compile Include="View\QLDiemDanh.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QLDiemDanh.Designer.cs">
+    <Compile Include="View\QLDiemDanh.Designer.cs">
       <DependentUpon>QLDiemDanh.cs</DependentUpon>
     </Compile>
-    <Compile Include="QLHocKy.cs">
+    <Compile Include="View\QLHocKy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QLHocKy.Designer.cs">
+    <Compile Include="View\QLHocKy.Designer.cs">
       <DependentUpon>QLHocKy.cs</DependentUpon>
     </Compile>
-    <Compile Include="QLLoaiDiem.cs">
+    <Compile Include="View\QLLoaiDiem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QLLoaiDiem.Designer.cs">
+    <Compile Include="View\QLLoaiDiem.Designer.cs">
       <DependentUpon>QLLoaiDiem.cs</DependentUpon>
     </Compile>
-    <Compile Include="QLLoaiMon.cs">
+    <Compile Include="View\QLLoaiMon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QLLoaiMon.Designer.cs">
+    <Compile Include="View\QLLoaiMon.Designer.cs">
       <DependentUpon>QLLoaiMon.cs</DependentUpon>
     </Compile>
-    <Compile Include="QLLopSinhVien.cs">
+    <Compile Include="View\QLLopSinhVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QLLopSinhVien.Designer.cs">
+    <Compile Include="View\QLLopSinhVien.Designer.cs">
       <DependentUpon>QLLopSinhVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuanLy.cs">
+    <Compile Include="View\QuanLy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QuanLy.Designer.cs">
+    <Compile Include="View\QuanLy.Designer.cs">
       <DependentUpon>QuanLy.cs</DependentUpon>
     </Compile>
-    <Compile Include="QLMonHoc.cs">
+    <Compile Include="View\QLMonHoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QLMonHoc.Designer.cs">
+    <Compile Include="View\QLMonHoc.Designer.cs">
       <DependentUpon>QLMonHoc.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QLLopHoc.cs">
+    <Compile Include="View\QLLopHoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QLLopHoc.Designer.cs">
+    <Compile Include="View\QLLopHoc.Designer.cs">
       <DependentUpon>QLLopHoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="QLSinhVien.cs">
+    <Compile Include="View\QLSinhVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QLSinhVien.Designer.cs">
+    <Compile Include="View\QLSinhVien.Designer.cs">
       <DependentUpon>QLSinhVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThungRac.cs">
+    <Compile Include="View\ThungRac.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThungRac.Designer.cs">
+    <Compile Include="View\ThungRac.Designer.cs">
       <DependentUpon>ThungRac.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="NC4.resx">
+    <EmbeddedResource Include="View\NC4.resx">
       <DependentUpon>NC4.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NC5.resx">
+    <EmbeddedResource Include="View\NC5.resx">
       <DependentUpon>NC5.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -148,40 +168,40 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="QLChuyenNganh.resx">
+    <EmbeddedResource Include="View\QLChuyenNganh.resx">
       <DependentUpon>QLChuyenNganh.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QLDiem.resx">
+    <EmbeddedResource Include="View\QLDiem.resx">
       <DependentUpon>QLDiem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QLDiemDanh.resx">
+    <EmbeddedResource Include="View\QLDiemDanh.resx">
       <DependentUpon>QLDiemDanh.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QLHocKy.resx">
+    <EmbeddedResource Include="View\QLHocKy.resx">
       <DependentUpon>QLHocKy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QLLoaiDiem.resx">
+    <EmbeddedResource Include="View\QLLoaiDiem.resx">
       <DependentUpon>QLLoaiDiem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QLLoaiMon.resx">
+    <EmbeddedResource Include="View\QLLoaiMon.resx">
       <DependentUpon>QLLoaiMon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QLLopHoc.resx">
+    <EmbeddedResource Include="View\QLLopHoc.resx">
       <DependentUpon>QLLopHoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QLLopSinhVien.resx">
+    <EmbeddedResource Include="View\QLLopSinhVien.resx">
       <DependentUpon>QLLopSinhVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QLMonHoc.resx">
+    <EmbeddedResource Include="View\QLMonHoc.resx">
       <DependentUpon>QLMonHoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QLSinhVien.resx">
+    <EmbeddedResource Include="View\QLSinhVien.resx">
       <DependentUpon>QLSinhVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QuanLy.resx">
+    <EmbeddedResource Include="View\QuanLy.resx">
       <DependentUpon>QuanLy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThungRac.resx">
+    <EmbeddedResource Include="View\ThungRac.resx">
       <DependentUpon>ThungRac.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
