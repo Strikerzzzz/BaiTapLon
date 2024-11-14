@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BaiTapLon.Controller;
+using BaiTapLon.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,267 +16,185 @@ namespace BaiTapLon
 {
     public partial class QLSinhVien : Form
     {
-        Dictionary<string, string> dictLM = new Dictionary<string, string>();
-        string[] provinces = new string[]
-        {
-             "--- Chọn Địa Chỉ ---", "An Giang", "Bà Rịa-Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bến Tre", "Bình Định",
-            "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cao Bằng", "Cần Thơ",
-            "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai",
-            "Đồng Tháp", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương",
-            "Hải Phòng", "Hòa Bình", "Hồ Chí Minh", "Hậu Giang", "Hưng Yên", "Khánh Hòa",
-            "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai",
-            "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ",
-            "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh",
-            "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên",
-            "Thanh Hóa", "Thừa Thiên-Huế", "Tiền Giang", "Trà Vinh", "Tuyên Quang",
-            "Vĩnh Long", "Vĩnh Phúc", "Yên Bái"
-        };
+        private Dictionary<int, string> dictLM = new Dictionary<int, string>();  // Dùng int cho MaChuyenNganh
+
         public QLSinhVien()
         {
             InitializeComponent();
         }
 
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-        
-        void LoadDatabase()
-        {
-            try
-            {
-                this.dataGridViewQLSV.DataSource = DataBase.GetData("SELECT MaSV, HoDem, Ten, Email, CCCD, SoDienThoai, GioiTinh, NgaySinh, DiaChi, cn.TenChuyenNganh , KhoaHoc FROM SinhVien sv LEFT JOIN ChuyenNganh cn on cn.MaChuyenNganh = sv.MaChuyenNganh where sv.TrangThai = 'Initialize'");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        void LoadListDB(DataTable dt, Dictionary<string, string> dict)
-        {
-            try
-            {
-                if (dt != null && dt.Rows.Count > 0)
-                {
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        string ma = row[0].ToString();
-                        string ten = row[1].ToString();
-
-                        if (!dict.ContainsKey(ma))
-                        {
-                            dict.Add(ma, ten);
-                        }
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Dữ liệu không tồn tại hoặc rỗng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi tải danh sách: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         private void QLSinhVien_Load(object sender, EventArgs e)
         {
-            cboGioiTinh.Items.Add("Chọn giới tính");
-            cboGioiTinh.Items.Add("Nam");
-            cboGioiTinh.Items.Add("Nữ");
-            cboGioiTinh.SelectedIndex = 0;
+            LoadSinhVienData();
+            LoadChuyenNganhComboBox();
+            LoadKhoaHocComboBox();
+            LoadGioiTinhComboBox();
+            LoadDiaChiComboBox();  
+        }
+
+        private void LoadSinhVienData()
+        {
+            DataTable dtSinhVien = DataBase.GetData(@"SELECT MaSV, HoDem, Ten, Email, CCCD, SoDienThoai, GioiTinh, NgaySinh, DiaChi, 
+                                             cn.TenChuyenNganh, KhoaHoc 
+                                             FROM SinhVien sv 
+                                             LEFT JOIN ChuyenNganh cn ON cn.MaChuyenNganh = sv.MaChuyenNganh 
+                                             WHERE sv.TrangThai = 'Initialize'");
+
+            dataGridViewQLSV.DataSource = dtSinhVien;
+        }
+
+        private void LoadChuyenNganhComboBox()
+        {
+            dictLM = new Dictionary<int, string>();
+            dictLM.Add(0, "Chọn chuyên ngành"); 
+            DataTable dt = DataBase.GetData("SELECT MaChuyenNganh, TenChuyenNganh FROM ChuyenNganh WHERE TrangThai = 'Initialize'");
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    int maChuyenNganh = Convert.ToInt32(row["MaChuyenNganh"]);
+                    string tenChuyenNganh = row["TenChuyenNganh"].ToString();
+                    dictLM.Add(maChuyenNganh, tenChuyenNganh);
+                }
+                cboMaChuyenNganh.DataSource = new BindingSource(dictLM, null);
+                cboMaChuyenNganh.DisplayMember = "Value";
+                cboMaChuyenNganh.ValueMember = "Key";
+            }
+        }
+        private void LoadKhoaHocComboBox()
+        {
             cboKhoaHoc.Items.Add("Chọn khóa học");
             for (int i = 1; i <= 19; i++)
             {
                 cboKhoaHoc.Items.Add("Khóa " + i);
             }
             cboKhoaHoc.SelectedIndex = 0;
-
-            cboDiaChi.Items.AddRange(provinces);
-            cboDiaChi.SelectedIndex = 0;
-
-            LoadDatabase();
-            dictLM.Add("-1","Chọn chuyên ngành");
-            cboMaChuyenNganh.Items.Add("Chọn chuyên ngành");
-            DataTable dt = DataBase.GetData("SELECT MaChuyenNganh, TenChuyenNganh FROM ChuyenNganh where TrangThai = 'Initialize'");
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                LoadListDB(dt, dictLM);
-            }
-            else
-            {
-                MessageBox.Show("Không có dữ liệu loại chuyên ngành.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-            cboMaChuyenNganh.DataSource = new BindingSource(dictLM, null);
-            cboMaChuyenNganh.DisplayMember = "Value";
-            cboMaChuyenNganh.ValueMember = "Key";
-
         }
-      
+
+        private void LoadGioiTinhComboBox()
+        {
+            cboGioiTinh.Items.Add("Chọn giới tính");
+            cboGioiTinh.Items.Add("Nam");
+            cboGioiTinh.Items.Add("Nữ");
+            cboGioiTinh.SelectedIndex = 0;
+        }
+        private void LoadDiaChiComboBox()
+        {
+            List<string> diaChiList = new List<string>
+            {
+                 "An Giang", "Bà Rịa-Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bến Tre", "Bình Định",
+                "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cao Bằng", "Cần Thơ",
+                "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai",
+                "Đồng Tháp", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương",
+                "Hải Phòng", "Hòa Bình", "Hồ Chí Minh", "Hậu Giang", "Hưng Yên", "Khánh Hòa",
+                "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai",
+                "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ",
+                "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh",
+                "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên",
+                "Thanh Hóa", "Thừa Thiên-Huế", "Tiền Giang", "Trà Vinh", "Tuyên Quang",
+                "Vĩnh Long", "Vĩnh Phúc", "Yên Bái"
+            };
+
+            cboDiaChi.Items.Add("Chọn địa chỉ");
+            foreach (var diaChi in diaChiList)
+            {
+                cboDiaChi.Items.Add(diaChi);
+            }
+            cboDiaChi.SelectedIndex = 0;  
+        }
         private void btnThem_Click(object sender, EventArgs e)
         {
-            try
+            if (ValidateFields())
             {
-                if (!ValidateFields()) 
+                var sinhVien = new SinhVien
                 {
-                    return; 
-                }
-
-                string query = "INSERT INTO SinhVien (HoDem, Ten, Email, CCCD, SoDienThoai, GioiTinh, NgaySinh, DiaChi,MaChuyenNganh, KhoaHoc, TrangThai)" +
-                    " VALUES (@HoDem, @Ten, @Email, @CCCD, @SoDienThoai, @GioiTinh, @NgaySinh, @DiaChi,@MaChuyenNganh, @KhoaHoc, @TrangThai)";
-                SqlParameter[] parameters = {
-                    new SqlParameter("@HoDem", txtHoDem.Text),
-                    new SqlParameter("@Ten", txtTen.Text),
-                    new SqlParameter("@Email", txtEmail.Text),
-                    new SqlParameter("@CCCD", txtSoCCCD.Text),
-                    new SqlParameter("@SoDienThoai", txtSDT.Text),
-                    new SqlParameter("@GioiTinh", cboGioiTinh.Text),
-                    new SqlParameter("@NgaySinh", dateTimePickerNS.Value),
-                    new SqlParameter("@DiaChi", cboDiaChi.Text),
-                    new SqlParameter("@MaChuyenNganh", cboMaChuyenNganh.SelectedValue?.ToString()),
-                    new SqlParameter("@KhoaHoc", cboKhoaHoc.Text),
-                    new SqlParameter("@TrangThai", "Initialize"),
+                    HoDem = txtHoDem.Text,
+                    Ten = txtTen.Text,
+                    Email = txtEmail.Text,
+                    CCCD = txtSoCCCD.Text,
+                    SoDienThoai = txtSDT.Text,
+                    GioiTinh = cboGioiTinh.Text,
+                    NgaySinh = dateTimePickerNS.Value,
+                    DiaChi = cboDiaChi.Text,  
+                    MaChuyenNganh = Convert.ToInt32(cboMaChuyenNganh.SelectedValue), 
+                    KhoaHoc = cboKhoaHoc.Text
                 };
 
-                bool result = new DataBase().UpdateData(query, parameters);
-
-                if (result)
-                {
-                    MessageBox.Show("Thêm sinh viên thành công!");
-                    LoadDatabase();
-                    ClearFields();
-                }
-                else
-                {
-                    MessageBox.Show("Thêm sinh viên thất bại.");
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Lỗi cơ sở dữ liệu: " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+                bool result = SinhVienController.AddSinhVien(sinhVien);
+                MessageBox.Show(result ? "Thêm thành công!" : "Thêm thất bại.");
+                LoadSinhVienData();
+                ClearFields();
             }
         }
         private void btnSua_Click(object sender, EventArgs e)
         {
-            try
+            if (string.IsNullOrWhiteSpace(txtMaSV.Text))
             {
-                if (!ValidateFields())
+                MessageBox.Show("Vui lòng chọn mã sinh viên cần sửa!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (ValidateFields())
+            {
+                var sinhVien = new SinhVien
                 {
-                    return;
-                }
-               
-                string query = "UPDATE  SinhVien SET HoDem = @HoDem, Ten = @Ten, Email = @Email, CCCD = @CCCD, SoDienThoai = @SoDienThoai, GioiTinh = @GioiTinh, NgaySinh = @NgaySinh, DiaChi = @DiaChi,MaChuyenNganh = @MaChuyenNganh, KhoaHoc = @KhoaHoc WHERE MaSV = @MaSV";
-                SqlParameter[] parameters = {
-                    new SqlParameter("@HoDem", txtHoDem.Text),
-                    new SqlParameter("@Ten", txtTen.Text),
-                    new SqlParameter("@Email", txtEmail.Text),
-                    new SqlParameter("@CCCD", txtSoCCCD.Text),
-                    new SqlParameter("@SoDienThoai", txtSDT.Text),
-                    new SqlParameter("@GioiTinh", cboGioiTinh.Text),
-                    new SqlParameter("@NgaySinh", dateTimePickerNS.Value),
-                    new SqlParameter("@DiaChi", cboDiaChi.Text),
-                    new SqlParameter("@MaChuyenNganh",  cboMaChuyenNganh.SelectedValue?.ToString()),
-                    new SqlParameter("@KhoaHoc", cboKhoaHoc.Text),
-                    new SqlParameter("@MaSV", txtMaSV.Text),
+                    MaSV = Convert.ToInt32(txtMaSV.Text),  
+                    HoDem = txtHoDem.Text,
+                    Ten = txtTen.Text,
+                    Email = txtEmail.Text,
+                    CCCD = txtSoCCCD.Text,
+                    SoDienThoai = txtSDT.Text,
+                    GioiTinh = cboGioiTinh.Text,
+                    NgaySinh = dateTimePickerNS.Value,
+                    DiaChi = cboDiaChi.Text,  
+                    MaChuyenNganh = Convert.ToInt32(cboMaChuyenNganh.SelectedValue),  
+                    KhoaHoc = cboKhoaHoc.Text
                 };
-                bool result = new DataBase().UpdateData(query, parameters);
-                if (result)
-                {
-                    MessageBox.Show("Sửa sinh viên thành công!");
-                    LoadDatabase();
-                    ClearFields();
-                }
-                else
-                {
-                    MessageBox.Show("Sửa sinh viên thất bại.");
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Lỗi cơ sở dữ liệu: " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+
+                bool result = SinhVienController.UpdateSinhVien(sinhVien);
+                MessageBox.Show(result ? "Sửa thành công!" : "Sửa thất bại.");
+                LoadSinhVienData();
+                ClearFields();
             }
         }
-
-        private void dataGridViewQLSV_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                txtMaSV.Text = dataGridViewQLSV.CurrentRow.Cells[0].Value.ToString();
-                txtHoDem.Text = dataGridViewQLSV.CurrentRow.Cells[1].Value.ToString();
-                txtTen.Text = dataGridViewQLSV.CurrentRow.Cells[2].Value.ToString();
-                txtEmail.Text = dataGridViewQLSV.CurrentRow.Cells[3].Value.ToString();
-                txtSoCCCD.Text = dataGridViewQLSV.CurrentRow.Cells[4].Value.ToString();
-                txtSDT.Text = dataGridViewQLSV.CurrentRow.Cells[5].Value.ToString();
-                cboGioiTinh.Text = dataGridViewQLSV.CurrentRow.Cells[6].Value.ToString();
-                dateTimePickerNS.Text = dataGridViewQLSV.CurrentRow.Cells[7].Value.ToString();
-                cboDiaChi.Text = dataGridViewQLSV.CurrentRow.Cells[8].Value.ToString();
-
-                string MaChuyenNganh = dataGridViewQLSV.CurrentRow.Cells[9].Value?.ToString();
-                string ID = dictLM.FirstOrDefault(x => x.Value == MaChuyenNganh).Key;
-                if (!string.IsNullOrEmpty(ID))
-                {
-                    cboMaChuyenNganh.SelectedValue = ID;
-                }
-                else
-                {
-                    MessageBox.Show("Không tìm thấy mã chuyên ngành cho tên: " + ID);
-                }
-
-                cboKhoaHoc.Text = dataGridViewQLSV.CurrentRow.Cells[10].Value.ToString();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi hiển thị thông tin sinh viên: " + ex.Message);
-            }
-        }
-
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            try
+            if (string.IsNullOrWhiteSpace(txtMaSV.Text))
             {
-                if (string.IsNullOrEmpty(txtMaSV.Text))
-                {
-                    MessageBox.Show("Vui lòng chọn sinh viên cần xóa.");
-                    return;
-                }
-                string query = "UPDATE SinhVien SET TrangThai = 'Deleted' WHERE MaSV = @MaSV";
-                SqlParameter[] parameters = {
-                    new SqlParameter("@MaSV", txtMaSV.Text),
-                    
-                };
-                bool result = new DataBase().UpdateData(query, parameters);
+                MessageBox.Show("Vui lòng chọn mã sinh viên cần xoá!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            bool result = SinhVienController.DeleteSinhVien(txtMaSV.Text);
+            MessageBox.Show(result ? "Xóa thành công!" : "Xóa thất bại.");
+            LoadSinhVienData();
+             ClearFields();
+        }
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void dataGridViewQLSV_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewQLSV.CurrentRow != null)
+            {
+                txtMaSV.Text = dataGridViewQLSV.CurrentRow.Cells["MaSV"].Value.ToString();
+                txtHoDem.Text = dataGridViewQLSV.CurrentRow.Cells["HoDem"].Value.ToString();
+                txtTen.Text = dataGridViewQLSV.CurrentRow.Cells["Ten"].Value.ToString();
+                txtEmail.Text = dataGridViewQLSV.CurrentRow.Cells["Email"].Value.ToString();
+                txtSoCCCD.Text = dataGridViewQLSV.CurrentRow.Cells["CCCD"].Value.ToString();
+                txtSDT.Text = dataGridViewQLSV.CurrentRow.Cells["SoDienThoai"].Value.ToString();
+                cboGioiTinh.Text = dataGridViewQLSV.CurrentRow.Cells["GioiTinh"].Value.ToString();
+                dateTimePickerNS.Text = dataGridViewQLSV.CurrentRow.Cells["NgaySinh"].Value.ToString();
+                cboDiaChi.Text = dataGridViewQLSV.CurrentRow.Cells["DiaChi"].Value.ToString();
+                cboKhoaHoc.Text = dataGridViewQLSV.CurrentRow.Cells["KhoaHoc"].Value.ToString();
 
-                if (result)
-                {
-                    MessageBox.Show("Xóa sinh viên thành công!");
-                    LoadDatabase(); 
-                    ClearFields(); 
-                }
-                else
-                {
-                    MessageBox.Show("Xóa sinh viên thất bại.");
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Lỗi cơ sở dữ liệu: " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+                string tenChuyenNganh = dataGridViewQLSV.CurrentRow.Cells["TenChuyenNganh"].Value.ToString();
+
+                int maChuyenNganh = dictLM.FirstOrDefault(x => x.Value == tenChuyenNganh).Key;
+
+                cboMaChuyenNganh.SelectedValue = maChuyenNganh;
             }
         }
-
         private void ClearFields()
         {
             txtHoDem.Text = string.Empty;
@@ -284,28 +204,34 @@ namespace BaiTapLon
             txtSDT.Text = string.Empty;
             txtMaSV.Text = string.Empty;
             cboDiaChi.SelectedIndex = 0;
-            cboGioiTinh.SelectedIndex = 0; 
-            cboKhoaHoc.SelectedIndex = 0; 
-            cboMaChuyenNganh.SelectedIndex = 0; 
+            cboGioiTinh.SelectedIndex = 0;
+            cboKhoaHoc.SelectedIndex = 0;
+            cboMaChuyenNganh.SelectedIndex = 0;
             dateTimePickerNS.Value = DateTime.Now;
         }
         private bool ValidateFields()
         {
-            if (string.IsNullOrEmpty(txtHoDem.Text) || string.IsNullOrEmpty(txtTen.Text))
+            if (string.IsNullOrEmpty(txtHoDem.Text))
             {
-                MessageBox.Show("Họ và tên không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Họ đệm không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtHoDem.Focus();
+                return false;
+            }
+            if ( string.IsNullOrEmpty(txtTen.Text))
+            {
+                MessageBox.Show("Tên không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTen.Focus();
                 return false;
             }
             if (!IsValidEmail(txtEmail.Text))
             {
-                MessageBox.Show("Email không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Email không hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtEmail.Focus();
                 return false;
             }
             if (string.IsNullOrEmpty(txtSoCCCD.Text) || txtSoCCCD.Text.Length != 12)
             {
-                MessageBox.Show("Số CCCD không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Số CCCD không hợp lệ!Không được để trống và độ dài bằng 12!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtSoCCCD.Focus();
                 return false;
             }
@@ -315,9 +241,9 @@ namespace BaiTapLon
                 txtSDT.Focus();
                 return false;
             }
-            if (string.IsNullOrEmpty(cboDiaChi.Text))
+            if (cboDiaChi.SelectedIndex == 0)
             {
-                MessageBox.Show("Địa chỉ không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng chọn đầy đủ thông tin về địa chỉ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cboDiaChi.Focus();
                 return false;
             }
@@ -327,7 +253,7 @@ namespace BaiTapLon
                 cboGioiTinh.Focus();
                 return false;
             }
-            if ( cboKhoaHoc.SelectedIndex == 0 )
+            if (cboKhoaHoc.SelectedIndex == 0)
             {
                 MessageBox.Show("Vui lòng chọn đầy đủ thông tin về khóa học", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cboKhoaHoc.Focus();
@@ -347,7 +273,6 @@ namespace BaiTapLon
 
             return true;
         }
-
         private bool IsValidEmail(string email)
         {
             try
@@ -360,6 +285,7 @@ namespace BaiTapLon
                 return false;
             }
         }
-
     }
+
 }
+

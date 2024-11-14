@@ -8,5 +8,11 @@ namespace BaiTapLon.Model
 {
     internal class LopHoc
     {
+        public int MaLop { get; set; }
+        public string TenLop { get; set; }
+        public string KhoaHoc { get; set; }
+        public int SoSVMax { get; set; }
+        public int? MaMon { get; set; }
+        public int? IDHocKy { get; set; }
     }
 }

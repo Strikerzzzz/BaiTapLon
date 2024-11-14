@@ -8,5 +8,8 @@ namespace BaiTapLon.Model
 {
     internal class LopSinhVien
     {
+        public int ID { get; set; }
+        public int MaLop { get; set; }
+        public int MaSV { get; set; }
     }
 }
