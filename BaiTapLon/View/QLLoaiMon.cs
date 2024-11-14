@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BaiTapLon.Controller;
+using BaiTapLon.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,140 +15,92 @@ namespace BaiTapLon
 {
     public partial class QLLoaiMon : Form
     {
+        private readonly LoaiMonController _controller;
+
         public QLLoaiMon()
         {
             InitializeComponent();
+            _controller = new LoaiMonController();
         }
 
         private void QLLoaiMon_Load(object sender, EventArgs e)
         {
-            LoadDatabase();
+            LoadData();
         }
-        void LoadDatabase()
+
+        private void LoadData()
         {
-            try
-            {
-                this.dataGridView1.DataSource = DataBase.GetData("SELECT IDLoaiMon,LoaiMon FROM LoaiMon where TrangThai = 'Initialize'");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi tải dữ liệu: " + ex.Message);
-            }
+            _controller.LoadData(dataGridView1);
         }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtLoaiMon.Text))
+            var loaiMon = new LoaiMon
             {
-                MessageBox.Show("Vui lòng nhập loại môn.");
-                return;
-            }
-            try
-            {
-                string query = "INSERT INTO LoaiMon (LoaiMon, TrangThai) VALUES (@LoaiMon, 'Initialize')";
-                SqlParameter[] parameters = {
-                    new SqlParameter("@LoaiMon", txtLoaiMon.Text)
-                };
+                LoaiMonName = txtLoaiMon.Text
+            };
 
-                bool result = new DataBase().UpdateData(query, parameters);
-
-                if (result)
-                {
-                    MessageBox.Show("Thêm môn học thành công!");
-                    LoadDatabase();
-                }
-                else
-                {
-                    MessageBox.Show("Thêm môn học thất bại.");
-                }
-            }
-            catch (SqlException ex)
+            if (_controller.AddLoaiMon(loaiMon, out string message))
             {
-                MessageBox.Show("Lỗi cơ sở dữ liệu: " + ex.Message);
+                MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadData();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+                MessageBox.Show(message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtLoaiMon.Text))
+            var loaiMon = new LoaiMon
             {
-                MessageBox.Show("Vui lòng nhập loại môn.");
-                return;
+                IDLoaiMon = int.TryParse(txtID.Text, out int id) ? id : 0,
+                LoaiMonName = txtLoaiMon.Text
+            };
+
+            if (_controller.UpdateLoaiMon(loaiMon, out string message))
+            {
+                MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadData();
             }
-            try
+            else
             {
-                string query = "UPDATE  LoaiMon SET LoaiMon = @LoaiMon WHERE IDLoaiMon = @IDLoaiMon";
-                SqlParameter[] parameters = {
-                    new SqlParameter("@LoaiMon", txtLoaiMon.Text),
-                    new SqlParameter("@IDLoaiMon", txtID.Text),
-                };
-                bool result = new DataBase().UpdateData(query, parameters);
-                if (result)
-                {
-                    MessageBox.Show("Sửa môn học thành công!");
-                    LoadDatabase();
-                }
-                else
-                {
-                    MessageBox.Show("Sửa môn học thất bại.");
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Lỗi cơ sở dữ liệu: " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+                MessageBox.Show(message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            try
+            if (int.TryParse(txtID.Text, out int id))
             {
-                string query = "UPDATE LoaiMon SET TrangThai = 'Deleted' WHERE IDLoaiMon = @IDLoaiMon";
-                SqlParameter[] parameters = {
-                    new SqlParameter("@IDLoaiMon", txtID.Text)
-                };
-                bool result = new DataBase().UpdateData(query, parameters);
-                if (result)
+                if (_controller.DeleteLoaiMon(id, out string message))
                 {
-                    MessageBox.Show("Xóa môn học thành công!");
-                    LoadDatabase();
+                    MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadData();
                 }
                 else
                 {
-                    MessageBox.Show("Xóa môn học thất bại.");
+                    MessageBox.Show(message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (SqlException ex)
+            else
             {
-                MessageBox.Show("Lỗi cơ sở dữ liệu: " + ex.Message);
+                MessageBox.Show("ID không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
-            }
-        }
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void dataGridView1_Click(object sender, EventArgs e)
         {
-            try
+            if (dataGridView1.CurrentRow != null)
             {
-                txtID.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                txtLoaiMon.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi hiển thị thông tin loại môn: " + ex.Message);
+                txtID.Text = dataGridView1.CurrentRow.Cells[0].Value?.ToString();
+                txtLoaiMon.Text = dataGridView1.CurrentRow.Cells[1].Value?.ToString();
             }
         }
     }

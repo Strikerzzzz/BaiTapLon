@@ -8,5 +8,7 @@ namespace BaiTapLon.Model
 {
     internal class LoaiMon
     {
+        public int IDLoaiMon { get; set; }
+        public string LoaiMonName { get; set; }
     }
 }

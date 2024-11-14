@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BaiTapLon.Controller;
+using BaiTapLon.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,160 +15,94 @@ namespace BaiTapLon
 {
     public partial class QLLoaiDiem : Form
     {
+        private readonly LoaiDiemController _controller;
         public QLLoaiDiem()
         {
             InitializeComponent();
+            _controller = new LoaiDiemController();
         }
-        bool Valid()
-        {
-            if (string.IsNullOrEmpty(txtTenLoaiDiem.Text))
-            {
-                MessageBox.Show("Vui lòng nhập tên loại điểm.");
-                return false;
-            }
-            if (string.IsNullOrEmpty(txtTiLe.Text) || !double.TryParse(txtTiLe.Text, out _))
-            {
-                MessageBox.Show("Vui lòng nhập tỉ lệ.");
-                return false;
-            }
-            return true;
-        }
-        void LoadDatabase()
-        {
-            try
-            {
-                this.dataGridView1.DataSource = DataBase.GetData("SELECT IDLoaiDiem, TenLoaiDiem, Tile FROM LoaiDiem where TrangThai = 'Initialize'");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+
         private void QLLoaiDiem_Load(object sender, EventArgs e)
         {
-            LoadDatabase();
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            _controller.LoadData(dataGridView1);
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (!Valid())
+            var loaiDiem = new LoaiDiem
             {
-                return;
-            }
-            try
-            {
-                string query = "INSERT INTO LoaiDiem ( TenLoaiDiem, TiLe, TrangThai) VALUES ( @TenLoaiDiem, @TiLe, 'Initialize')";
-                SqlParameter[] parameters = {
-                    new SqlParameter("@TenLoaiDiem", txtTenLoaiDiem.Text),
-                    new SqlParameter("@TiLe", txtTiLe.Text),
-                };
+                TenLoaiDiem = txtTenLoaiDiem.Text,
+                TiLe = double.TryParse(txtTiLe.Text, out var tiLe) ? tiLe : 0
+            };
 
-                bool result = new DataBase().UpdateData(query, parameters);
-
-                if (result)
-                {
-                    MessageBox.Show("Thêm môn học thành công!");
-                    LoadDatabase();
-                }
-                else
-                {
-                    MessageBox.Show("Thêm môn học thất bại.");
-                }
-            }
-            catch (SqlException ex)
+            if (_controller.AddLoaiDiem(loaiDiem, out string message))
             {
-                MessageBox.Show("Lỗi cơ sở dữ liệu: " + ex.Message);
+                MessageBox.Show(message);
+                LoadData();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+                MessageBox.Show(message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (!Valid())
+            var loaiDiem = new LoaiDiem
             {
-                return;
+                IDLoaiDiem = int.TryParse(txtID.Text, out var id) ? id : 0,
+                TenLoaiDiem = txtTenLoaiDiem.Text,
+                TiLe = double.TryParse(txtTiLe.Text, out var tiLe) ? tiLe : 0
+            };
+
+            if (_controller.UpdateLoaiDiem(loaiDiem, out string message))
+            {
+                MessageBox.Show(message);
+                LoadData();
             }
-            try
+            else
             {
-                string query = "UPDATE  LoaiDiem SET TenLoaiDiem = @TenLoaiDiem, TiLe = @Tile WHERE IDLoaiDiem = @IDLoaiDiem";
-                SqlParameter[] parameters = {
-                    new SqlParameter("@TenLoaiDiem", txtTenLoaiDiem.Text),
-                    new SqlParameter("@TiLe", txtTiLe.Text),
-                    new SqlParameter("@IDLoaiDiem", txtID.Text),
-                };
-                bool result = new DataBase().UpdateData(query, parameters);
-                if (result)
-                {
-                    MessageBox.Show("Sửa môn học thành công!");
-                    LoadDatabase();
-                }
-                else
-                {
-                    MessageBox.Show("Sửa môn học thất bại.");
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Lỗi cơ sở dữ liệu: " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+                MessageBox.Show(message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            try
+            if (int.TryParse(txtID.Text, out var id))
             {
-                string query = "UPDATE LoaiDiem SET TrangThai = 'Deleted' WHERE IDLoaiDiem = @ID";
-                SqlParameter[] parameters = {
-                new SqlParameter("@ID", txtID.Text)
-            };
-                bool result = new DataBase().UpdateData(query, parameters);
-                if (result)
+                if (_controller.DeleteLoaiDiem(id, out string message))
                 {
-                    MessageBox.Show("Xóa môn học thành công!");
-                    LoadDatabase();
+                    MessageBox.Show(message);
+                    LoadData();
                 }
                 else
                 {
-                    MessageBox.Show("Xóa môn học thất bại.");
+                    MessageBox.Show(message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (SqlException ex)
+            else
             {
-                MessageBox.Show("Lỗi cơ sở dữ liệu: " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+                MessageBox.Show("ID không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void dataGridView1_Click(object sender, EventArgs e)
         {
-            try
+            if (dataGridView1.CurrentRow != null)
             {
-                if (dataGridView1.CurrentRow != null)
-                {
-                    txtID.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                    txtTenLoaiDiem.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                    txtTiLe.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi hiển thị thông tin môn học: " + ex.Message);
+                txtID.Text = dataGridView1.CurrentRow.Cells[0].Value?.ToString();
+                txtTenLoaiDiem.Text = dataGridView1.CurrentRow.Cells[1].Value?.ToString();
+                txtTiLe.Text = dataGridView1.CurrentRow.Cells[2].Value?.ToString();
             }
         }
     }

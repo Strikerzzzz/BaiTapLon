@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BaiTapLon.Controller;
+using BaiTapLon.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,69 +17,42 @@ namespace BaiTapLon
     {
         Dictionary<string, string> dictSV;
         Dictionary<string, string> dictML = new Dictionary<string, string>();
+        private DiemDanhController diemDanhController = new DiemDanhController();
+
         public QLDiemDanh()
         {
             InitializeComponent();
         }
-        void LoadDatabase()
-        {
-            try
-            {
-                this.dataGridView1.DataSource = DataBase.GetData("SELECT dd.IDDiemDanh, CONCAT(sv.HoDem, ' ', sv.Ten,'-',sv.MaSV) AS TenSinhVien, lh.TenLop, dd.NgayDiemDanh, dd.TTDiemDanh FROM DiemDanh dd LEFT JOIN LopHoc lh ON lh.MaLop = dd.MaLop LEFT JOIN SinhVien sv ON dd.MaSV = sv.MaSV WHERE dd.TrangThai = 'Initialize'");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        void LoadListDB(DataTable dt, Dictionary<string, string> dict)
-        {
-            try
-            {
-                if (dt != null && dt.Rows.Count > 0)
-                {
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        string ma = row[0].ToString();
-                        string ten = row[1].ToString();
 
-                        if (!dict.ContainsKey(ma))
-                        {
-                            dict.Add(ma, ten);
-                        }
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Dữ liệu không tồn tại hoặc rỗng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi tải danh sách: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         private void QLDiemDanh_Load(object sender, EventArgs e)
         {
             LoadDatabase();
             cboTT.Items.Add("Có");
             cboTT.Items.Add("Không");
             cboTT.SelectedIndex = 0;
+            LoadClasses();
+        }
 
-            //Lớp
+        private void LoadDatabase()
+        {
+            try
+            {
+                dataGridView1.DataSource = diemDanhController.LoadDiemDanhData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadClasses()
+        {
             dictML.Add("-1", "Chọn tên lớp ");
             cboTenLop.Items.Add("Chọn tên lớp");
             DataTable dt = DataBase.GetData("SELECT MaLop, TenLop FROM LopHoc where TrangThai = 'Initialize'");
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                LoadListDB(dt, dictML);
-            }
-            else
-            {
-                MessageBox.Show("Không có dữ liệu lớp học.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            diemDanhController.LoadListDB(dt, diemDanhController.dictML);
 
-            cboTenLop.DataSource = new BindingSource(dictML, null);
+            cboTenLop.DataSource = new BindingSource(diemDanhController.dictML, null);
             cboTenLop.DisplayMember = "Value";
             cboTenLop.ValueMember = "Key";
             cboTenSV.Enabled = false;
@@ -85,162 +60,49 @@ namespace BaiTapLon
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (!ValidateFields())
-            {
-                return;
-            }
-            try
-            {
-                string query = "INSERT INTO DiemDanh (MaSV, MaLop, NgayDiemDanh, TTDiemDanh, TrangThai) VALUES (@MaSV, @MaLop, @NgayDiemDanh, @TTDiemDanh, 'Initialize')";
-                SqlParameter[] parameters = {
-                    new SqlParameter("@MaSV", cboTenSV.SelectedValue?.ToString()),
-                    new SqlParameter("@MaLop", cboTenLop.SelectedValue?.ToString()),
-                    new SqlParameter("@NgayDiemDanh", dateTimePickerNgayDD.Value),
-                    new SqlParameter("@TTDiemDanh", cboTT.Text),
-                };
+            if (!ValidateFields()) return;
 
-                bool result = new DataBase().UpdateData(query, parameters);
+            DiemDanh diemDanh = new DiemDanh
+            {
+                MaSV = int.Parse(cboTenSV.SelectedValue.ToString()),
+                MaLop = int.Parse(cboTenLop.SelectedValue.ToString()),
+                NgayDiemDanh = dateTimePickerNgayDD.Value,
+                TTDiemDanh = cboTT.Text
+            };
 
-                if (result)
-                {
-                    MessageBox.Show("Thêm điểm danh thành công!");
-                    LoadDatabase();
-                    ClearFields();
-                }
-                else
-                {
-                    MessageBox.Show("Thêm điểm danh thất bại.");
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Lỗi cơ sở dữ liệu: " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
-            }
+            bool result = diemDanhController.AddDiemDanh(diemDanh);
+            MessageBox.Show(result ? "Thêm điểm danh thành công!" : "Thêm điểm danh thất bại.");
+            LoadDatabase();
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (!ValidateFields())
+            if (!ValidateFields()) return;
+
+            DiemDanh diemDanh = new DiemDanh
             {
-                return;
-            }
-            try
-            {
-                string query = "UPDATE DiemDanh SET MaSV = @MaSV, MaLop = @MaLop, NgayDiemDanh = @NgayDiemDanh, TTDiemDanh = @TTDiemDanh WHERE IDDiemDanh = @IDDiemDanh";
-                SqlParameter[] parameters = {
-                    new SqlParameter("@MaSV", cboTenSV.SelectedValue?.ToString()),
-                    new SqlParameter("@MaLop", cboTenLop.SelectedValue?.ToString()),
-                     new SqlParameter("@NgayDiemDanh", dateTimePickerNgayDD.Value),
-                    new SqlParameter("@TTDiemDanh", cboTT.Text),
-                    new SqlParameter("@IDDiemDanh", txtID.Text),
-                };
-                bool result = new DataBase().UpdateData(query, parameters);
-                if (result)
-                {
-                    MessageBox.Show("Sửa điểm danh thành công!");
-                    LoadDatabase();
-                    ClearFields();
-                }
-                else
-                {
-                    MessageBox.Show("Sửa điểm danh thất bại.");
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Lỗi cơ sở dữ liệu: " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
-            }
+                IDDiemDanh = int.Parse(txtID.Text),
+                MaSV = int.Parse(cboTenSV.SelectedValue.ToString()),
+                MaLop = int.Parse(cboTenLop.SelectedValue.ToString()),
+                NgayDiemDanh = dateTimePickerNgayDD.Value,
+                TTDiemDanh = cboTT.Text
+            };
+
+            bool result = diemDanhController.UpdateDiemDanh(diemDanh);
+            MessageBox.Show(result ? "Sửa điểm danh thành công!" : "Sửa điểm danh thất bại.");
+            LoadDatabase();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string query = "UPDATE DiemDanh SET TrangThai = 'Deleted' WHERE IDDiemDanh = @IDDiemDanh";
-                SqlParameter[] parameters = {
-                new SqlParameter("@IDDiemDanh", txtID.Text)
-            };
-                bool result = new DataBase().UpdateData(query, parameters);
-                if (result)
-                {
-                    MessageBox.Show("Xóa thành công!");
-                    LoadDatabase();
-                }
-                else
-                {
-                    MessageBox.Show("Xóa thất bại.");
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Lỗi cơ sở dữ liệu: " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
-            }
-
+            int id = int.Parse(txtID.Text);
+            bool result = diemDanhController.DeleteDiemDanh(id);
+            MessageBox.Show(result ? "Xóa thành công!" : "Xóa thất bại.");
+            LoadDatabase();
         }
-
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void dataGridView1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dataGridView1.CurrentRow != null)
-                {
-                    txtID.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                    string ID, ten;
-                    ten = dataGridView1.CurrentRow.Cells[1].Value?.ToString();
-                    ID = dictSV.FirstOrDefault(x => x.Value == ten).Key;
-                    if (!string.IsNullOrEmpty(ID))
-                    {
-                        cboTenSV.SelectedValue = ID;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Không tìm thấy mã sinh viên cho tên: " + ID);
-                    }
-                    ten = dataGridView1.CurrentRow.Cells[2].Value?.ToString();
-                    ID = dictML.FirstOrDefault(x => x.Value == ten).Key;
-                    if (!string.IsNullOrEmpty(ID))
-                    {
-                        cboTenLop.SelectedValue = ID;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Không tìm thấy mã lớp cho tên: " + ID);
-                    }
-                    
-                    dateTimePickerNgayDD.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-                    cboTT.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi hiển thị thông tin điểm danh: " + ex.Message);
-            }
-        }
-        private void ClearFields()
-        {
-            txtID.Text = string.Empty;
-            cboTenSV.SelectedIndex = 0;
-            cboTenLop.SelectedIndex = 0;
-            cboTT.SelectedIndex = 0;
-            dateTimePickerNgayDD.Value = DateTime.Now;
         }
         private bool ValidateFields()
         {
@@ -261,10 +123,9 @@ namespace BaiTapLon
                 MessageBox.Show("Ngày điểm danh không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            
+
             return true;
         }
-
         private void cboTenLop_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboTenLop.SelectedIndex != 0)
@@ -308,6 +169,45 @@ namespace BaiTapLon
                 cboTenSV.DataSource = new BindingSource(dictSV, null);
                 cboTenSV.DisplayMember = "Value";
                 cboTenSV.ValueMember = "Key";
+            }
+        }
+        private void dataGridView1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dataGridView1.CurrentRow != null)
+                {
+                    txtID.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                    string ID, ten;
+                    ten = dataGridView1.CurrentRow.Cells[1].Value?.ToString();
+                    ID = dictSV.FirstOrDefault(x => x.Value == ten).Key;
+                    if (!string.IsNullOrEmpty(ID))
+                    {
+                        cboTenSV.SelectedValue = ID;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy mã sinh viên cho tên: " + ID);
+                    }
+                    ten = dataGridView1.CurrentRow.Cells[2].Value?.ToString();
+                    ID = dictML.FirstOrDefault(x => x.Value == ten).Key;
+                    if (!string.IsNullOrEmpty(ID))
+                    {
+                        cboTenLop.SelectedValue = ID;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy mã lớp cho tên: " + ID);
+                    }
+
+                    dateTimePickerNgayDD.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                    cboTT.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi hiển thị thông tin điểm danh: " + ex.Message);
             }
         }
 
