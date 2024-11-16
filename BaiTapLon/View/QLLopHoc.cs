@@ -39,7 +39,7 @@ namespace BaiTapLon
         {
             try
             {
-                dataGridView1.DataSource = DataBase.GetData("SELECT lh.MaLop, lh.TenLop, lh.KhoaHoc, lh.SoSVMax, mh.TenMon, CONCAT(hk.TenHocKy, N' - Năm ', hk.Nam) AS hocky " +
+                dataGridView1.DataSource = DataBase.GetData("SELECT lh.MaLop, lh.TenLop, lh.KhoaHoc, lh.SoSVMax, mh.TenMon, CONCAT(hk.TenHocKy, N' - Năm ', hk.Nam) AS hocky, lh.NgayKetThuc " +
                                                             "FROM LopHoc lh LEFT JOIN MonHoc mh ON lh.MaMon = mh.MaMon LEFT JOIN HocKy hk ON lh.IDHocKy = hk.IDHocKy WHERE lh.TrangThai = 'Initialize'");
             }
             catch (Exception ex)
@@ -74,13 +74,14 @@ namespace BaiTapLon
         {
             if (!ValidateFields()) return;
 
-            string query = "INSERT INTO LopHoc (TenLop, KhoaHoc, SoSVMax, MaMon, TrangThai, IDHocKy) VALUES (@TenLop, @KhoaHoc, @SoSVMax, @MaMon, 'Initialize', @IDHocKy)";
+            string query = "INSERT INTO LopHoc (TenLop, KhoaHoc, SoSVMax, MaMon, TrangThai, IDHocKy, NgayKetThuc) VALUES (@TenLop, @KhoaHoc, @SoSVMax, @MaMon, 'Initialize', @IDHocKy, @NgayKetThuc)";
             SqlParameter[] parameters = {
                 new SqlParameter("@TenLop", txtTenlop.Text),
                 new SqlParameter("@KhoaHoc", cboKhoaHoc.Text),
                 new SqlParameter("@SoSVMax", txtSinhvienmax.Text),
                 new SqlParameter("@MaMon", cboMaMon.SelectedValue.ToString()),
-                new SqlParameter("@IDHocKy", cboMaHocKy.SelectedValue.ToString())
+                new SqlParameter("@IDHocKy", cboMaHocKy.SelectedValue.ToString()),
+                new SqlParameter("@NgayKetThuc", dateTimePickerKetThuc.Value)
             };
 
             ExecuteDatabaseCommand(query, parameters, "Thêm lớp học thành công!", "Thêm lớp học thất bại.");
@@ -95,14 +96,15 @@ namespace BaiTapLon
             }
             if (!ValidateFields()) return;
 
-            string query = "UPDATE LopHoc SET TenLop = @TenLop, KhoaHoc = @KhoaHoc, SoSVMax = @SoSVMax, MaMon = @MaMon, IDHocKy = @IDHocKy WHERE MaLop = @MaLop";
+            string query = "UPDATE LopHoc SET TenLop = @TenLop, KhoaHoc = @KhoaHoc, SoSVMax = @SoSVMax, MaMon = @MaMon, IDHocKy = @IDHocKy, NgayKetThuc = @NgayKetThuc WHERE MaLop = @MaLop";
             SqlParameter[] parameters = {
                 new SqlParameter("@TenLop", txtTenlop.Text),
                 new SqlParameter("@KhoaHoc", cboKhoaHoc.Text),
                 new SqlParameter("@SoSVMax", txtSinhvienmax.Text),
                 new SqlParameter("@MaMon", cboMaMon.SelectedValue.ToString()),
                 new SqlParameter("@IDHocKy", cboMaHocKy.SelectedValue.ToString()),
-                new SqlParameter("@MaLop", txtMalop.Text)
+                new SqlParameter("@MaLop", txtMalop.Text),
+                new SqlParameter("@NgayKetThuc", dateTimePickerKetThuc.Value)
             };
 
             ExecuteDatabaseCommand(query, parameters, "Sửa lớp học thành công!", "Sửa lớp học thất bại.");
@@ -155,9 +157,17 @@ namespace BaiTapLon
                 txtTenlop.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
                 cboKhoaHoc.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
                 txtSinhvienmax.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-                cboMaHocKy.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+                
                 cboMaMon.SelectedValue = dictMH.FirstOrDefault(x => x.Value == dataGridView1.CurrentRow.Cells[4].Value.ToString()).Key;
                 cboMaHocKy.SelectedValue = dictHK.FirstOrDefault(x => x.Value == dataGridView1.CurrentRow.Cells[5].Value.ToString()).Key;
+                if (DateTime.TryParse(dataGridView1.CurrentRow.Cells[6].Value.ToString(), out DateTime ketThucDate))
+                {
+                    dateTimePickerKetThuc.Value = ketThucDate;
+                }
+                else
+                {
+                    MessageBox.Show("Ngày không hợp lệ, vui lòng kiểm tra dữ liệu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
         private void btnThoat_Click(object sender, EventArgs e)
