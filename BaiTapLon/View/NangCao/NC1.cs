@@ -73,18 +73,35 @@ namespace BaiTapLon.View.NangCao
 
             if (selectedMonId != "-1")
             {
-                string query = $@"SELECT lhsv.MaLop, lh.TenLop,lh.KhoaHoc, mh.MaMon, mh.TenMon, CONCAT(hk.TenHocKy, ' - ',hk.Nam) as HocKy FROM LopHoc_SinhVien lhsv " +
+                string query = @"
+                    SELECT 
+                        lhsv.MaLop, 
+                        lh.TenLop, 
+                        lh.KhoaHoc, 
+                        mh.MaMon, 
+                        mh.TenMon, 
+                        CONCAT(hk.TenHocKy, ' - ', hk.Nam) as HocKy, 
+                        lh.NgayKetThuc,
+                        CASE 
+                            WHEN lh.NgayKetThuc <= GETDATE() THEN N'Đã học'
+                            ELSE N'Đang học' 
+                        END AS TrangThaiMH
+                    FROM LopHoc_SinhVien lhsv 
+                    LEFT JOIN LopHoc lh ON lh.MaLop = lhsv.MaLop 
+                    LEFT JOIN MonHoc mh ON mh.MaMon = lh.MaMon 
+                    LEFT JOIN HocKy hk ON lh.IDHocKy = hk.IDHocKy 
+                    WHERE lh.TrangThai = 'Initialize' AND MaSV = @MaSV";
 
-                "LEFT JOIN LopHoc lh ON lh.MaLop = lhsv.MaLop " +
-                "LEFT JOIN MonHoc mh ON mh.MaMon = lh.MaMon " +
-                "LEFT JOIN HocKy hk ON lh.IDHocKy = hk.IDHocKy " +
-                "where lh.TrangThai = 'Initialize' AND MaSV = @MaSV";
-
-                SqlParameter[] parameters = {
+                    SqlParameter[] parameters = {
                     new SqlParameter("@MaSV", selectedMonId)
-                };
+            };
 
                 LoadDatabaseWithParams(query, parameters);
+
+                if (dataGridView1.Columns["TrangThaiMH"] != null)
+                {
+                    dataGridView1.Columns["TrangThaiMH"].HeaderText = "Trạng thái môn học";
+                }
             }
             else
             {

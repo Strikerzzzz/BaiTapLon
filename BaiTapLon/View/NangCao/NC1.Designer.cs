@@ -40,6 +40,8 @@
             this.MaMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HocKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayKetThuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrangThaiMH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -48,16 +50,16 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(137, 28);
+            this.label1.Location = new System.Drawing.Point(236, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(507, 29);
+            this.label1.Size = new System.Drawing.Size(618, 29);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Danh sách các lớp sinh viên đang theo học";
+            this.label1.Text = "Danh sách các lớp, các môn sinh viên đang theo học";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(152, 88);
+            this.label2.Location = new System.Drawing.Point(238, 92);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 18);
             this.label2.TabIndex = 1;
@@ -66,7 +68,7 @@
             // cboSinhVien
             // 
             this.cboSinhVien.FormattingEnabled = true;
-            this.cboSinhVien.Location = new System.Drawing.Point(247, 88);
+            this.cboSinhVien.Location = new System.Drawing.Point(345, 89);
             this.cboSinhVien.Name = "cboSinhVien";
             this.cboSinhVien.Size = new System.Drawing.Size(270, 26);
             this.cboSinhVien.TabIndex = 2;
@@ -77,7 +79,7 @@
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Location = new System.Drawing.Point(13, 130);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(731, 280);
+            this.groupBox1.Size = new System.Drawing.Size(1008, 280);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hiển thị";
@@ -91,18 +93,20 @@
             this.KhoaHoc,
             this.MaMon,
             this.TenMon,
-            this.HocKy});
+            this.HocKy,
+            this.NgayKetThuc,
+            this.TrangThaiMH});
             this.dataGridView1.Location = new System.Drawing.Point(7, 23);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(706, 244);
+            this.dataGridView1.Size = new System.Drawing.Size(995, 244);
             this.dataGridView1.TabIndex = 0;
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(535, 88);
+            this.btnThoat.Location = new System.Drawing.Point(662, 89);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(100, 26);
             this.btnThoat.TabIndex = 4;
@@ -116,6 +120,7 @@
             this.MaLop.HeaderText = "Mã lớp";
             this.MaLop.MinimumWidth = 6;
             this.MaLop.Name = "MaLop";
+            this.MaLop.Width = 125;
             // 
             // TenLop
             // 
@@ -131,6 +136,7 @@
             this.KhoaHoc.HeaderText = "Khoá học";
             this.KhoaHoc.MinimumWidth = 6;
             this.KhoaHoc.Name = "KhoaHoc";
+            this.KhoaHoc.Width = 125;
             // 
             // MaMon
             // 
@@ -156,11 +162,27 @@
             this.HocKy.Name = "HocKy";
             this.HocKy.Width = 140;
             // 
+            // NgayKetThuc
+            // 
+            this.NgayKetThuc.DataPropertyName = "NgayKetThuc";
+            this.NgayKetThuc.HeaderText = "Ngày kết thúc";
+            this.NgayKetThuc.MinimumWidth = 6;
+            this.NgayKetThuc.Name = "NgayKetThuc";
+            this.NgayKetThuc.Width = 125;
+            // 
+            // TrangThaiMH
+            // 
+            this.TrangThaiMH.DataPropertyName = "TrangThaiMH";
+            this.TrangThaiMH.HeaderText = "Trạng thái";
+            this.TrangThaiMH.MinimumWidth = 6;
+            this.TrangThaiMH.Name = "TrangThaiMH";
+            this.TrangThaiMH.Width = 125;
+            // 
             // NC1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(767, 430);
+            this.ClientSize = new System.Drawing.Size(1033, 422);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cboSinhVien);
@@ -192,5 +214,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaMon;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenMon;
         private System.Windows.Forms.DataGridViewTextBoxColumn HocKy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayKetThuc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TrangThaiMH;
     }
 }
