@@ -49,3 +49,8 @@ F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.Na
 F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.NangCao.NC2.resources
 F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.NangCao.NC7.resources
 F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.NangCao.NC8.resources
+D:\Study\C#\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.NangCao.NC1.resources
+D:\Study\C#\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.NangCao.NC2.resources
+D:\Study\C#\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.NangCao.NC6.resources
+D:\Study\C#\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.NangCao.NC7.resources
+D:\Study\C#\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.NangCao.NC8.resources

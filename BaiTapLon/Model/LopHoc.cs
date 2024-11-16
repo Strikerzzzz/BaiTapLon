@@ -14,5 +14,8 @@ namespace BaiTapLon.Model
         public int SoSVMax { get; set; }
         public int? MaMon { get; set; }
         public int? IDHocKy { get; set; }
+        
+        public DateTime NgayKetThuc {  get; set; }
+
     }
 }

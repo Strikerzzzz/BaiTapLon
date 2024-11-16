@@ -13,7 +13,7 @@ namespace BaiTapLon.Controller
     {
         public static List<LopHoc> GetAllLopHoc()
         {
-            string query = @"SELECT lh.MaLop, lh.TenLop, lh.KhoaHoc, lh.SoSVMax, mh.TenMon, CONCAT(hk.TenHocKy, N' - Năm ', hk.Nam) AS hocky FROM LopHoc lh LEFT JOIN MonHoc mh ON lh.MaMon = mh.MaMon LEFT JOIN HocKy hk ON lh.IDHocKy = hk.IDHocKy WHERE lh.TrangThai = 'Initialize'";
+            string query = @"SELECT lh.MaLop, lh.TenLop, lh.KhoaHoc, lh.SoSVMax, mh.TenMon, CONCAT(hk.TenHocKy, N' - Năm ', hk.Nam) AS hocky, lh.NgayKetThuc FROM LopHoc lh LEFT JOIN MonHoc mh ON lh.MaMon = mh.MaMon LEFT JOIN HocKy hk ON lh.IDHocKy = hk.IDHocKy WHERE lh.TrangThai = 'Initialize'";
             DataTable dt = DataBase.GetData(query);
             List<LopHoc> list = new List<LopHoc>();
 
@@ -26,7 +26,8 @@ namespace BaiTapLon.Controller
                     KhoaHoc = row["KhoaHoc"].ToString(),
                     SoSVMax = Convert.ToInt32(row["SoSVMax"]),
                     MaMon = row["MaMon"] != DBNull.Value ? Convert.ToInt32(row["MaMon"]) : (int?)null,
-                    IDHocKy = row["IDHocKy"] != DBNull.Value ? Convert.ToInt32(row["IDHocKy"]) : (int?)null
+                    IDHocKy = row["IDHocKy"] != DBNull.Value ? Convert.ToInt32(row["IDHocKy"]) : (int?)null,
+                    NgayKetThuc = Convert.ToDateTime(row["NgayKetThuc"])
                 };
                 list.Add(lopHoc);
             }
@@ -35,20 +36,21 @@ namespace BaiTapLon.Controller
         }
         public static bool AddLopHoc(LopHoc lopHoc)
         {
-            string query = "INSERT INTO LopHoc (TenLop, KhoaHoc, SoSVMax, MaMon, TrangThai, IDHocKy) " +
-                           "VALUES (@TenLop, @KhoaHoc, @SoSVMax, @MaMon, 'Initialize', @IDHocKy)";
+            string query = "INSERT INTO LopHoc (TenLop, KhoaHoc, SoSVMax, MaMon, TrangThai, IDHocKy, NgayKetThuc) " +
+                           "VALUES (@TenLop, @KhoaHoc, @SoSVMax, @MaMon, 'Initialize', @IDHocKy, @NgayKetThuc)";
             SqlParameter[] parameters = {
                 new SqlParameter("@TenLop", lopHoc.TenLop),
                 new SqlParameter("@KhoaHoc", lopHoc.KhoaHoc),
                 new SqlParameter("@SoSVMax", lopHoc.SoSVMax),
                 new SqlParameter("@MaMon", lopHoc.MaMon),
-                new SqlParameter("@IDHocKy", lopHoc.IDHocKy)
+                new SqlParameter("@IDHocKy", lopHoc.IDHocKy),
+                new SqlParameter("@NgayKetThuc", lopHoc.NgayKetThuc)
             };
             return new DataBase().UpdateData(query, parameters);
         }
         public static bool UpdateLopHoc(LopHoc lopHoc)
         {
-            string query = "UPDATE LopHoc SET TenLop = @TenLop, KhoaHoc = @KhoaHoc, SoSVMax = @SoSVMax, MaMon = @MaMon, IDHocKy = @IDHocKy " +
+            string query = "UPDATE LopHoc SET TenLop = @TenLop, KhoaHoc = @KhoaHoc, SoSVMax = @SoSVMax, MaMon = @MaMon, IDHocKy = @IDHocKy, NgayKetThuc = @NgayKetThuc" +
                            "WHERE MaLop = @MaLop";
             SqlParameter[] parameters = {
                 new SqlParameter("@TenLop", lopHoc.TenLop),
@@ -56,6 +58,7 @@ namespace BaiTapLon.Controller
                 new SqlParameter("@SoSVMax", lopHoc.SoSVMax),
                 new SqlParameter("@MaMon", lopHoc.MaMon),
                 new SqlParameter("@IDHocKy", lopHoc.IDHocKy),
+                 new SqlParameter("@NgayKetThuc", lopHoc.NgayKetThuc),
                 new SqlParameter("@MaLop", lopHoc.MaLop)
             };
             return new DataBase().UpdateData(query, parameters);
