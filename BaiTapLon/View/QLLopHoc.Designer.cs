@@ -54,6 +54,7 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
+            this.dateTimePickerKetThuc = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -71,6 +72,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dateTimePickerKetThuc);
             this.groupBox1.Controls.Add(this.cboMaHocKy);
             this.groupBox1.Controls.Add(this.cboMaMon);
             this.groupBox1.Controls.Add(this.cboKhoaHoc);
@@ -310,6 +312,13 @@
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
+            // dateTimePickerKetThuc
+            // 
+            this.dateTimePickerKetThuc.Location = new System.Drawing.Point(552, 166);
+            this.dateTimePickerKetThuc.Name = "dateTimePickerKetThuc";
+            this.dateTimePickerKetThuc.Size = new System.Drawing.Size(223, 27);
+            this.dateTimePickerKetThuc.TabIndex = 15;
+            // 
             // QLLopHoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -364,5 +373,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SoSVMax;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenMon;
         private System.Windows.Forms.DataGridViewTextBoxColumn HocKy;
+        private System.Windows.Forms.DateTimePicker dateTimePickerKetThuc;
     }
 }
