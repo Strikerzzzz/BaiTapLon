@@ -83,7 +83,6 @@ namespace BaiTapLon
         }
         private void NC4_Load(object sender, EventArgs e)
         {
-
             DataTable dt = DataBase.GetData("SELECT IDLoaiMon, LoaiMon FROM LoaiMon where TrangThai = 'Initialize'");
             dictLM.Add("-1", "------Chọn loại môn------");
             if (dt != null && dt.Rows.Count > 0)

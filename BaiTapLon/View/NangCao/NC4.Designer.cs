@@ -32,12 +32,12 @@
             this.comboBox = new System.Windows.Forms.ComboBox();
             this.btnThoat = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.MaMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoTinChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongSoBuoiHoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
@@ -79,16 +79,6 @@
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Hiển thị";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(61, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(607, 29);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "LIỆT KÊ CÁC MÔN HỌC THUỘC CÁC NHÓM MÔN";
             // 
             // dgv
             // 
@@ -139,6 +129,16 @@
             this.TongSoBuoiHoc.MinimumWidth = 6;
             this.TongSoBuoiHoc.Name = "TongSoBuoiHoc";
             this.TongSoBuoiHoc.Width = 200;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label1.Location = new System.Drawing.Point(61, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(673, 29);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "LIỆT KÊ CÁC MÔN HỌC THUỘC MỘT CHUYÊN NGÀNH";
             // 
             // NC4
             // 
