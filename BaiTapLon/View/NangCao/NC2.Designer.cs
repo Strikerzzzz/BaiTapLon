@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox = new System.Windows.Forms.ComboBox();
             this.btnThoat = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.chartChuyenNganh = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.MaSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenSinhVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoDienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.chartChuyenNganh = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartChuyenNganh)).BeginInit();
@@ -103,32 +103,6 @@
             this.dgv.Size = new System.Drawing.Size(707, 180);
             this.dgv.TabIndex = 1;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(37, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(669, 29);
-            this.label1.TabIndex = 26;
-            this.label1.Text = "DANH SÁCH SINH VIÊN THUỘC MỘT CHUYÊN NGÀNH";
-            // 
-            // chartChuyenNganh
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.chartChuyenNganh.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartChuyenNganh.Legends.Add(legend2);
-            this.chartChuyenNganh.Location = new System.Drawing.Point(749, 8);
-            this.chartChuyenNganh.Name = "chartChuyenNganh";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartChuyenNganh.Series.Add(series2);
-            this.chartChuyenNganh.Size = new System.Drawing.Size(750, 297);
-            this.chartChuyenNganh.TabIndex = 31;
-            this.chartChuyenNganh.Text = "chart1";
-            // 
             // MaSV
             // 
             this.MaSV.DataPropertyName = "MaSV";
@@ -161,11 +135,37 @@
             this.SoDienThoai.Name = "SoDienThoai";
             this.SoDienThoai.Width = 200;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label1.Location = new System.Drawing.Point(37, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(669, 29);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "DANH SÁCH SINH VIÊN THUỘC MỘT CHUYÊN NGÀNH";
+            // 
+            // chartChuyenNganh
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chartChuyenNganh.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartChuyenNganh.Legends.Add(legend1);
+            this.chartChuyenNganh.Location = new System.Drawing.Point(12, 311);
+            this.chartChuyenNganh.Name = "chartChuyenNganh";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartChuyenNganh.Series.Add(series1);
+            this.chartChuyenNganh.Size = new System.Drawing.Size(731, 297);
+            this.chartChuyenNganh.TabIndex = 31;
+            this.chartChuyenNganh.Text = "chart1";
+            // 
             // NC2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1507, 324);
+            this.ClientSize = new System.Drawing.Size(753, 621);
             this.Controls.Add(this.chartChuyenNganh);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox);
