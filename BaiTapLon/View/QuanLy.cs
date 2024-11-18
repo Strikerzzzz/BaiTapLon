@@ -17,9 +17,16 @@ namespace BaiTapLon
         {
             InitializeComponent();
         }
-
+        private void CloseAllChildForms()
+        {
+            foreach (Form child in this.MdiChildren)
+            {
+                child.Close();
+            }
+        }
         private void quảnLýSinhViênToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseAllChildForms();
             QLSinhVien frm = new QLSinhVien();
             frm.MdiParent = this;
             frm.Show();
@@ -27,6 +34,7 @@ namespace BaiTapLon
 
         private void quảnLýLớpHọcToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseAllChildForms();
             QLLopHoc frm = new QLLopHoc();
             frm.MdiParent = this;
             frm.Show();
@@ -34,6 +42,7 @@ namespace BaiTapLon
 
         private void quảnLýMônHọcToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseAllChildForms();
             QLMonHoc frm = new QLMonHoc();
             frm.MdiParent = this;
             frm.Show();
@@ -41,6 +50,7 @@ namespace BaiTapLon
 
         private void quảnLýĐiểmDanhToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseAllChildForms();
             QLDiemDanh frm = new QLDiemDanh();
             frm.MdiParent = this;
             frm.Show();
@@ -48,6 +58,7 @@ namespace BaiTapLon
 
         private void quảnLýĐiểmToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseAllChildForms();
             QLDiem frm = new QLDiem();
             frm.MdiParent = this;
             frm.Show();
@@ -55,6 +66,7 @@ namespace BaiTapLon
 
         private void quảnLýLoạiĐiểmToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseAllChildForms();
             QLLoaiDiem frm = new QLLoaiDiem();
             frm.MdiParent = this;
             frm.Show();
@@ -62,6 +74,7 @@ namespace BaiTapLon
 
         private void quảnLýLớpSinhViênToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseAllChildForms();
             QLLopSinhVien frm = new QLLopSinhVien();
             frm.MdiParent = this;
             frm.Show();
@@ -69,6 +82,7 @@ namespace BaiTapLon
 
         private void chuyênNgànhToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseAllChildForms();
             QLChuyenNganh frm = new QLChuyenNganh();
             frm.MdiParent = this;
             frm.Show();
@@ -76,6 +90,7 @@ namespace BaiTapLon
 
         private void họcKỳToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseAllChildForms();
             QLHocKy frm = new QLHocKy();
             frm.MdiParent = this;
             frm.Show();
@@ -83,12 +98,14 @@ namespace BaiTapLon
 
         private void loạiMônToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseAllChildForms();
             QLLoaiMon frm = new QLLoaiMon();
             frm.MdiParent = this;
             frm.Show();
         }
         private void thungfToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseAllChildForms();
             ThungRac frm = new ThungRac();
             frm.MdiParent = this;
             frm.Show();
@@ -96,6 +113,7 @@ namespace BaiTapLon
 
         private void mônHọcThuộcLoạiMônToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseAllChildForms();
             NC4 frm = new NC4();
             frm.MdiParent = this;
             frm.Show();
@@ -103,6 +121,7 @@ namespace BaiTapLon
 
         private void lớpTheoMônHọcToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseAllChildForms();
             NC5 frm = new NC5();
             frm.MdiParent = this;
             frm.Show();
@@ -110,6 +129,7 @@ namespace BaiTapLon
 
         private void lớpTheoHọcKỳToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseAllChildForms();
             NC6 frm = new NC6();
             frm.MdiParent = this;
             frm.Show();
@@ -117,6 +137,7 @@ namespace BaiTapLon
 
         private void danhSáchĐãĐangHọcToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseAllChildForms();
             NC1 frm = new NC1();
             frm.MdiParent = this;
             frm.Show();
@@ -124,6 +145,7 @@ namespace BaiTapLon
 
         private void sinhViênTheoChuyênGànhToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseAllChildForms();
             NC2 frm = new NC2();
             frm.MdiParent = this;
             frm.Show();
@@ -131,6 +153,7 @@ namespace BaiTapLon
 
         private void sinhViênPassTrượtToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseAllChildForms();
             NC7 frm = new NC7();
             frm.MdiParent = this;
             frm.Show();
@@ -138,9 +161,15 @@ namespace BaiTapLon
 
         private void sinhViênPassTrượt8ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseAllChildForms();
             NC8 frm = new NC8();
             frm.MdiParent = this;
             frm.Show();
+        }
+
+        private void QuanLy_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
