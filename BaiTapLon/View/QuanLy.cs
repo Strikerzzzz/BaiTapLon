@@ -1,4 +1,5 @@
 ﻿using BaiTapLon.View.NangCao;
+using BaiTapLon.View.TimKiem;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -170,6 +171,30 @@ namespace BaiTapLon
         private void QuanLy_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void tk1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CloseAllChildForms();
+            TKSinhVien frm = new TKSinhVien();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void tk2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CloseAllChildForms();
+            TKLopHoc frm = new TKLopHoc();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void tk3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CloseAllChildForms();
+            TKMonHoc  frm = new TKMonHoc();
+            frm.MdiParent = this;
+            frm.Show();
         }
     }
 }
