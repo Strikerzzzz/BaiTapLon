@@ -49,6 +49,7 @@ namespace BaiTapLon
             {
                 MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();
+                Clear();
             }
             else
             {
@@ -68,6 +69,7 @@ namespace BaiTapLon
             {
                 MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();
+                Clear();
             }
             else
             {
@@ -77,23 +79,43 @@ namespace BaiTapLon
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            // Kiểm tra nếu ID hợp lệ
             if (int.TryParse(txtID.Text, out int id))
             {
-                if (_controller.DeleteLoaiMon(id, out string message))
+                // Hiển thị hộp thoại xác nhận trước khi xóa
+                DialogResult confirmResult = MessageBox.Show(
+                    "Bạn có chắc chắn muốn xóa loại môn này không?",
+                    "Xác nhận xóa",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                // Nếu người dùng chọn "Yes", thực hiện xóa
+                if (confirmResult == DialogResult.Yes)
                 {
-                    MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadData();
+                    if (_controller.DeleteLoaiMon(id, out string message))
+                    {
+                        MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadData();
+                        Clear();
+                    }
+                    else
+                    {
+                        MessageBox.Show(message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
+                // Nếu người dùng chọn "No", không thực hiện xóa
                 else
                 {
-                    MessageBox.Show(message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Hủy bỏ xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
-                MessageBox.Show("ID không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Chọn hàng cần xoá!!.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
 
         private void dataGridView1_Click(object sender, EventArgs e)
         {
@@ -103,7 +125,14 @@ namespace BaiTapLon
                 txtLoaiMon.Text = dataGridView1.CurrentRow.Cells[1].Value?.ToString();
             }
         }
-    }
-
-        
+        public void Clear()
+        {
+            txtID.Text = "";
+            txtLoaiMon.Text = "";
+        }
+        private void btnNhapLai_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+    }        
 }
