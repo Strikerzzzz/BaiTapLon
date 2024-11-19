@@ -14,9 +14,9 @@ namespace BaiTapLon.View.NangCao
 
         private void NC7_Load(object sender, EventArgs e)
         {
-            comboBox.Items.Add("Theo môn");
+            comboBox.Items.Add("Theo điểm");
             comboBox.Items.Add("Theo điểm danh");
-            comboBox.SelectedIndex = 0; // Đặt mục mặc định
+            comboBox.SelectedIndex = 0; 
             LoadChartData(GetQueryForSelectedComboBox());
         }
 
@@ -27,7 +27,7 @@ namespace BaiTapLon.View.NangCao
 
         private string GetQueryForSelectedComboBox()
         {
-            if (comboBox.SelectedItem.ToString() == "Theo môn")
+            if (comboBox.SelectedItem.ToString() == "Theo điểm")
             {
                 return @"WITH DiemTrungBinh AS (
                             SELECT 
