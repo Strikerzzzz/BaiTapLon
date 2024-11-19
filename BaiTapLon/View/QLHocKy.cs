@@ -43,18 +43,20 @@ namespace BaiTapLon
         {
             cboTenHocKy.Items.AddRange(new string[] { "Chọn tên học kỳ", "Học kỳ 1", "Học kỳ 2", "Học kỳ phụ" });
             cboTenHocKy.SelectedIndex = 0;
-            cboNam.DataSource = new BindingSource(years, null);
+
+            // Thêm "Chọn năm" vào đầu danh sách năm
+            var yearsWithDefault = new List<string> { "Chọn năm" };
+            yearsWithDefault.AddRange(years);
+
+            cboNam.DataSource = new BindingSource(yearsWithDefault, null);
+            cboNam.SelectedIndex = 0;  // Chọn "Chọn năm" làm mặc định
             LoadDatabase();
         }
 
+
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (cboTenHocKy.SelectedIndex == 0)
-            {
-                MessageBox.Show("Vui lòng chọn thông tin về tên học kỳ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
+            if (!ValidateFields()) return;
             int nam = int.Parse(cboNam.Text.Replace("Năm ", ""));
             var hocKy = new HocKy { TenHocKy = cboTenHocKy.Text, Nam = nam };
 
@@ -62,7 +64,8 @@ namespace BaiTapLon
             {
                 MessageBox.Show("Thêm học kỳ thành công!");
                 LoadDatabase();
-                ClearFields();
+                ClearFields(); 
+
             }
             else
             {
@@ -102,6 +105,7 @@ namespace BaiTapLon
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            // Kiểm tra nếu ID học kỳ hợp lệ
             if (string.IsNullOrWhiteSpace(txtID.Text))
             {
                 MessageBox.Show("Vui lòng chọn mã học kỳ cần xóa!!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -112,15 +116,32 @@ namespace BaiTapLon
             {
                 int idHocKy = int.Parse(txtID.Text);
 
-                if (hocKyController.DeleteHocKy(idHocKy))
+                // Hiển thị hộp thoại xác nhận trước khi xóa
+                DialogResult confirmResult = MessageBox.Show(
+                    "Bạn có chắc chắn muốn xóa học kỳ này không?",
+                    "Xác nhận xóa",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                // Nếu người dùng chọn "Yes", thực hiện xóa
+                if (confirmResult == DialogResult.Yes)
                 {
-                    MessageBox.Show("Xóa học kỳ thành công!");
-                    LoadDatabase();
-                    ClearFields();
+                    if (hocKyController.DeleteHocKy(idHocKy))
+                    {
+                        MessageBox.Show("Xóa học kỳ thành công!");
+                        LoadDatabase();
+                        ClearFields();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa học kỳ thất bại.");
+                    }
                 }
+                // Nếu người dùng chọn "No", hủy bỏ hành động xóa
                 else
                 {
-                    MessageBox.Show("Xóa học kỳ thất bại.");
+                    MessageBox.Show("Hủy bỏ xóa học kỳ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (FormatException)
@@ -132,6 +153,7 @@ namespace BaiTapLon
                 MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
             }
         }
+
 
         private void dataGridView1_Click(object sender, EventArgs e)
         {
@@ -158,7 +180,11 @@ namespace BaiTapLon
                 MessageBox.Show("Vui lòng chọn thông tin về tên học kỳ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
+            if (cboNam.SelectedIndex == 0)
+            {
+                MessageBox.Show("Vui lòng chọn thông tin về năm.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             int selectedYear = int.Parse(cboNam.Text.Replace("Năm ", ""));
             if (selectedYear > DateTime.Now.Year)
             {
@@ -166,6 +192,13 @@ namespace BaiTapLon
                 return false;
             }
             return true;
+        }
+
+        private void btnNhapLai_Click(object sender, EventArgs e)
+        {
+            txtID.Text = "";
+            cboTenHocKy.SelectedIndex = 0;
+            cboNam.SelectedIndex= 0;
         }
     }
 }

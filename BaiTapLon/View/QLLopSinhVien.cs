@@ -118,16 +118,34 @@ namespace BaiTapLon
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            // Kiểm tra xem mã lớp học_sinh viên có được chọn không
             if (string.IsNullOrWhiteSpace(txtID.Text))
             {
                 MessageBox.Show("Vui lòng chọn mã lớp học_sinh viên cần xoá!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            bool result = LopSinhVienController.DeleteLopHocSinhVien(Convert.ToInt32(txtID.Text));
-            MessageBox.Show(result ? "Xóa thành công!" : "Xóa thất bại.");
-            LoadLopSinhVienData();
-            ClearFields();
+
+            // Hiển thị hộp thoại xác nhận trước khi xóa
+            DialogResult confirmResult = MessageBox.Show(
+                "Bạn có chắc chắn muốn xóa lớp học_sinh viên này không?",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            // Kiểm tra nếu người dùng chọn Yes
+            if (confirmResult == DialogResult.Yes)
+            {
+                // Thực hiện xóa
+                bool result = LopSinhVienController.DeleteLopHocSinhVien(Convert.ToInt32(txtID.Text));
+                MessageBox.Show(result ? "Xóa thành công!" : "Xóa thất bại.");
+
+                // Tải lại dữ liệu và xóa các trường thông tin
+                LoadLopSinhVienData();
+                ClearFields();
+            }
         }
+
 
         private void dataGridView1_Click(object sender, EventArgs e)
         {
@@ -180,6 +198,11 @@ namespace BaiTapLon
                 return false;
             }
             return true;
+        }
+
+        private void btnNhapLai_Click(object sender, EventArgs e)
+        {
+            ClearFields();
         }
     }
 }
