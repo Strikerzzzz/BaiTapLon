@@ -184,6 +184,24 @@
     <Compile Include="View\ThungRac.Designer.cs">
       <DependentUpon>ThungRac.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\TimKiem\TKLopHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TimKiem\TKLopHoc.Designer.cs">
+      <DependentUpon>TKLopHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TimKiem\TKMonHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TimKiem\TKMonHoc.Designer.cs">
+      <DependentUpon>TKMonHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TimKiem\TKSinhVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TimKiem\TKSinhVien.Designer.cs">
+      <DependentUpon>TKSinhVien.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="View\NangCao\NC1.resx">
       <DependentUpon>NC1.cs</DependentUpon>
     </EmbeddedResource>
@@ -263,5 +281,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
