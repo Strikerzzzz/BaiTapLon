@@ -32,6 +32,12 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.IDDiem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenSinhVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenLoaiDiem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaTriDiem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LanThi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtGiaTriDiem = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
@@ -48,12 +54,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnXoa = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.IDDiem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenSinhVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenLoaiDiem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaTriDiem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LanThi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnNhapLai = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -73,7 +74,7 @@
             // btnSua
             // 
             this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnSua.Location = new System.Drawing.Point(424, 224);
+            this.btnSua.Location = new System.Drawing.Point(267, 225);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(116, 44);
             this.btnSua.TabIndex = 17;
@@ -84,7 +85,7 @@
             // btnThem
             // 
             this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnThem.Location = new System.Drawing.Point(278, 224);
+            this.btnThem.Location = new System.Drawing.Point(129, 224);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(116, 44);
             this.btnThem.TabIndex = 16;
@@ -112,6 +113,54 @@
             this.dataGridView1.Size = new System.Drawing.Size(855, 205);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
+            // 
+            // IDDiem
+            // 
+            this.IDDiem.DataPropertyName = "IDDiem";
+            this.IDDiem.HeaderText = "ID điểm";
+            this.IDDiem.MinimumWidth = 6;
+            this.IDDiem.Name = "IDDiem";
+            this.IDDiem.Width = 125;
+            // 
+            // TenSinhVien
+            // 
+            this.TenSinhVien.DataPropertyName = "TenSinhVien";
+            this.TenSinhVien.HeaderText = "Tên sinh viên";
+            this.TenSinhVien.MinimumWidth = 6;
+            this.TenSinhVien.Name = "TenSinhVien";
+            this.TenSinhVien.Width = 170;
+            // 
+            // TenMon
+            // 
+            this.TenMon.DataPropertyName = "TenMon";
+            this.TenMon.HeaderText = "Tên môn";
+            this.TenMon.MinimumWidth = 6;
+            this.TenMon.Name = "TenMon";
+            this.TenMon.Width = 200;
+            // 
+            // TenLoaiDiem
+            // 
+            this.TenLoaiDiem.DataPropertyName = "TenLoaiDiem";
+            this.TenLoaiDiem.HeaderText = "Tên loại điểm";
+            this.TenLoaiDiem.MinimumWidth = 6;
+            this.TenLoaiDiem.Name = "TenLoaiDiem";
+            this.TenLoaiDiem.Width = 150;
+            // 
+            // GiaTriDiem
+            // 
+            this.GiaTriDiem.DataPropertyName = "GiaTriDiem";
+            this.GiaTriDiem.HeaderText = "Giá trị điểm";
+            this.GiaTriDiem.MinimumWidth = 6;
+            this.GiaTriDiem.Name = "GiaTriDiem";
+            this.GiaTriDiem.Width = 125;
+            // 
+            // LanThi
+            // 
+            this.LanThi.DataPropertyName = "LanThi";
+            this.LanThi.HeaderText = "Lần thi";
+            this.LanThi.MinimumWidth = 6;
+            this.LanThi.Name = "LanThi";
+            this.LanThi.Width = 80;
             // 
             // groupBox2
             // 
@@ -249,7 +298,7 @@
             // btnXoa
             // 
             this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnXoa.Location = new System.Drawing.Point(570, 225);
+            this.btnXoa.Location = new System.Drawing.Point(415, 225);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(116, 44);
             this.btnXoa.TabIndex = 18;
@@ -267,59 +316,23 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "QUẢN LÝ ĐIỂM";
             // 
-            // IDDiem
+            // btnNhapLai
             // 
-            this.IDDiem.DataPropertyName = "IDDiem";
-            this.IDDiem.HeaderText = "ID điểm";
-            this.IDDiem.MinimumWidth = 6;
-            this.IDDiem.Name = "IDDiem";
-            this.IDDiem.Width = 125;
-            // 
-            // TenSinhVien
-            // 
-            this.TenSinhVien.DataPropertyName = "TenSinhVien";
-            this.TenSinhVien.HeaderText = "Tên sinh viên";
-            this.TenSinhVien.MinimumWidth = 6;
-            this.TenSinhVien.Name = "TenSinhVien";
-            this.TenSinhVien.Width = 170;
-            // 
-            // TenMon
-            // 
-            this.TenMon.DataPropertyName = "TenMon";
-            this.TenMon.HeaderText = "Tên môn";
-            this.TenMon.MinimumWidth = 6;
-            this.TenMon.Name = "TenMon";
-            this.TenMon.Width = 200;
-            // 
-            // TenLoaiDiem
-            // 
-            this.TenLoaiDiem.DataPropertyName = "TenLoaiDiem";
-            this.TenLoaiDiem.HeaderText = "Tên loại điểm";
-            this.TenLoaiDiem.MinimumWidth = 6;
-            this.TenLoaiDiem.Name = "TenLoaiDiem";
-            this.TenLoaiDiem.Width = 150;
-            // 
-            // GiaTriDiem
-            // 
-            this.GiaTriDiem.DataPropertyName = "GiaTriDiem";
-            this.GiaTriDiem.HeaderText = "Giá trị điểm";
-            this.GiaTriDiem.MinimumWidth = 6;
-            this.GiaTriDiem.Name = "GiaTriDiem";
-            this.GiaTriDiem.Width = 125;
-            // 
-            // LanThi
-            // 
-            this.LanThi.DataPropertyName = "LanThi";
-            this.LanThi.HeaderText = "Lần thi";
-            this.LanThi.MinimumWidth = 6;
-            this.LanThi.Name = "LanThi";
-            this.LanThi.Width = 80;
+            this.btnNhapLai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnNhapLai.Location = new System.Drawing.Point(565, 225);
+            this.btnNhapLai.Name = "btnNhapLai";
+            this.btnNhapLai.Size = new System.Drawing.Size(116, 44);
+            this.btnNhapLai.TabIndex = 20;
+            this.btnNhapLai.Text = "Nhập lại";
+            this.btnNhapLai.UseVisualStyleBackColor = true;
+            this.btnNhapLai.Click += new System.EventHandler(this.btnNhapLai_Click);
             // 
             // QLDiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(893, 533);
+            this.Controls.Add(this.btnNhapLai);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
@@ -329,6 +342,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Name = "QLDiem";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QLDiem";
             this.Load += new System.EventHandler(this.QLDiem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -368,5 +382,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TenLoaiDiem;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaTriDiem;
         private System.Windows.Forms.DataGridViewTextBoxColumn LanThi;
+        private System.Windows.Forms.Button btnNhapLai;
     }
 }

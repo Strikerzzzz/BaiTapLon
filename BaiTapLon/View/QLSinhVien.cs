@@ -164,11 +164,28 @@ namespace BaiTapLon
                 MessageBox.Show("Vui lòng chọn mã sinh viên cần xoá!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            bool result = SinhVienController.DeleteSinhVien(txtMaSV.Text);
-            MessageBox.Show(result ? "Xóa thành công!" : "Xóa thất bại.");
-            LoadSinhVienData();
-             ClearFields();
+            DialogResult confirmResult = MessageBox.Show(
+                "Bạn có chắc chắn muốn xóa sinh viên này không?",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+            if (confirmResult == DialogResult.Yes)
+            {
+                bool result = SinhVienController.DeleteSinhVien(txtMaSV.Text);
+                MessageBox.Show(result ? "Xóa thành công!" : "Xóa thất bại.");
+                if (result)
+                {
+                    LoadSinhVienData();
+                    ClearFields();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Hủy bỏ xóa sinh viên.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
+
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -284,6 +301,11 @@ namespace BaiTapLon
             {
                 return false;
             }
+        }
+
+        private void btnNhapLai_Click(object sender, EventArgs e)
+        {
+            ClearFields();
         }
     }
 

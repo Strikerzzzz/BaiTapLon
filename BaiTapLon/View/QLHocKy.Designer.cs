@@ -34,6 +34,9 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.IDHocKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenHocKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cboNam = new System.Windows.Forms.ComboBox();
@@ -42,9 +45,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.IDHocKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenHocKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnNhapLai = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -62,7 +63,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(490, 183);
+            this.btnXoa.Location = new System.Drawing.Point(396, 183);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(78, 44);
             this.btnXoa.TabIndex = 16;
@@ -72,7 +73,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(350, 183);
+            this.btnSua.Location = new System.Drawing.Point(284, 183);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(78, 44);
             this.btnSua.TabIndex = 15;
@@ -82,7 +83,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(210, 183);
+            this.btnThem.Location = new System.Drawing.Point(177, 183);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(78, 44);
             this.btnThem.TabIndex = 14;
@@ -117,6 +118,30 @@
             this.dataGridView1.Size = new System.Drawing.Size(674, 219);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
+            // 
+            // IDHocKy
+            // 
+            this.IDHocKy.DataPropertyName = "IDHocKy";
+            this.IDHocKy.HeaderText = "Mã học kỳ";
+            this.IDHocKy.MinimumWidth = 6;
+            this.IDHocKy.Name = "IDHocKy";
+            this.IDHocKy.Width = 125;
+            // 
+            // TenHocKy
+            // 
+            this.TenHocKy.DataPropertyName = "TenHocKy";
+            this.TenHocKy.HeaderText = "Tên Học Kỳ";
+            this.TenHocKy.MinimumWidth = 6;
+            this.TenHocKy.Name = "TenHocKy";
+            this.TenHocKy.Width = 225;
+            // 
+            // Nam
+            // 
+            this.Nam.DataPropertyName = "Nam";
+            this.Nam.HeaderText = "Năm";
+            this.Nam.MinimumWidth = 6;
+            this.Nam.Name = "Nam";
+            this.Nam.Width = 125;
             // 
             // label1
             // 
@@ -194,35 +219,22 @@
             this.label9.TabIndex = 2;
             this.label9.Text = "Năm :";
             // 
-            // IDHocKy
+            // btnNhapLai
             // 
-            this.IDHocKy.DataPropertyName = "IDHocKy";
-            this.IDHocKy.HeaderText = "Mã học kỳ";
-            this.IDHocKy.MinimumWidth = 6;
-            this.IDHocKy.Name = "IDHocKy";
-            this.IDHocKy.Width = 125;
-            // 
-            // TenHocKy
-            // 
-            this.TenHocKy.DataPropertyName = "TenHocKy";
-            this.TenHocKy.HeaderText = "Tên Học Kỳ";
-            this.TenHocKy.MinimumWidth = 6;
-            this.TenHocKy.Name = "TenHocKy";
-            this.TenHocKy.Width = 225;
-            // 
-            // Nam
-            // 
-            this.Nam.DataPropertyName = "Nam";
-            this.Nam.HeaderText = "Năm";
-            this.Nam.MinimumWidth = 6;
-            this.Nam.Name = "Nam";
-            this.Nam.Width = 125;
+            this.btnNhapLai.Location = new System.Drawing.Point(512, 183);
+            this.btnNhapLai.Name = "btnNhapLai";
+            this.btnNhapLai.Size = new System.Drawing.Size(78, 44);
+            this.btnNhapLai.TabIndex = 18;
+            this.btnNhapLai.Text = "Nhập lại";
+            this.btnNhapLai.UseVisualStyleBackColor = true;
+            this.btnNhapLai.Click += new System.EventHandler(this.btnNhapLai_Click);
             // 
             // QLHocKy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(720, 493);
+            this.Controls.Add(this.btnNhapLai);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
@@ -263,5 +275,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IDHocKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenHocKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nam;
+        private System.Windows.Forms.Button btnNhapLai;
     }
 }

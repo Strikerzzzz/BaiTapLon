@@ -45,6 +45,7 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
+            this.btnNhapLai = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -186,7 +187,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(248, 226);
+            this.btnThem.Location = new System.Drawing.Point(139, 225);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(99, 39);
             this.btnThem.TabIndex = 6;
@@ -196,7 +197,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(364, 225);
+            this.btnSua.Location = new System.Drawing.Point(253, 225);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(99, 39);
             this.btnSua.TabIndex = 7;
@@ -206,7 +207,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(480, 226);
+            this.btnXoa.Location = new System.Drawing.Point(367, 225);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(99, 39);
             this.btnXoa.TabIndex = 8;
@@ -216,7 +217,7 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(596, 225);
+            this.btnThoat.Location = new System.Drawing.Point(595, 225);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(99, 39);
             this.btnThoat.TabIndex = 9;
@@ -224,11 +225,22 @@
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
+            // btnNhapLai
+            // 
+            this.btnNhapLai.Location = new System.Drawing.Point(481, 225);
+            this.btnNhapLai.Name = "btnNhapLai";
+            this.btnNhapLai.Size = new System.Drawing.Size(99, 39);
+            this.btnNhapLai.TabIndex = 10;
+            this.btnNhapLai.Text = "Nhập lại";
+            this.btnNhapLai.UseVisualStyleBackColor = true;
+            this.btnNhapLai.Click += new System.EventHandler(this.btnNhapLai_Click);
+            // 
             // QLLopSinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(709, 489);
+            this.Controls.Add(this.btnNhapLai);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
@@ -269,5 +281,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TenSinhVien;
         private System.Windows.Forms.ComboBox cboTenLop;
         private System.Windows.Forms.ComboBox cboTenSV;
+        private System.Windows.Forms.Button btnNhapLai;
     }
 }
