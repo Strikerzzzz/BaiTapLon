@@ -27,6 +27,7 @@ namespace BaiTapLon
         private void QLDiemDanh_Load(object sender, EventArgs e)
         {
             LoadDatabase();
+            cboTT.Items.Add("Chọn trạng thái điểm danh");
             cboTT.Items.Add("Có");
             cboTT.Items.Add("Không");
             cboTT.SelectedIndex = 0;
@@ -83,10 +84,16 @@ namespace BaiTapLon
             bool result = diemDanhController.AddDiemDanh(diemDanh);
             MessageBox.Show(result ? "Thêm điểm danh thành công!" : "Thêm điểm danh thất bại.");
             LoadDatabase();
+            Clear();
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtID.Text))
+            {
+                MessageBox.Show("Vui lòng chọn mã điểm danh cần sửa!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (!ValidateFields()) return;
 
             DiemDanh diemDanh = new DiemDanh
@@ -101,15 +108,48 @@ namespace BaiTapLon
             bool result = diemDanhController.UpdateDiemDanh(diemDanh);
             MessageBox.Show(result ? "Sửa điểm danh thành công!" : "Sửa điểm danh thất bại.");
             LoadDatabase();
+            Clear();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            int id = int.Parse(txtID.Text);
-            bool result = diemDanhController.DeleteDiemDanh(id);
-            MessageBox.Show(result ? "Xóa thành công!" : "Xóa thất bại.");
-            LoadDatabase();
+            if (string.IsNullOrWhiteSpace(txtID.Text))
+            {
+                MessageBox.Show("Vui lòng chọn mã điểm danh cần xoá!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Hiển thị hộp thoại xác nhận trước khi xóa
+            DialogResult confirmResult = MessageBox.Show(
+                "Bạn có chắc chắn muốn xóa điểm danh này không?",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            // Nếu người dùng chọn "Yes", thực hiện xóa
+            if (confirmResult == DialogResult.Yes)
+            {
+                try
+                {
+                    int id = int.Parse(txtID.Text);
+                    bool result = diemDanhController.DeleteDiemDanh(id);
+                    MessageBox.Show(result ? "Xóa thành công!" : "Xóa thất bại.");
+                    LoadDatabase();
+                    Clear();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Đã xảy ra lỗi khi xóa: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            // Nếu người dùng chọn "No", hủy bỏ hành động xóa
+            else
+            {
+                MessageBox.Show("Hủy bỏ xóa điểm danh.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
+
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -129,7 +169,12 @@ namespace BaiTapLon
                 cboTenSV.Focus();
                 return false;
             }
-
+            if (cboTT.SelectedIndex == 0)  // Kiểm tra nếu chọn "Chọn trạng thái điểm danh"
+            {
+                MessageBox.Show("Vui lòng chọn trạng thái.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cboTT.Focus();
+                return false;
+            }
             if (dateTimePickerNgayDD.Value > DateTime.Now)
             {
                 MessageBox.Show("Ngày điểm danh không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -202,8 +247,17 @@ namespace BaiTapLon
                 MessageBox.Show("Lỗi khi hiển thị thông tin điểm danh: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
+        public void Clear()
+        {
+            txtID.Text = string.Empty;
+            cboTenSV.SelectedIndex = 0;
+            cboTT.SelectedIndex = 0;
+            cboTenLop.SelectedIndex = 0;
+            dateTimePickerNgayDD.Value = DateTime.Now;
+        }
+        private void btnNhapLai_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
     }
 }

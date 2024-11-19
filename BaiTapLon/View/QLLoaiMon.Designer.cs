@@ -42,6 +42,7 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
+            this.btnNhapLai = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -154,7 +155,7 @@
             // 
             this.btnThoat.Location = new System.Drawing.Point(606, 204);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(87, 42);
+            this.btnThoat.Size = new System.Drawing.Size(97, 42);
             this.btnThoat.TabIndex = 10;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
@@ -162,9 +163,9 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(487, 204);
+            this.btnXoa.Location = new System.Drawing.Point(378, 204);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(96, 42);
+            this.btnXoa.Size = new System.Drawing.Size(97, 42);
             this.btnXoa.TabIndex = 9;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
@@ -172,7 +173,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(367, 204);
+            this.btnSua.Location = new System.Drawing.Point(263, 204);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(97, 42);
             this.btnSua.TabIndex = 8;
@@ -182,7 +183,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(247, 204);
+            this.btnThem.Location = new System.Drawing.Point(148, 204);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(97, 42);
             this.btnThem.TabIndex = 7;
@@ -190,11 +191,22 @@
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
+            // btnNhapLai
+            // 
+            this.btnNhapLai.Location = new System.Drawing.Point(492, 204);
+            this.btnNhapLai.Name = "btnNhapLai";
+            this.btnNhapLai.Size = new System.Drawing.Size(97, 42);
+            this.btnNhapLai.TabIndex = 11;
+            this.btnNhapLai.Text = "Nhập lại";
+            this.btnNhapLai.UseVisualStyleBackColor = true;
+            this.btnNhapLai.Click += new System.EventHandler(this.btnNhapLai_Click);
+            // 
             // QLLoaiMon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(716, 506);
+            this.Controls.Add(this.btnNhapLai);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
@@ -204,6 +216,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Name = "QLLoaiMon";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QLLoaiMon";
             this.Load += new System.EventHandler(this.QLLoaiMon_Load);
             this.groupBox1.ResumeLayout(false);
@@ -231,5 +244,6 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDLoaiMon;
         private System.Windows.Forms.DataGridViewTextBoxColumn LoaiMon;
+        private System.Windows.Forms.Button btnNhapLai;
     }
 }

@@ -117,11 +117,30 @@ namespace BaiTapLon
                 MessageBox.Show("Vui lòng chọn mã lớp cần xoá!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            string query = "UPDATE LopHoc SET TrangThai = 'Deleted' WHERE MaLop = @MaLop";
-            SqlParameter[] parameters = { new SqlParameter("@MaLop", txtMalop.Text) };
 
-            ExecuteDatabaseCommand(query, parameters, "Xóa lớp học thành công!", "Xóa lớp học thất bại.");
+            // Hiển thị hộp thoại xác nhận trước khi xóa
+            DialogResult confirmResult = MessageBox.Show(
+                "Bạn có chắc chắn muốn xóa lớp học này không?",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            // Nếu người dùng chọn "Yes", thực hiện xóa
+            if (confirmResult == DialogResult.Yes)
+            {
+                string query = "UPDATE LopHoc SET TrangThai = 'Deleted' WHERE MaLop = @MaLop";
+                SqlParameter[] parameters = { new SqlParameter("@MaLop", txtMalop.Text) };
+
+                ExecuteDatabaseCommand(query, parameters, "Xóa lớp học thành công!", "Xóa lớp học thất bại.");
+            }
+            // Nếu người dùng chọn "No", không thực hiện hành động gì
+            else
+            {
+                MessageBox.Show("Hủy bỏ xóa.");
+            }
         }
+
 
         private void ExecuteDatabaseCommand(string query, SqlParameter[] parameters, string successMessage, string failureMessage)
         {
@@ -217,6 +236,19 @@ namespace BaiTapLon
                 return false;
             }
             return true;
+        }
+
+        private void btnNhapLai_Click(object sender, EventArgs e)
+        {
+            txtMalop.Text = string.Empty;
+            txtSinhvienmax.Text = string.Empty;
+            txtTenlop.Text = string.Empty;
+            
+            cboKhoaHoc.SelectedIndex = 0;
+            cboMaHocKy.SelectedIndex = 0;
+            cboMaMon.SelectedIndex = 0;
+           
+            dateTimePickerKetThuc.Value = DateTime.Now;
         }
     }
 }

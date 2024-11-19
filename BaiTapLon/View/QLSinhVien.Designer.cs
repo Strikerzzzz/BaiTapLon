@@ -45,6 +45,7 @@
             this.KhoaHoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenChuyenNganh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cboDiaChi = new System.Windows.Forms.ComboBox();
             this.txtSDT = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.cboMaChuyenNganh = new System.Windows.Forms.ComboBox();
@@ -67,7 +68,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cboDiaChi = new System.Windows.Forms.ComboBox();
+            this.btnNhapLai = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQLSV)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -86,7 +87,7 @@
             // btnXoa
             // 
             this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.Location = new System.Drawing.Point(953, 374);
+            this.btnXoa.Location = new System.Drawing.Point(793, 374);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(113, 39);
             this.btnXoa.TabIndex = 12;
@@ -97,7 +98,7 @@
             // btnSua
             // 
             this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.Location = new System.Drawing.Point(800, 374);
+            this.btnSua.Location = new System.Drawing.Point(628, 374);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(113, 39);
             this.btnSua.TabIndex = 11;
@@ -108,7 +109,7 @@
             // btnThem
             // 
             this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThem.Location = new System.Drawing.Point(647, 374);
+            this.btnThem.Location = new System.Drawing.Point(464, 374);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(113, 39);
             this.btnThem.TabIndex = 10;
@@ -232,6 +233,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnNhapLai);
             this.groupBox1.Controls.Add(this.cboDiaChi);
             this.groupBox1.Controls.Add(this.txtSDT);
             this.groupBox1.Controls.Add(this.btnThoat);
@@ -265,6 +267,15 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin chi tiết";
+            // 
+            // cboDiaChi
+            // 
+            this.cboDiaChi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDiaChi.FormattingEnabled = true;
+            this.cboDiaChi.Location = new System.Drawing.Point(847, 164);
+            this.cboDiaChi.Name = "cboDiaChi";
+            this.cboDiaChi.Size = new System.Drawing.Size(375, 28);
+            this.cboDiaChi.TabIndex = 24;
             // 
             // txtSDT
             // 
@@ -452,14 +463,16 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "QUẢN LÝ SINH VIÊN";
             // 
-            // cboDiaChi
+            // btnNhapLai
             // 
-            this.cboDiaChi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboDiaChi.FormattingEnabled = true;
-            this.cboDiaChi.Location = new System.Drawing.Point(847, 164);
-            this.cboDiaChi.Name = "cboDiaChi";
-            this.cboDiaChi.Size = new System.Drawing.Size(375, 28);
-            this.cboDiaChi.TabIndex = 24;
+            this.btnNhapLai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNhapLai.Location = new System.Drawing.Point(951, 374);
+            this.btnNhapLai.Name = "btnNhapLai";
+            this.btnNhapLai.Size = new System.Drawing.Size(113, 39);
+            this.btnNhapLai.TabIndex = 25;
+            this.btnNhapLai.Text = "Nhập lại";
+            this.btnNhapLai.UseVisualStyleBackColor = true;
+            this.btnNhapLai.Click += new System.EventHandler(this.btnNhapLai_Click);
             // 
             // QLSinhVien
             // 
@@ -525,5 +538,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn KhoaHoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenChuyenNganh;
         private System.Windows.Forms.ComboBox cboDiaChi;
+        private System.Windows.Forms.Button btnNhapLai;
     }
 }

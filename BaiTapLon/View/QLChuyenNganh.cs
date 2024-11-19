@@ -80,14 +80,27 @@ namespace BaiTapLon
         {
             if (string.IsNullOrEmpty(txtMaCN.Text))
             {
-                MessageBox.Show("Vui lòng chọn chuyên ngành cần xóa.");
+                MessageBox.Show("Vui lòng chọn chuyên ngành cần xóa.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            bool result = ChuyenNganhController.DeleteChuyenNganh(txtMaCN.Text);
-            MessageBox.Show(result ? "Xóa chuyên ngành thành công!" : "Xóa chuyên ngành thất bại.");
-            if (result) LoadDatabase();
+            DialogResult confirmResult = MessageBox.Show(
+                "Bạn có chắc chắn muốn xóa chuyên ngành này không?",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+            if (confirmResult == DialogResult.Yes)
+            {
+                bool result = ChuyenNganhController.DeleteChuyenNganh(txtMaCN.Text);
+                MessageBox.Show(result ? "Xóa chuyên ngành thành công!" : "Xóa chuyên ngành thất bại.");
+                if (result) LoadDatabase(); ClearFields();
+            }
+            else
+            {
+                MessageBox.Show("Hủy bỏ xóa chuyên ngành.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
+
 
         private void dataGridView1_Click(object sender, EventArgs e)
         {
@@ -111,6 +124,11 @@ namespace BaiTapLon
         {
             txtMaCN.Clear();
             txtTenCN.Clear();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ClearFields();
         }
     }
 }

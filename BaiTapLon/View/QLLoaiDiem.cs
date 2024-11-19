@@ -49,6 +49,7 @@ namespace BaiTapLon
             {
                 MessageBox.Show(message);
                 LoadData();
+                Clear();
             }
             else
             {
@@ -69,6 +70,7 @@ namespace BaiTapLon
             {
                 MessageBox.Show(message);
                 LoadData();
+                Clear();
             }
             else
             {
@@ -84,6 +86,7 @@ namespace BaiTapLon
                 {
                     MessageBox.Show(message);
                     LoadData();
+                    Clear();
                 }
                 else
                 {
@@ -92,7 +95,7 @@ namespace BaiTapLon
             }
             else
             {
-                MessageBox.Show("ID không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng chọn hàng cần xoá!!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -104,6 +107,16 @@ namespace BaiTapLon
                 txtTenLoaiDiem.Text = dataGridView1.CurrentRow.Cells[1].Value?.ToString();
                 txtTiLe.Text = dataGridView1.CurrentRow.Cells[2].Value?.ToString();
             }
+        }
+        public void Clear()
+        {
+            txtID.Text = "";
+            txtTenLoaiDiem.Text = "";
+            txtTiLe.Text = "";
+        }
+        private void btnNhapLai_Click(object sender, EventArgs e)
+        {
+            Clear();
         }
     }
 }

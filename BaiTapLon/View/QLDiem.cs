@@ -31,25 +31,52 @@ namespace BaiTapLon
         private void LoadComboBoxData()
         {
             DataTable dt;
+
             // Môn học
-            dt = DataBase.GetData("SELECT MaMon, TenMon FROM MonHoc where TrangThai = 'Initialize'");
+            dt = DataBase.GetData("SELECT MaMon, TenMon FROM MonHoc WHERE TrangThai = 'Initialize'");
             _controller.LoadListDB(dt, _controller.dictMH);
-            cboTenMon.DataSource = new BindingSource(_controller.dictMH, null);
+
+            // Tạo danh sách có thứ tự, thêm mục mặc định lên đầu
+            var listMH = new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("0", "Chọn môn học")
+            };
+            listMH.AddRange(_controller.dictMH);
+
+            cboTenMon.DataSource = new BindingSource(listMH, null);
             cboTenMon.DisplayMember = "Value";
             cboTenMon.ValueMember = "Key";
+
             // Loại điểm
-            dt = DataBase.GetData("SELECT IDLoaiDiem, TenLoaiDiem FROM LoaiDiem where TrangThai = 'Initialize'");
+            dt = DataBase.GetData("SELECT IDLoaiDiem, TenLoaiDiem FROM LoaiDiem WHERE TrangThai = 'Initialize'");
             _controller.LoadListDB(dt, _controller.dictLD);
-            cboTenLoaiDiem.DataSource = new BindingSource(_controller.dictLD, null);
+
+            var listLD = new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("0", "Chọn loại điểm")
+            };
+            listLD.AddRange(_controller.dictLD);
+
+            cboTenLoaiDiem.DataSource = new BindingSource(listLD, null);
             cboTenLoaiDiem.DisplayMember = "Value";
             cboTenLoaiDiem.ValueMember = "Key";
+
             // Sinh viên
-            dt = DataBase.GetData("SELECT MaSV, CONCAT(HoDem, ' ', Ten,'-',MaSV) FROM SinhVien where TrangThai = 'Initialize'");
+            dt = DataBase.GetData("SELECT MaSV, CONCAT(HoDem, ' ', Ten, '-', MaSV) AS TenDayDu FROM SinhVien WHERE TrangThai = 'Initialize'");
             _controller.LoadListDB(dt, _controller.dictSV);
-            cboTenSV.DataSource = new BindingSource(_controller.dictSV, null);
+
+            var listSV = new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("0", "Chọn sinh viên")
+            };
+            listSV.AddRange(_controller.dictSV);
+
+            cboTenSV.DataSource = new BindingSource(listSV, null);
             cboTenSV.DisplayMember = "Value";
             cboTenSV.ValueMember = "Key";
         }
+
+
 
         private void LoadDatabase()
         {
@@ -58,6 +85,10 @@ namespace BaiTapLon
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            // Gọi hàm kiểm tra dữ liệu
+            if (!ValidateInput())
+                return;
+
             Diem diem = new Diem
             {
                 MaSV = cboTenSV.SelectedValue?.ToString(),
@@ -71,6 +102,7 @@ namespace BaiTapLon
             {
                 MessageBox.Show("Thêm điểm thành công!");
                 LoadDatabase();
+                Clear();
             }
             else
             {
@@ -80,6 +112,14 @@ namespace BaiTapLon
 
         private void btnSua_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtID.Text))
+            {
+                MessageBox.Show("Vui lòng chọn mã điểm cần sửa!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!ValidateInput())
+                return;
+
             Diem diem = new Diem
             {
                 IDDiem = int.Parse(txtID.Text),
@@ -94,6 +134,7 @@ namespace BaiTapLon
             {
                 MessageBox.Show("Sửa điểm thành công!");
                 LoadDatabase();
+                Clear();
             }
             else
             {
@@ -103,17 +144,49 @@ namespace BaiTapLon
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            int idDiem = int.Parse(txtID.Text);
-            if (_controller.DeleteDiem(idDiem))
+            if (string.IsNullOrWhiteSpace(txtID.Text))
             {
-                MessageBox.Show("Xóa thành công!");
-                LoadDatabase();
+                MessageBox.Show("Vui lòng chọn mã điểm cần xoá!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            // Hiển thị hộp thoại xác nhận trước khi xóa
+            DialogResult confirmResult = MessageBox.Show(
+                "Bạn có chắc chắn muốn xóa điểm này không?",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            // Nếu người dùng chọn "Yes", thực hiện xóa
+            if (confirmResult == DialogResult.Yes)
+            {
+                try
+                {
+                    int idDiem = int.Parse(txtID.Text);
+                    if (_controller.DeleteDiem(idDiem))
+                    {
+                        MessageBox.Show("Xóa thành công!");
+                        LoadDatabase();
+                        Clear();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa thất bại.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            // Nếu người dùng chọn "No", hủy bỏ hành động xóa
             else
             {
-                MessageBox.Show("Xóa thất bại.");
+                MessageBox.Show("Hủy bỏ xóa điểm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
@@ -173,6 +246,58 @@ namespace BaiTapLon
             {
                 MessageBox.Show("Lỗi khi hiển thị thông tin điểm: " + ex.Message);
             }
+        }
+        public void Clear()
+        {
+            txtID.Text = "";
+            cboTenSV.SelectedIndex = 0;
+            cboTenMon.SelectedIndex = 0;
+            cboTenLoaiDiem.SelectedIndex = 0;
+            txtGiaTriDiem.Text = "";
+            txtLanThi.Text = "";
+        }
+        private void btnNhapLai_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+        private bool ValidateInput()
+        {
+            // Kiểm tra ComboBox Sinh viên
+            if (cboTenSV.SelectedValue == null || cboTenSV.SelectedValue.ToString() == "0")
+            {
+                MessageBox.Show("Vui lòng chọn sinh viên.");
+                return false;
+            }
+
+            // Kiểm tra ComboBox Môn học
+            if (cboTenMon.SelectedValue == null || cboTenMon.SelectedValue.ToString() == "0")
+            {
+                MessageBox.Show("Vui lòng chọn môn học.");
+                return false;
+            }
+
+            // Kiểm tra ComboBox Loại điểm
+            if (cboTenLoaiDiem.SelectedValue == null || cboTenLoaiDiem.SelectedValue.ToString() == "0")
+            {
+                MessageBox.Show("Vui lòng chọn loại điểm.");
+                return false;
+            }
+
+            // Kiểm tra giá trị điểm (double)
+            if (string.IsNullOrWhiteSpace(txtGiaTriDiem.Text) || !double.TryParse(txtGiaTriDiem.Text, out double giaTriDiem) || giaTriDiem < 0 || giaTriDiem > 10)
+            {
+                MessageBox.Show("Giá trị điểm không hợp lệ. Vui lòng nhập số từ 0 đến 10.");
+                return false;
+            }
+
+            // Kiểm tra lần thi (int)
+            if (string.IsNullOrWhiteSpace(txtLanThi.Text) || !int.TryParse(txtLanThi.Text, out int lanThi) || lanThi <= 0)
+            {
+                MessageBox.Show("Lần thi không hợp lệ. Vui lòng nhập số nguyên lớn hơn 0.");
+                return false;
+            }
+
+            return true;
         }
 
     }
