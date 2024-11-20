@@ -268,6 +268,12 @@
     <EmbeddedResource Include="View\ThungRac.resx">
       <DependentUpon>ThungRac.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\TimKiem\TKMonHoc.resx">
+      <DependentUpon>TKMonHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TimKiem\TKSinhVien.resx">
+      <DependentUpon>TKSinhVien.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
