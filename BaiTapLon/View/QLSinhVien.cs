@@ -38,7 +38,7 @@ namespace BaiTapLon
                                              cn.TenChuyenNganh, KhoaHoc 
                                              FROM SinhVien sv 
                                              LEFT JOIN ChuyenNganh cn ON cn.MaChuyenNganh = sv.MaChuyenNganh 
-                                             WHERE sv.TrangThai = 'Initialize'");
+                                             WHERE sv.TrangThai = 'Initialize' AND cn.TrangThai = 'Initialize'");
 
             dataGridViewQLSV.DataSource = dtSinhVien;
         }

@@ -21,7 +21,7 @@ namespace BaiTapLon.Controller
                                     "LEFT JOIN MonHoc mh on d.MaMon = mh.MaMon " +
                                     "LEFT JOIN LoaiDiem ld on d.IDLoaiDiem = ld.IDLoaiDiem " +
                                     "LEFT JOIN SinhVien sv on d.MaSV = sv.MaSV " +
-                                    "where d.TrangThai = 'Initialize'");
+                                    "where d.TrangThai = 'Initialize' AND mh.TrangThai = 'Initialize' AND ld.TrangThai = 'Initialize' AND sv.TrangThai = 'Initialize'");
         }
 
         public void LoadListDB(DataTable dt, Dictionary<string, string> dict)

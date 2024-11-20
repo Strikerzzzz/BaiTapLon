@@ -15,7 +15,7 @@ namespace BaiTapLon.Controller
         public static List<MonHoc> GetAllMonHoc()
         {
             List<MonHoc> monHocs = new List<MonHoc>();
-            string query = "SELECT MaMon, TenMon, SoTinChi, lm.LoaiMon, TongSoBuoiHoc FROM MonHoc mh LEFT JOIN LoaiMon lm ON lm.IDLoaiMon = mh.IDLoaiMon WHERE mh.TrangThai = 'Initialize'";
+            string query = "SELECT MaMon, TenMon, SoTinChi, lm.LoaiMon, TongSoBuoiHoc FROM MonHoc mh LEFT JOIN LoaiMon lm ON lm.IDLoaiMon = mh.IDLoaiMon WHERE mh.TrangThai = 'Initialize' AND lm.TrangThai = 'Initialize'";
             DataTable dataTable = DataBase.GetData(query);
 
             foreach (DataRow row in dataTable.Rows)

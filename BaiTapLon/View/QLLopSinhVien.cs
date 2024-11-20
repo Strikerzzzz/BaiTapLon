@@ -32,7 +32,11 @@ namespace BaiTapLon
 
         private void LoadLopSinhVienData()
         {
-            DataTable dtLopSinhVien = DataBase.GetData(@"SELECT lhsv.ID, lh.TenLop, CONCAT(sv.HoDem, ' ', sv.Ten,'-',sv.MaSV) AS TenSinhVien FROM LopHoc_SinhVien lhsv LEFT JOIN LopHoc lh ON lh.MaLop = lhsv.MaLop LEFT JOIN SinhVien sv ON lhsv.MaSV = sv.MaSV WHERE lhsv.TrangThai = 'Initialize'");
+            DataTable dtLopSinhVien = DataBase.GetData(@"SELECT lhsv.ID, lh.TenLop, CONCAT(sv.HoDem, ' ', sv.Ten,'-',sv.MaSV) AS TenSinhVien 
+            FROM LopHoc_SinhVien lhsv 
+            LEFT JOIN LopHoc lh ON lh.MaLop = lhsv.MaLop 
+            LEFT JOIN SinhVien sv ON lhsv.MaSV = sv.MaSV 
+            WHERE lhsv.TrangThai = 'Initialize' AND sv.TrangThai = 'Initialize' AND lh.TrangThai = 'Initialize'");
             dataGridView1.DataSource = dtLopSinhVien;
         }
 
