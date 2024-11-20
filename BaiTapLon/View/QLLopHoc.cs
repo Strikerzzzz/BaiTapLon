@@ -40,7 +40,7 @@ namespace BaiTapLon
             try
             {
                 dataGridView1.DataSource = DataBase.GetData("SELECT lh.MaLop, lh.TenLop, lh.KhoaHoc, lh.SoSVMax, mh.TenMon, CONCAT(hk.TenHocKy, N' - Năm ', hk.Nam) AS hocky, lh.NgayKetThuc " +
-                                                            "FROM LopHoc lh LEFT JOIN MonHoc mh ON lh.MaMon = mh.MaMon LEFT JOIN HocKy hk ON lh.IDHocKy = hk.IDHocKy WHERE lh.TrangThai = 'Initialize'");
+                                                            "FROM LopHoc lh LEFT JOIN MonHoc mh ON lh.MaMon = mh.MaMon LEFT JOIN HocKy hk ON lh.IDHocKy = hk.IDHocKy WHERE lh.TrangThai = 'Initialize' AND mh.TrangThai = 'Initialize' AND hk.TrangThai = 'Initialize'");
             }
             catch (Exception ex)
             {
