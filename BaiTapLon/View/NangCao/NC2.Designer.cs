@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox = new System.Windows.Forms.ComboBox();
             this.btnThoat = new System.Windows.Forms.Button();
@@ -50,7 +50,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(134, 52);
+            this.label2.Location = new System.Drawing.Point(520, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 18);
             this.label2.TabIndex = 30;
@@ -59,7 +59,7 @@
             // comboBox
             // 
             this.comboBox.FormattingEnabled = true;
-            this.comboBox.Location = new System.Drawing.Point(209, 49);
+            this.comboBox.Location = new System.Drawing.Point(595, 49);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(265, 26);
             this.comboBox.TabIndex = 29;
@@ -67,7 +67,7 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(480, 43);
+            this.btnThoat.Location = new System.Drawing.Point(866, 43);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(87, 42);
             this.btnThoat.TabIndex = 28;
@@ -78,7 +78,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgv);
-            this.groupBox2.Location = new System.Drawing.Point(12, 86);
+            this.groupBox2.Location = new System.Drawing.Point(398, 86);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(731, 219);
             this.groupBox2.TabIndex = 27;
@@ -139,7 +139,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(37, 8);
+            this.label1.Location = new System.Drawing.Point(423, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(669, 29);
             this.label1.TabIndex = 26;
@@ -147,17 +147,17 @@
             // 
             // chartChuyenNganh
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartChuyenNganh.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartChuyenNganh.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.chartChuyenNganh.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartChuyenNganh.Legends.Add(legend3);
             this.chartChuyenNganh.Location = new System.Drawing.Point(12, 311);
             this.chartChuyenNganh.Name = "chartChuyenNganh";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartChuyenNganh.Series.Add(series1);
-            this.chartChuyenNganh.Size = new System.Drawing.Size(731, 297);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chartChuyenNganh.Series.Add(series3);
+            this.chartChuyenNganh.Size = new System.Drawing.Size(1441, 297);
             this.chartChuyenNganh.TabIndex = 31;
             this.chartChuyenNganh.Text = "chart1";
             // 
@@ -165,7 +165,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(753, 621);
+            this.ClientSize = new System.Drawing.Size(1465, 621);
             this.Controls.Add(this.chartChuyenNganh);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox);

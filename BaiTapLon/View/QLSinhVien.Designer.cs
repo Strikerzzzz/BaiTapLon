@@ -33,18 +33,8 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.dataGridViewQLSV = new System.Windows.Forms.DataGridView();
-            this.MaSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoDem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CCCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoDienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KhoaHoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenChuyenNganh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnNhapLai = new System.Windows.Forms.Button();
             this.cboDiaChi = new System.Windows.Forms.ComboBox();
             this.txtSDT = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -68,7 +58,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnNhapLai = new System.Windows.Forms.Button();
+            this.MaSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoDem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoDienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KhoaHoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenChuyenNganh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQLSV)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -139,97 +139,9 @@
             this.dataGridViewQLSV.RowHeadersVisible = false;
             this.dataGridViewQLSV.RowHeadersWidth = 51;
             this.dataGridViewQLSV.RowTemplate.Height = 24;
-            this.dataGridViewQLSV.Size = new System.Drawing.Size(1277, 206);
+            this.dataGridViewQLSV.Size = new System.Drawing.Size(1293, 206);
             this.dataGridViewQLSV.TabIndex = 0;
             this.dataGridViewQLSV.Click += new System.EventHandler(this.dataGridViewQLSV_Click);
-            // 
-            // MaSV
-            // 
-            this.MaSV.DataPropertyName = "MaSV";
-            this.MaSV.HeaderText = "Mã";
-            this.MaSV.MinimumWidth = 6;
-            this.MaSV.Name = "MaSV";
-            this.MaSV.Width = 50;
-            // 
-            // HoDem
-            // 
-            this.HoDem.DataPropertyName = "HoDem";
-            this.HoDem.HeaderText = "Họ đệm";
-            this.HoDem.MinimumWidth = 6;
-            this.HoDem.Name = "HoDem";
-            this.HoDem.Width = 125;
-            // 
-            // Ten
-            // 
-            this.Ten.DataPropertyName = "Ten";
-            this.Ten.HeaderText = "Tên";
-            this.Ten.MinimumWidth = 6;
-            this.Ten.Name = "Ten";
-            this.Ten.Width = 80;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Email";
-            this.Email.MinimumWidth = 6;
-            this.Email.Name = "Email";
-            this.Email.Width = 140;
-            // 
-            // CCCD
-            // 
-            this.CCCD.DataPropertyName = "CCCD";
-            this.CCCD.HeaderText = "Căn cước công dân";
-            this.CCCD.MinimumWidth = 6;
-            this.CCCD.Name = "CCCD";
-            this.CCCD.Width = 170;
-            // 
-            // SoDienThoai
-            // 
-            this.SoDienThoai.DataPropertyName = "SoDienThoai";
-            this.SoDienThoai.HeaderText = "Số điện thoại";
-            this.SoDienThoai.MinimumWidth = 6;
-            this.SoDienThoai.Name = "SoDienThoai";
-            this.SoDienThoai.Width = 125;
-            // 
-            // GioiTinh
-            // 
-            this.GioiTinh.DataPropertyName = "GioiTinh";
-            this.GioiTinh.HeaderText = "Giới tính";
-            this.GioiTinh.MinimumWidth = 6;
-            this.GioiTinh.Name = "GioiTinh";
-            this.GioiTinh.Width = 50;
-            // 
-            // NgaySinh
-            // 
-            this.NgaySinh.DataPropertyName = "NgaySinh";
-            this.NgaySinh.HeaderText = "Ngày sinh";
-            this.NgaySinh.MinimumWidth = 6;
-            this.NgaySinh.Name = "NgaySinh";
-            this.NgaySinh.Width = 125;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa chỉ";
-            this.DiaChi.MinimumWidth = 6;
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.Width = 125;
-            // 
-            // KhoaHoc
-            // 
-            this.KhoaHoc.DataPropertyName = "KhoaHoc";
-            this.KhoaHoc.HeaderText = "Khoá học";
-            this.KhoaHoc.MinimumWidth = 6;
-            this.KhoaHoc.Name = "KhoaHoc";
-            this.KhoaHoc.Width = 110;
-            // 
-            // TenChuyenNganh
-            // 
-            this.TenChuyenNganh.DataPropertyName = "TenChuyenNganh";
-            this.TenChuyenNganh.HeaderText = "Tên chuyên ngành";
-            this.TenChuyenNganh.MinimumWidth = 6;
-            this.TenChuyenNganh.Name = "TenChuyenNganh";
-            this.TenChuyenNganh.Width = 125;
             // 
             // groupBox1
             // 
@@ -263,10 +175,21 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(8, 50);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1277, 429);
+            this.groupBox1.Size = new System.Drawing.Size(1293, 429);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin chi tiết";
+            // 
+            // btnNhapLai
+            // 
+            this.btnNhapLai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNhapLai.Location = new System.Drawing.Point(951, 374);
+            this.btnNhapLai.Name = "btnNhapLai";
+            this.btnNhapLai.Size = new System.Drawing.Size(113, 39);
+            this.btnNhapLai.TabIndex = 25;
+            this.btnNhapLai.Text = "Nhập lại";
+            this.btnNhapLai.UseVisualStyleBackColor = true;
+            this.btnNhapLai.Click += new System.EventHandler(this.btnNhapLai_Click);
             // 
             // cboDiaChi
             // 
@@ -463,22 +386,99 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "QUẢN LÝ SINH VIÊN";
             // 
-            // btnNhapLai
+            // MaSV
             // 
-            this.btnNhapLai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNhapLai.Location = new System.Drawing.Point(951, 374);
-            this.btnNhapLai.Name = "btnNhapLai";
-            this.btnNhapLai.Size = new System.Drawing.Size(113, 39);
-            this.btnNhapLai.TabIndex = 25;
-            this.btnNhapLai.Text = "Nhập lại";
-            this.btnNhapLai.UseVisualStyleBackColor = true;
-            this.btnNhapLai.Click += new System.EventHandler(this.btnNhapLai_Click);
+            this.MaSV.DataPropertyName = "MaSV";
+            this.MaSV.HeaderText = "Mã";
+            this.MaSV.MinimumWidth = 6;
+            this.MaSV.Name = "MaSV";
+            this.MaSV.Width = 50;
+            // 
+            // HoDem
+            // 
+            this.HoDem.DataPropertyName = "HoDem";
+            this.HoDem.HeaderText = "Họ đệm";
+            this.HoDem.MinimumWidth = 6;
+            this.HoDem.Name = "HoDem";
+            this.HoDem.Width = 125;
+            // 
+            // Ten
+            // 
+            this.Ten.DataPropertyName = "Ten";
+            this.Ten.HeaderText = "Tên";
+            this.Ten.MinimumWidth = 6;
+            this.Ten.Name = "Ten";
+            this.Ten.Width = 80;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.MinimumWidth = 6;
+            this.Email.Name = "Email";
+            this.Email.Width = 140;
+            // 
+            // CCCD
+            // 
+            this.CCCD.DataPropertyName = "CCCD";
+            this.CCCD.HeaderText = "Căn cước công dân";
+            this.CCCD.MinimumWidth = 6;
+            this.CCCD.Name = "CCCD";
+            this.CCCD.Width = 170;
+            // 
+            // SoDienThoai
+            // 
+            this.SoDienThoai.DataPropertyName = "SoDienThoai";
+            this.SoDienThoai.HeaderText = "Số điện thoại";
+            this.SoDienThoai.MinimumWidth = 6;
+            this.SoDienThoai.Name = "SoDienThoai";
+            this.SoDienThoai.Width = 125;
+            // 
+            // GioiTinh
+            // 
+            this.GioiTinh.DataPropertyName = "GioiTinh";
+            this.GioiTinh.HeaderText = "Giới tính";
+            this.GioiTinh.MinimumWidth = 6;
+            this.GioiTinh.Name = "GioiTinh";
+            this.GioiTinh.Width = 50;
+            // 
+            // NgaySinh
+            // 
+            this.NgaySinh.DataPropertyName = "NgaySinh";
+            this.NgaySinh.HeaderText = "Ngày sinh";
+            this.NgaySinh.MinimumWidth = 6;
+            this.NgaySinh.Name = "NgaySinh";
+            this.NgaySinh.Width = 125;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa chỉ";
+            this.DiaChi.MinimumWidth = 6;
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.Width = 125;
+            // 
+            // KhoaHoc
+            // 
+            this.KhoaHoc.DataPropertyName = "KhoaHoc";
+            this.KhoaHoc.HeaderText = "Khoá học";
+            this.KhoaHoc.MinimumWidth = 6;
+            this.KhoaHoc.Name = "KhoaHoc";
+            this.KhoaHoc.Width = 110;
+            // 
+            // TenChuyenNganh
+            // 
+            this.TenChuyenNganh.DataPropertyName = "TenChuyenNganh";
+            this.TenChuyenNganh.HeaderText = "Tên chuyên ngành";
+            this.TenChuyenNganh.MinimumWidth = 6;
+            this.TenChuyenNganh.Name = "TenChuyenNganh";
+            this.TenChuyenNganh.Width = 175;
             // 
             // QLSinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1297, 718);
+            this.ClientSize = new System.Drawing.Size(1313, 718);
             this.Controls.Add(this.dataGridViewQLSV);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
@@ -526,6 +526,8 @@
         private System.Windows.Forms.ComboBox cboKhoaHoc;
         private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox cboDiaChi;
+        private System.Windows.Forms.Button btnNhapLai;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaSV;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoDem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ten;
@@ -537,7 +539,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn KhoaHoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenChuyenNganh;
-        private System.Windows.Forms.ComboBox cboDiaChi;
-        private System.Windows.Forms.Button btnNhapLai;
     }
 }
