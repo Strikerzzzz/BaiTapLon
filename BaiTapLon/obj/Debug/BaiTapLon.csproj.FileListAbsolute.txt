@@ -58,3 +58,4 @@ F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.Ti
 F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.TimKiem.TKMonHoc.resources
 D:\Study\C#\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.TimKiem.TKMonHoc.resources
 D:\Study\C#\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.TimKiem.TKSinhVien.resources
+D:\Study\C#\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.TimKiem.TKLopHoc.resources
