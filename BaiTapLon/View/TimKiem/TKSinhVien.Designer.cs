@@ -32,10 +32,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewQLSV = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnTK = new System.Windows.Forms.Button();
-            this.txtTK = new System.Windows.Forms.TextBox();
-            this.btnThoat = new System.Windows.Forms.Button();
             this.MaSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoDem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,7 +43,10 @@
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KhoaHoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenChuyenNganh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cboDuLieu = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnTK = new System.Windows.Forms.Button();
+            this.txtTK = new System.Windows.Forms.TextBox();
+            this.btnThoat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQLSV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,7 +71,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(495, 28);
+            this.label1.Location = new System.Drawing.Point(518, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(261, 29);
             this.label1.TabIndex = 4;
@@ -95,49 +94,13 @@
             this.DiaChi,
             this.KhoaHoc,
             this.TenChuyenNganh});
-            this.dataGridViewQLSV.Location = new System.Drawing.Point(9, 247);
+            this.dataGridViewQLSV.Location = new System.Drawing.Point(4, 208);
             this.dataGridViewQLSV.Name = "dataGridViewQLSV";
             this.dataGridViewQLSV.RowHeadersVisible = false;
             this.dataGridViewQLSV.RowHeadersWidth = 51;
             this.dataGridViewQLSV.RowTemplate.Height = 24;
             this.dataGridViewQLSV.Size = new System.Drawing.Size(1277, 206);
             this.dataGridViewQLSV.TabIndex = 7;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(343, 134);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 18);
-            this.label3.TabIndex = 37;
-            this.label3.Text = "Giá trị :";
-            // 
-            // btnTK
-            // 
-            this.btnTK.Location = new System.Drawing.Point(556, 181);
-            this.btnTK.Name = "btnTK";
-            this.btnTK.Size = new System.Drawing.Size(96, 42);
-            this.btnTK.TabIndex = 36;
-            this.btnTK.Text = "Tìm kiếm";
-            this.btnTK.UseVisualStyleBackColor = true;
-            this.btnTK.Click += new System.EventHandler(this.btnTK_Click);
-            // 
-            // txtTK
-            // 
-            this.txtTK.Location = new System.Drawing.Point(433, 128);
-            this.txtTK.Name = "txtTK";
-            this.txtTK.Size = new System.Drawing.Size(219, 24);
-            this.txtTK.TabIndex = 35;
-            // 
-            // btnThoat
-            // 
-            this.btnThoat.Location = new System.Drawing.Point(675, 181);
-            this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(87, 42);
-            this.btnThoat.TabIndex = 34;
-            this.btnThoat.Text = "Thoát";
-            this.btnThoat.UseVisualStyleBackColor = true;
-            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // MaSV
             // 
@@ -227,21 +190,47 @@
             this.TenChuyenNganh.Name = "TenChuyenNganh";
             this.TenChuyenNganh.Width = 170;
             // 
-            // cboDuLieu
+            // label3
             // 
-            this.cboDuLieu.FormattingEnabled = true;
-            this.cboDuLieu.Location = new System.Drawing.Point(675, 131);
-            this.cboDuLieu.Name = "cboDuLieu";
-            this.cboDuLieu.Size = new System.Drawing.Size(189, 26);
-            this.cboDuLieu.TabIndex = 38;
-            this.cboDuLieu.SelectedIndexChanged += new System.EventHandler(this.cboDuLieu_SelectedIndexChanged_1);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(343, 123);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 18);
+            this.label3.TabIndex = 37;
+            this.label3.Text = "Giá trị :";
+            // 
+            // btnTK
+            // 
+            this.btnTK.Location = new System.Drawing.Point(521, 160);
+            this.btnTK.Name = "btnTK";
+            this.btnTK.Size = new System.Drawing.Size(96, 42);
+            this.btnTK.TabIndex = 36;
+            this.btnTK.Text = "Tìm kiếm";
+            this.btnTK.UseVisualStyleBackColor = true;
+            this.btnTK.Click += new System.EventHandler(this.btnTK_Click);
+            // 
+            // txtTK
+            // 
+            this.txtTK.Location = new System.Drawing.Point(433, 117);
+            this.txtTK.Name = "txtTK";
+            this.txtTK.Size = new System.Drawing.Size(431, 24);
+            this.txtTK.TabIndex = 35;
+            // 
+            // btnThoat
+            // 
+            this.btnThoat.Location = new System.Drawing.Point(640, 160);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(87, 42);
+            this.btnThoat.TabIndex = 34;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // TKSinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1298, 468);
-            this.Controls.Add(this.cboDuLieu);
+            this.ClientSize = new System.Drawing.Size(1286, 431);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnTK);
             this.Controls.Add(this.txtTK);
@@ -282,6 +271,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn KhoaHoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenChuyenNganh;
-        private System.Windows.Forms.ComboBox cboDuLieu;
     }
 }
