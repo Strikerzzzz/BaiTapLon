@@ -184,11 +184,53 @@
     <Compile Include="View\ThungRac.Designer.cs">
       <DependentUpon>ThungRac.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\TimKiem\TKChuyenNganh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TimKiem\TKChuyenNganh.Designer.cs">
+      <DependentUpon>TKChuyenNganh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TimKiem\TKDiem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TimKiem\TKDiem.Designer.cs">
+      <DependentUpon>TKDiem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TimKiem\TKDiemDanh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TimKiem\TKDiemDanh.Designer.cs">
+      <DependentUpon>TKDiemDanh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TimKiem\TKHocKy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TimKiem\TKHocKy.Designer.cs">
+      <DependentUpon>TKHocKy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TimKiem\TKLoaiDiem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TimKiem\TKLoaiDiem.Designer.cs">
+      <DependentUpon>TKLoaiDiem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TimKiem\TKLoaiMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TimKiem\TKLoaiMon.Designer.cs">
+      <DependentUpon>TKLoaiMon.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\TimKiem\TKLopHoc.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\TimKiem\TKLopHoc.Designer.cs">
       <DependentUpon>TKLopHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TimKiem\TKLopHocSinhVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TimKiem\TKLopHocSinhVien.Designer.cs">
+      <DependentUpon>TKLopHocSinhVien.cs</DependentUpon>
     </Compile>
     <Compile Include="View\TimKiem\TKMonHoc.cs">
       <SubType>Form</SubType>

@@ -42,7 +42,7 @@ namespace BaiTapLon.View.NangCao
                             INNER JOIN 
                                 MonHoc mh ON d.MaMon = mh.MaMon
                             WHERE 
-                                d.TrangThai = 'Initialize'
+                                d.TrangThai = 'Initialize' AND ld.TrangThai = 'Initialize' AND mh.TrangThai = 'Initialize'
                             GROUP BY 
                                 d.MaSV, d.MaMon, mh.TenMon
                         ),
@@ -85,11 +85,15 @@ namespace BaiTapLon.View.NangCao
                                 COUNT(*) AS TongSoBuoi
                             FROM 
                                 DiemDanh dd
+                            WHERE 
+                                dd.TrangThai = 'Initialize'
                             GROUP BY 
                                 dd.MaLop, dd.MaSV
                         ) AS ThongKeDiemDanh
                         JOIN 
                             LopHoc lh ON ThongKeDiemDanh.MaLop = lh.MaLop
+                        WHERE 
+                            lh.TrangThai = 'Initialize'
                         GROUP BY 
                             lh.TenLop;";
             }
