@@ -110,6 +110,12 @@
     <Compile Include="View\NangCao\NC8.Designer.cs">
       <DependentUpon>NC8.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\NangCao\NC9.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\NangCao\NC9.Designer.cs">
+      <DependentUpon>NC9.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\QLChuyenNganh.cs">
       <SubType>Form</SubType>
     </Compile>
