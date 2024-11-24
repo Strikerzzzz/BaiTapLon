@@ -20,6 +20,7 @@ namespace BaiTapLon.View.NangCao
 
         private void NC8_Load(object sender, EventArgs e)
         {
+            //load
             comboBox.Items.Add("Theo môn");
             comboBox.Items.Add("Theo kỳ");
             comboBox.Items.Add("Theo ngành");
