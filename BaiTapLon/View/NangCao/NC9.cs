@@ -76,13 +76,14 @@ namespace BaiTapLon.View.NangCao
                 Console.WriteLine("Không có học kỳ hợp lệ được chọn.");
             }
         }
+      
         private void LoadChiTietSinhVien(int maSinhVien)
         {
             string query = @"
                             SELECT 
                                 mh.MaMon, 
                                 mh.TenMon, 
-                                lm.LoaiMon,
+                                
                                 -- Tính điểm thường kỳ
                                 ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
                                         FROM Diem d
@@ -101,38 +102,530 @@ namespace BaiTapLon.View.NangCao
                                         AND ld.TenLoaiDiem LIKE '%Thi%'
                                         AND d.TrangThai = 'Initialize'
                                         AND ld.TrangThai = 'Initialize'), 0) AS DiemCuoiKy,
+                                (
+                                    (
+                                        -- Điểm thường kỳ (40%)
+                                        ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                                                FROM Diem d
+                                                JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                WHERE d.MaSV = @MaSV 
+                                                AND d.MaMon = mh.MaMon
+                                                AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                                AND d.TrangThai = 'Initialize'
+                                                AND ld.TrangThai = 'Initialize'), 0) * 0.4
+                                    ) +
+                                    (
+                                        -- Điểm cuối kỳ (60%)
+                                        ISNULL((SELECT MAX(d.GiaTriDiem)
+                                                FROM Diem d
+                                                JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                WHERE d.MaSV = @MaSV 
+                                                AND d.MaMon = mh.MaMon
+                                                AND ld.TenLoaiDiem LIKE '%Thi%'
+                                                AND d.TrangThai = 'Initialize'
+                                                AND ld.TrangThai = 'Initialize'), 0) * 0.6
+                                    )
+                                ) AS DiemTrungBinh,
+
+                                 -- Điểm trung bình hệ 4
+                                CASE 
+                                    WHEN (
                                         (
-                                            (
-                                                -- Điểm thường kỳ (40%)
-                                                ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
-                                                        FROM Diem d
-                                                        JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
-                                                        WHERE d.MaSV = @MaSV 
-                                                        AND d.MaMon = mh.MaMon
-                                                        AND ld.TenLoaiDiem NOT LIKE '%Thi%'
-                                                        AND d.TrangThai = 'Initialize'
-                                                        AND ld.TrangThai = 'Initialize'), 0) * 0.4
-                                            ) +
-                                            (
-                                                -- Điểm cuối kỳ (60%)
-                                                ISNULL((SELECT MAX(d.GiaTriDiem)
-                                                        FROM Diem d
-                                                        JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
-                                                        WHERE d.MaSV = @MaSV 
-                                                        AND d.MaMon = mh.MaMon
-                                                        AND ld.TenLoaiDiem LIKE '%Thi%'
-                                                        AND d.TrangThai = 'Initialize'
-                                                        AND ld.TrangThai = 'Initialize'), 0) * 0.6
-                                            )
-                                        ) AS DiemTrungBinh
-                                    FROM 
-                                        MonHoc mh
-                                    JOIN 
-                                        LoaiMon lm ON mh.IDLoaiMon = lm.IDLoaiMon
-                                    WHERE 
-                                        mh.TrangThai = 'Initialize'
-                                        AND lm.TrangThai = 'Initialize'
-                                        -- Bỏ qua các môn có ĐiểmTrungBình = 0
+                                            ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.4
+                                        ) +
+                                        (
+                                            ISNULL((SELECT MAX(d.GiaTriDiem)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.6
+                                        )
+                                    ) >= 8.5 THEN 4.0
+                                    WHEN (
+                                        (
+                                            ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.4
+                                        ) +
+                                        (
+                                            ISNULL((SELECT MAX(d.GiaTriDiem)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.6
+                                        )
+                                    ) BETWEEN 8.0 AND 8.4 THEN 3.5
+                                    WHEN (
+                                        (
+                                            ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.4
+                                        ) +
+                                        (
+                                            ISNULL((SELECT MAX(d.GiaTriDiem)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.6
+                                        )
+                                    ) BETWEEN 7.0 AND 7.9 THEN 3.0
+                                    WHEN (
+                                        (
+                                            ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.4
+                                        ) +
+                                        (
+                                            ISNULL((SELECT MAX(d.GiaTriDiem)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.6
+                                        )
+                                    ) BETWEEN 6.5 AND 6.9 THEN 2.5
+                                    WHEN (
+                                        (
+                                            ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.4
+                                        ) +
+                                        (
+                                            ISNULL((SELECT MAX(d.GiaTriDiem)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.6
+                                        )
+                                    ) BETWEEN 5.5 AND 6.4 THEN 2.0
+                                    WHEN (
+                                        (
+                                            ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.4
+                                        ) +
+                                        (
+                                            ISNULL((SELECT MAX(d.GiaTriDiem)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.6
+                                        )
+                                    ) BETWEEN 5 AND 5.4 THEN 1.5
+                                    WHEN (
+                                        (
+                                            ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.4
+                                        ) +
+                                        (
+                                            ISNULL((SELECT MAX(d.GiaTriDiem)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.6
+                                        )
+                                    ) BETWEEN 4.0 AND 4.9 THEN 1.0
+                                    ELSE 0.0
+                                END AS DiemHe4,
+
+
+                                -- Điểm chữ
+                                CASE 
+                                    WHEN (
+                                        (
+                                            ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.4
+                                        ) +
+                                        (
+                                            ISNULL((SELECT MAX(d.GiaTriDiem)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.6
+                                        )
+                                    ) >= 8.5 THEN 'A'
+                                    WHEN (
+                                        (
+                                            ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.4
+                                        ) +
+                                        (
+                                            ISNULL((SELECT MAX(d.GiaTriDiem)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.6
+                                        )
+                                    ) BETWEEN 8.0 AND 8.4 THEN 'B+'
+                                    WHEN (
+                                        (
+                                            ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.4
+                                        ) +
+                                        (
+                                            ISNULL((SELECT MAX(d.GiaTriDiem)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.6
+                                        )
+                                    ) BETWEEN 7.0 AND 7.9 THEN 'B'
+                                    WHEN (
+                                        (
+                                            ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.4
+                                        ) +
+                                        (
+                                            ISNULL((SELECT MAX(d.GiaTriDiem)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.6
+                                        )
+                                    ) BETWEEN 6.5 AND 6.9 THEN 'C+'
+                                    WHEN (
+                                        (
+                                            ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.4
+                                        ) +
+                                        (
+                                            ISNULL((SELECT MAX(d.GiaTriDiem)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.6
+                                        )
+                                    ) BETWEEN 5.5 AND 6.4 THEN 'C'
+                                    WHEN (
+                                        (
+                                            ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.4
+                                        ) +
+                                        (
+                                            ISNULL((SELECT MAX(d.GiaTriDiem)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.6
+                                        )
+                                    ) BETWEEN 5 AND 5.4 THEN 'D+'
+                                    WHEN (
+                                        (
+                                            ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.4
+                                        ) +
+                                        (
+                                            ISNULL((SELECT MAX(d.GiaTriDiem)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.6
+                                        )
+                                    ) BETWEEN 4.0 AND 4.9 THEN 'D'
+                                    ELSE 'F'
+                                END AS DiemChu,
+                               -- Xếp loại
+                                CASE 
+                                    WHEN (
+                                        (
+                                            -- Điểm thường kỳ (40%)
+                                            ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.4
+                                        ) +
+                                        (
+                                            -- Điểm cuối kỳ (60%)
+                                            ISNULL((SELECT MAX(d.GiaTriDiem)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.6
+                                        )
+                                    ) >= 8.5 THEN N'Giỏi'
+                                    WHEN (
+                                        (
+                                            -- Điểm thường kỳ (40%)
+                                            ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.4
+                                        ) +
+                                        (
+                                            -- Điểm cuối kỳ (60%)
+                                            ISNULL((SELECT MAX(d.GiaTriDiem)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.6
+                                        )
+                                    ) BETWEEN 8.0 AND 8.4 THEN N'Khá Giỏi'
+                                    WHEN (
+                                        (
+                                            -- Điểm thường kỳ (40%)
+                                            ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.4
+                                        ) +
+                                        (
+                                            -- Điểm cuối kỳ (60%)
+                                            ISNULL((SELECT MAX(d.GiaTriDiem)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.6
+                                        )
+                                    ) BETWEEN 7.0 AND 7.9 THEN N'Khá'
+                                    WHEN (
+                                        (
+                                            -- Điểm thường kỳ (40%)
+                                            ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.4
+                                        ) +
+                                        (
+                                            -- Điểm cuối kỳ (60%)
+                                            ISNULL((SELECT MAX(d.GiaTriDiem)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.6
+                                        )
+                                    ) BETWEEN 6.5 AND 6.9 THEN N'Trung Bình Khá'
+                                    WHEN (
+                                        (
+                                            -- Điểm thường kỳ (40%)
+                                            ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.4
+                                        ) +
+                                        (
+                                            -- Điểm cuối kỳ (60%)
+                                            ISNULL((SELECT MAX(d.GiaTriDiem)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.6
+                                        )
+                                    ) BETWEEN 5.5 AND 6.4 THEN N'Trung Bình'
+                                    WHEN (
+                                        (
+                                            -- Điểm thường kỳ (40%)
+                                            ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.4
+                                        ) +
+                                        (
+                                            -- Điểm cuối kỳ (60%)
+                                            ISNULL((SELECT MAX(d.GiaTriDiem)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.6
+                                        )
+                                    ) BETWEEN 5.0 AND 5.4 THEN N'Trung bình Yếu'
+                                    WHEN (
+                                        (
+                                            -- Điểm thường kỳ (40%)
+                                            ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.4
+                                        ) +
+                                        (
+                                            -- Điểm cuối kỳ (60%)
+                                            ISNULL((SELECT MAX(d.GiaTriDiem)
+                                                    FROM Diem d
+                                                    JOIN LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                                                    WHERE d.MaSV = @MaSV 
+                                                    AND d.MaMon = mh.MaMon
+                                                    AND ld.TenLoaiDiem LIKE '%Thi%'
+                                                    AND d.TrangThai = 'Initialize'
+                                                    AND ld.TrangThai = 'Initialize'), 0) * 0.6
+                                        )
+                                    ) BETWEEN 4.0 AND 4.9 THEN N'Yếu'
+                                    ELSE N'Kém (Không Đạt)'
+                                END AS XepLoai
+
+                            FROM 
+                                MonHoc mh
+                            JOIN 
+                                LoaiMon lm ON mh.IDLoaiMon = lm.IDLoaiMon
+                            WHERE 
+                                mh.TrangThai = 'Initialize'
+                                AND lm.TrangThai = 'Initialize'
+                                -- Bỏ qua các môn có ĐiểmTrungBình = 0
                                         AND (
                                             (
                                                 ISNULL((SELECT SUM(d.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
@@ -155,15 +648,15 @@ namespace BaiTapLon.View.NangCao
                                                         AND ld.TrangThai = 'Initialize'), 0) * 0.6
                                             )
                                         ) > 0
-                                    ORDER BY 
-                                        mh.TenMon, lm.LoaiMon;";
+                            ORDER BY 
+                                mh.TenMon, lm.LoaiMon;";
 
             SqlParameter[] parameters = { new SqlParameter("@MaSV", maSinhVien) };
             DataTable dtChiTiet = DataBase.GetData(query, parameters);
 
             if (dtChiTiet != null && dtChiTiet.Rows.Count > 0)
             {
-                dataGridView1.DataSource = null;
+                //dataGridView1.DataSource = null;
                 dataGridView1.DataSource = dtChiTiet;
             }
             else

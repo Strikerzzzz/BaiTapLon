@@ -280,6 +280,9 @@
     <EmbeddedResource Include="View\NangCao\NC8.resx">
       <DependentUpon>NC8.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\NangCao\NC9.resx">
+      <DependentUpon>NC9.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\QLChuyenNganh.resx">
       <DependentUpon>QLChuyenNganh.cs</DependentUpon>
     </EmbeddedResource>

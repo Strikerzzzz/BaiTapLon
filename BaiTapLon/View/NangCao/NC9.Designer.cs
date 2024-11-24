@@ -33,6 +33,14 @@
             this.cboSinhVien = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.MaMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiemThuongKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiemCuoiKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiemTrungBinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiemHe4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiemChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.XepLoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,18 +84,91 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaMon,
+            this.TenMon,
+            this.DiemThuongKy,
+            this.DiemCuoiKy,
+            this.DiemTrungBinh,
+            this.DiemHe4,
+            this.DiemChu,
+            this.XepLoai});
             this.dataGridView1.Location = new System.Drawing.Point(12, 238);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1279, 441);
+            this.dataGridView1.Size = new System.Drawing.Size(1254, 314);
             this.dataGridView1.TabIndex = 4;
+            // 
+            // MaMon
+            // 
+            this.MaMon.DataPropertyName = "MaMon";
+            this.MaMon.HeaderText = "Mã Môn";
+            this.MaMon.MinimumWidth = 6;
+            this.MaMon.Name = "MaMon";
+            this.MaMon.Width = 125;
+            // 
+            // TenMon
+            // 
+            this.TenMon.DataPropertyName = "TenMon";
+            this.TenMon.HeaderText = "Tên Môn";
+            this.TenMon.MinimumWidth = 6;
+            this.TenMon.Name = "TenMon";
+            this.TenMon.Width = 125;
+            // 
+            // DiemThuongKy
+            // 
+            this.DiemThuongKy.DataPropertyName = "DiemThuongKy";
+            this.DiemThuongKy.HeaderText = "Điểm thường kỳ";
+            this.DiemThuongKy.MinimumWidth = 6;
+            this.DiemThuongKy.Name = "DiemThuongKy";
+            this.DiemThuongKy.Width = 150;
+            // 
+            // DiemCuoiKy
+            // 
+            this.DiemCuoiKy.DataPropertyName = "DiemCuoiKy";
+            this.DiemCuoiKy.HeaderText = "Điểm Cuối Kỳ";
+            this.DiemCuoiKy.MinimumWidth = 6;
+            this.DiemCuoiKy.Name = "DiemCuoiKy";
+            this.DiemCuoiKy.Width = 150;
+            // 
+            // DiemTrungBinh
+            // 
+            this.DiemTrungBinh.DataPropertyName = "DiemTrungBinh";
+            this.DiemTrungBinh.HeaderText = "Điểm Trung Bình Học Kỳ (Hệ 10)";
+            this.DiemTrungBinh.MinimumWidth = 6;
+            this.DiemTrungBinh.Name = "DiemTrungBinh";
+            this.DiemTrungBinh.Width = 270;
+            // 
+            // DiemHe4
+            // 
+            this.DiemHe4.DataPropertyName = "DiemHe4";
+            this.DiemHe4.HeaderText = "Điểm Hệ 4";
+            this.DiemHe4.MinimumWidth = 6;
+            this.DiemHe4.Name = "DiemHe4";
+            this.DiemHe4.Width = 125;
+            // 
+            // DiemChu
+            // 
+            this.DiemChu.DataPropertyName = "DiemChu";
+            this.DiemChu.HeaderText = "Điểm Chữ";
+            this.DiemChu.MinimumWidth = 6;
+            this.DiemChu.Name = "DiemChu";
+            this.DiemChu.Width = 125;
+            // 
+            // XepLoai
+            // 
+            this.XepLoai.DataPropertyName = "XepLoai";
+            this.XepLoai.HeaderText = "Xếp Loại";
+            this.XepLoai.MinimumWidth = 6;
+            this.XepLoai.Name = "XepLoai";
+            this.XepLoai.Width = 125;
             // 
             // NC9
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1303, 705);
+            this.ClientSize = new System.Drawing.Size(1271, 573);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cboSinhVien);
@@ -111,5 +192,13 @@
         private System.Windows.Forms.ComboBox cboSinhVien;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaMon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenMon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiemThuongKy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiemCuoiKy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiemTrungBinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiemHe4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiemChu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn XepLoai;
     }
 }
