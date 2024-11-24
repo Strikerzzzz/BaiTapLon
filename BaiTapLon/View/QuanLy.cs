@@ -196,5 +196,15 @@ namespace BaiTapLon
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void danhSáchĐiểmTheoHọcKỳCủaSinhViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CloseAllChildForms();
+            NC9 frm = new NC9();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+
     }
 }
