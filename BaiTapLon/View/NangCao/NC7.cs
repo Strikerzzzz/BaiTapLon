@@ -16,7 +16,7 @@ namespace BaiTapLon.View.NangCao
         {
             comboBox.Items.Add("Theo điểm");
             comboBox.Items.Add("Theo điểm danh");
-            comboBox.SelectedIndex = 0; 
+            comboBox.SelectedIndex = 0;
             LoadChartData(GetQueryForSelectedComboBox());
         }
 
@@ -126,9 +126,7 @@ namespace BaiTapLon.View.NangCao
                 GROUP BY 
                     TenMon
                 ORDER BY 
-                    TenMon;
-
-                        ";
+                    TenMon;";
             }
             else
             {
