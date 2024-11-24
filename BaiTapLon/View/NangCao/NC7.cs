@@ -16,7 +16,7 @@ namespace BaiTapLon.View.NangCao
         {
             comboBox.Items.Add("Theo điểm");
             comboBox.Items.Add("Theo điểm danh");
-            comboBox.SelectedIndex = 0; 
+            comboBox.SelectedIndex = 0;
             LoadChartData(GetQueryForSelectedComboBox());
         }
 
@@ -29,47 +29,104 @@ namespace BaiTapLon.View.NangCao
         {
             if (comboBox.SelectedItem.ToString() == "Theo điểm")
             {
-                return @"WITH DiemTrungBinh AS (
-                            SELECT 
-                                d.MaSV,
-                                d.MaMon,
-                                mh.TenMon,
-                                SUM(d.GiaTriDiem * (ld.TiLe / 100)) AS DiemTrungBinh
-                            FROM 
-                                Diem d
-                            INNER JOIN 
-                                LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
-                            INNER JOIN 
-                                MonHoc mh ON d.MaMon = mh.MaMon
-                            WHERE 
-                                d.TrangThai = 'Initialize' AND ld.TrangThai = 'Initialize' AND mh.TrangThai = 'Initialize'
-                            GROUP BY 
-                                d.MaSV, d.MaMon, mh.TenMon
-                        ),
-                        KetQua AS (
-                            SELECT 
-                                TenMon,
-                                CASE 
-                                    WHEN DiemTrungBinh >= 4.0 THEN 1
-                                    ELSE 0
-                                END AS Pass,
-                                CASE 
-                                    WHEN DiemTrungBinh < 4.0 THEN 1
-                                    ELSE 0
-                                END AS Fail
-                            FROM 
-                                DiemTrungBinh
-                        )
-                        SELECT 
-                            TenMon,
-                            SUM(Pass) AS SoLuongPass,
-                            SUM(Fail) AS SoLuongFail
-                        FROM 
-                            KetQua
-                        GROUP BY 
-                            TenMon
-                        ORDER BY 
-                            TenMon;";
+                return @"WITH DiemDieuChinh AS (
+                    SELECT 
+                        d.MaSV,
+                        d.MaMon,
+                        mh.TenMon,
+                        ld.TenLoaiDiem,
+                        d.GiaTriDiem,
+                        ld.TiLe,
+                        CASE 
+                            WHEN ld.TenLoaiDiem LIKE '%thi%' THEN 1 ELSE 0
+                        END AS IsDiemThi
+                    FROM 
+                        Diem d
+                    INNER JOIN 
+                        LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
+                    INNER JOIN 
+                        MonHoc mh ON d.MaMon = mh.MaMon
+                    WHERE 
+                        d.TrangThai = 'Initialize' 
+                        AND ld.TrangThai = 'Initialize' 
+                        AND mh.TrangThai = 'Initialize'
+                ),
+                DiemThiMax AS (
+                    SELECT 
+                        MaSV,
+                        MaMon,
+                        MAX(GiaTriDiem) AS GiaTriDiemMax
+                    FROM 
+                        DiemDieuChinh
+                    WHERE 
+                        IsDiemThi = 1
+                    GROUP BY 
+                        MaSV, MaMon
+                ),
+                DiemDaDieuChinh AS (
+                    SELECT 
+                        dd.MaSV,
+                        dd.MaMon,
+                        dd.TenMon,
+                        dd.TenLoaiDiem,
+                        CASE 
+                            WHEN dd.IsDiemThi = 1 THEN dtm.GiaTriDiemMax
+                            ELSE dd.GiaTriDiem
+                        END AS GiaTriDiem,
+                        dd.TiLe
+                    FROM 
+                        DiemDieuChinh dd
+                    LEFT JOIN 
+                        DiemThiMax dtm ON dd.MaSV = dtm.MaSV AND dd.MaMon = dtm.MaMon
+                ),
+                TieuChuanTiLe AS (
+                    SELECT 
+                        MaSV,
+                        MaMon,
+                        TenMon,
+                        SUM(TiLe) AS TongTiLe
+                    FROM 
+                        DiemDaDieuChinh
+                    GROUP BY 
+                        MaSV, MaMon, TenMon
+                ),
+                DiemTrungBinh AS (
+                    SELECT 
+                        ddd.MaSV,
+                        ddd.MaMon,
+                        ddd.TenMon,
+                        SUM(ddd.GiaTriDiem * (ddd.TiLe / tc.TongTiLe)) AS DiemTrungBinh
+                    FROM 
+                        DiemDaDieuChinh ddd
+                    INNER JOIN 
+                        TieuChuanTiLe tc ON ddd.MaSV = tc.MaSV AND ddd.MaMon = tc.MaMon
+                    GROUP BY 
+                        ddd.MaSV, ddd.MaMon, ddd.TenMon
+                ),
+                KetQua AS (
+                    SELECT 
+                        TenMon,
+                        CASE 
+                            WHEN DiemTrungBinh >= 4.0 THEN 1
+                            ELSE 0
+                        END AS Pass,
+                        CASE 
+                            WHEN DiemTrungBinh < 4.0 THEN 1
+                            ELSE 0
+                        END AS Fail
+                    FROM 
+                        DiemTrungBinh
+                )
+                SELECT 
+                    TenMon,
+                    SUM(Pass) AS SoLuongPass,
+                    SUM(Fail) AS SoLuongFail
+                FROM 
+                    KetQua
+                GROUP BY 
+                    TenMon
+                ORDER BY 
+                    TenMon;";
             }
             else
             {
