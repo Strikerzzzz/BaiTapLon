@@ -61,3 +61,10 @@ D:\Study\C#\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.TimKiem.TKSinhVien.reso
 D:\Study\C#\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.TimKiem.TKLopHoc.resources
 F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.TimKiem.TKLopHoc.resources
 F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.NangCao.NC9.resources
+F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.TimKiem.TKChuyenNganh.resources
+F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.TimKiem.TKDiem.resources
+F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.TimKiem.TKDiemDanh.resources
+F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.TimKiem.TKHocKy.resources
+F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.TimKiem.TKLoaiDiem.resources
+F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.TimKiem.TKLoaiMon.resources
+F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.TimKiem.TKLopHocSinhVien.resources
