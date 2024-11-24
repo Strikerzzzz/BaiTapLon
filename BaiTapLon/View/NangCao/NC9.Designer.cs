@@ -164,6 +164,9 @@
             this.XepLoai.Name = "XepLoai";
             this.XepLoai.Width = 125;
             // 
+            this.dataGridView1.Size = new System.Drawing.Size(1279, 441);
+            this.dataGridView1.TabIndex = 4;
+            // 
             // NC9
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
