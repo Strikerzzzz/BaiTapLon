@@ -38,7 +38,7 @@ namespace BaiTapLon.View.NangCao
                         d.GiaTriDiem,
                         ld.TiLe,
                         CASE 
-                            WHEN ld.TenLoaiDiem LIKE '%thi%' THEN 1 ELSE 0
+                            WHEN ld.TenLoaiDiem LIKE '%Thi%' THEN 1 ELSE 0
                         END AS IsDiemThi
                     FROM 
                         Diem d
@@ -51,11 +51,23 @@ namespace BaiTapLon.View.NangCao
                         AND ld.TrangThai = 'Initialize' 
                         AND mh.TrangThai = 'Initialize'
                 ),
-                DiemThiMax AS (
+                DiemThuongKy AS (
                     SELECT 
                         MaSV,
                         MaMon,
-                        MAX(GiaTriDiem) AS GiaTriDiemMax
+                        SUM(GiaTriDiem * TiLe) * 1.0 / NULLIF(SUM(TiLe), 0) AS DiemThuongKy
+                    FROM 
+                        DiemDieuChinh
+                    WHERE 
+                        IsDiemThi = 0
+                    GROUP BY 
+                        MaSV, MaMon
+                ),
+                DiemCuoiKy AS (
+                    SELECT 
+                        MaSV,
+                        MaMon,
+                        MAX(GiaTriDiem) AS DiemCuoiKy
                     FROM 
                         DiemDieuChinh
                     WHERE 
@@ -63,45 +75,18 @@ namespace BaiTapLon.View.NangCao
                     GROUP BY 
                         MaSV, MaMon
                 ),
-                DiemDaDieuChinh AS (
-                    SELECT 
-                        dd.MaSV,
-                        dd.MaMon,
-                        dd.TenMon,
-                        dd.TenLoaiDiem,
-                        CASE 
-                            WHEN dd.IsDiemThi = 1 THEN dtm.GiaTriDiemMax
-                            ELSE dd.GiaTriDiem
-                        END AS GiaTriDiem,
-                        dd.TiLe
-                    FROM 
-                        DiemDieuChinh dd
-                    LEFT JOIN 
-                        DiemThiMax dtm ON dd.MaSV = dtm.MaSV AND dd.MaMon = dtm.MaMon
-                ),
-                TieuChuanTiLe AS (
-                    SELECT 
-                        MaSV,
-                        MaMon,
-                        TenMon,
-                        SUM(TiLe) AS TongTiLe
-                    FROM 
-                        DiemDaDieuChinh
-                    GROUP BY 
-                        MaSV, MaMon, TenMon
-                ),
                 DiemTrungBinh AS (
                     SELECT 
-                        ddd.MaSV,
-                        ddd.MaMon,
-                        ddd.TenMon,
-                        SUM(ddd.GiaTriDiem * (ddd.TiLe / tc.TongTiLe)) AS DiemTrungBinh
+                        tk.MaSV,
+                        tk.MaMon,
+                        mh.TenMon,
+                        ISNULL(tk.DiemThuongKy, 0) * 0.4 + ISNULL(ck.DiemCuoiKy, 0) * 0.6 AS DiemTrungBinh
                     FROM 
-                        DiemDaDieuChinh ddd
+                        DiemThuongKy tk
+                    FULL OUTER JOIN 
+                        DiemCuoiKy ck ON tk.MaSV = ck.MaSV AND tk.MaMon = ck.MaMon
                     INNER JOIN 
-                        TieuChuanTiLe tc ON ddd.MaSV = tc.MaSV AND ddd.MaMon = tc.MaMon
-                    GROUP BY 
-                        ddd.MaSV, ddd.MaMon, ddd.TenMon
+                        MonHoc mh ON tk.MaMon = mh.MaMon OR ck.MaMon = mh.MaMon
                 ),
                 KetQua AS (
                     SELECT 

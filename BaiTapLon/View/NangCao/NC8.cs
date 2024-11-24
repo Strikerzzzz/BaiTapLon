@@ -40,7 +40,7 @@ namespace BaiTapLon.View.NangCao
                         d.GiaTriDiem,
                         ld.TiLe,
                         CASE 
-                            WHEN ld.TenLoaiDiem LIKE '%thi%' THEN 1 ELSE 0
+                            WHEN ld.TenLoaiDiem LIKE '%Thi%' THEN 1 ELSE 0
                         END AS IsDiemThi
                     FROM 
                         Diem d
@@ -53,11 +53,23 @@ namespace BaiTapLon.View.NangCao
                         AND ld.TrangThai = 'Initialize' 
                         AND mh.TrangThai = 'Initialize'
                 ),
-                DiemThiMax AS (
+                DiemThuongKy AS (
                     SELECT 
                         MaSV,
                         MaMon,
-                        MAX(GiaTriDiem) AS GiaTriDiemMax
+                        SUM(GiaTriDiem * TiLe) * 1.0 / NULLIF(SUM(TiLe), 0) AS DiemThuongKy
+                    FROM 
+                        DiemDieuChinh
+                    WHERE 
+                        IsDiemThi = 0
+                    GROUP BY 
+                        MaSV, MaMon
+                ),
+                DiemCuoiKy AS (
+                    SELECT 
+                        MaSV,
+                        MaMon,
+                        MAX(GiaTriDiem) AS DiemCuoiKy
                     FROM 
                         DiemDieuChinh
                     WHERE 
@@ -65,56 +77,27 @@ namespace BaiTapLon.View.NangCao
                     GROUP BY 
                         MaSV, MaMon
                 ),
-                DiemDaDieuChinh AS (
-                    SELECT 
-                        dd.MaSV,
-                        dd.MaMon,
-                        dd.TenMon,
-                        dd.TenLoaiDiem,
-                        CASE 
-                            WHEN dd.IsDiemThi = 1 THEN dtm.GiaTriDiemMax
-                            ELSE dd.GiaTriDiem
-                        END AS GiaTriDiem,
-                        dd.TiLe
-                    FROM 
-                        DiemDieuChinh dd
-                    LEFT JOIN 
-                        DiemThiMax dtm ON dd.MaSV = dtm.MaSV AND dd.MaMon = dtm.MaMon
-                ),
-                TieuChuanTiLe AS (
-                    SELECT 
-                        MaSV,
-                        MaMon,
-                        TenMon,
-                        SUM(TiLe) AS TongTiLe
-                    FROM 
-                        DiemDaDieuChinh
-                    GROUP BY 
-                        MaSV, MaMon, TenMon
-                ),
                 DiemTrungBinh AS (
                     SELECT 
-                        ddd.MaSV,
-                        ddd.MaMon,
-                        ddd.TenMon,
-                        SUM(ddd.GiaTriDiem * (ddd.TiLe / tc.TongTiLe)) AS DiemTrungBinh
+                        tk.MaSV,
+                        tk.MaMon,
+                        mh.TenMon,
+                        ISNULL(tk.DiemThuongKy, 0) * 0.4 + ISNULL(ck.DiemCuoiKy, 0) * 0.6 AS DiemTrungBinh
                     FROM 
-                        DiemDaDieuChinh ddd
+                        DiemThuongKy tk
+                    FULL OUTER JOIN 
+                        DiemCuoiKy ck ON tk.MaSV = ck.MaSV AND tk.MaMon = ck.MaMon
                     INNER JOIN 
-                        TieuChuanTiLe tc ON ddd.MaSV = tc.MaSV AND ddd.MaMon = tc.MaMon
-                    GROUP BY 
-                        ddd.MaSV, ddd.MaMon, ddd.TenMon
+                        MonHoc mh ON tk.MaMon = mh.MaMon OR ck.MaMon = mh.MaMon
                 ),
                 KetQua AS (
                     SELECT 
                         TenMon,
                         CASE 
-                            WHEN DiemTrungBinh >= 4.0 THEN 1
-                            ELSE 0
+                            WHEN DiemTrungBinh >= 4.0 THEN 1 ELSE 0
                         END AS Pass,
                         CASE 
-                            WHEN DiemTrungBinh < 4.0 THEN 1
-                            ELSE 0
+                            WHEN DiemTrungBinh < 4.0 THEN 1 ELSE 0
                         END AS Fail
                     FROM 
                         DiemTrungBinh
@@ -128,277 +111,236 @@ namespace BaiTapLon.View.NangCao
                 GROUP BY 
                     TenMon
                 ORDER BY 
-                    TenMon;";
+            TenMon;";
             }
+
             else if (comboBox.SelectedItem.ToString() == "Theo kỳ")
             {
-                return @"WITH DiemDieuChinh AS (
-                    SELECT 
-                        d.MaSV,
-                        CONCAT(h.TenHocKy, ' - ', h.Nam) AS HocKyNam,
-                        mh.TenMon,
-                        ld.TenLoaiDiem,
-                        d.GiaTriDiem,
-                        ld.TiLe,
-                        CASE 
-                            WHEN ld.TenLoaiDiem LIKE '%thi%' THEN 1 ELSE 0
-                        END AS IsDiemThi
-                    FROM 
-                        Diem d
-                    INNER JOIN 
-                        LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
-                    INNER JOIN 
-                        LopHoc_SinhVien lhs ON d.MaSV = lhs.MaSV
-                    INNER JOIN 
-                        LopHoc lh ON lhs.MaLop = lh.MaLop
-                    INNER JOIN 
-                        HocKy h ON lh.IDHocKy = h.IDHocKy
-                    INNER JOIN 
-                        MonHoc mh ON d.MaMon = mh.MaMon
-                    WHERE 
-                        d.TrangThai = 'Initialize'
-                        AND ld.TrangThai = 'Initialize'
-                ),
-                DiemThiMax AS (
-                    SELECT 
-                        MaSV,
-                        HocKyNam,
-                        TenMon,
-                        MAX(GiaTriDiem) AS GiaTriDiemMax
-                    FROM 
-                        DiemDieuChinh
-                    WHERE 
-                        IsDiemThi = 1
-                    GROUP BY 
-                        MaSV, HocKyNam, TenMon
-                ),
-                DiemDaDieuChinh AS (
-                    SELECT 
-                        dd.MaSV,
-                        dd.HocKyNam,
-                        dd.TenMon,
-                        CASE 
-                            WHEN dd.IsDiemThi = 1 THEN dtm.GiaTriDiemMax
-                            ELSE dd.GiaTriDiem
-                        END AS GiaTriDiem,
-                        dd.TiLe
-                    FROM 
-                        DiemDieuChinh dd
-                    LEFT JOIN 
-                        DiemThiMax dtm ON dd.MaSV = dtm.MaSV AND dd.HocKyNam = dtm.HocKyNam AND dd.TenMon = dtm.TenMon
-                ),
-                DiemTheoMon AS (
-                    SELECT 
-                        MaSV,
-                        HocKyNam,
-                        TenMon,
-                        SUM(GiaTriDiem * TiLe) / SUM(TiLe) AS DiemTrungBinhMon
-                    FROM 
-                        DiemDaDieuChinh
-                    GROUP BY 
-                        MaSV, HocKyNam, TenMon
-                ),
-                KetQuaTheoHocKy AS (
-                    SELECT 
-                        HocKyNam,
-                        MaSV,
-                        CASE 
-                            WHEN MIN(DiemTrungBinhMon) >= 4.0 THEN 1 ELSE 0
-                        END AS Pass
-                    FROM 
-                        DiemTheoMon
-                    GROUP BY 
-                        HocKyNam, MaSV
-                )
+                return @"WITH DiemTheoMon AS (
+                SELECT 
+                    d.MaSV,
+                    CONCAT(h.TenHocKy, ' - ', h.Nam) AS HocKyNam,
+                    d.MaMon,
+                    (
+                        -- Điểm thường kỳ (40%)
+                        ISNULL((
+                            SELECT 
+                                SUM(dd.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                            FROM 
+                                Diem dd
+                            JOIN 
+                                LoaiDiem ld ON dd.IDLoaiDiem = ld.IDLoaiDiem
+                            WHERE 
+                                dd.MaSV = d.MaSV 
+                                AND dd.MaMon = d.MaMon
+                                AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                AND dd.TrangThai = 'Initialize'
+                                AND ld.TrangThai = 'Initialize'
+                        ), 0) * 0.4
+                    ) +
+                    (
+                        -- Điểm cuối kỳ (60%)
+                        ISNULL((
+                            SELECT 
+                                MAX(dd.GiaTriDiem)
+                            FROM 
+                                Diem dd
+                            JOIN 
+                                LoaiDiem ld ON dd.IDLoaiDiem = ld.IDLoaiDiem
+                            WHERE 
+                                dd.MaSV = d.MaSV 
+                                AND dd.MaMon = d.MaMon
+                                AND ld.TenLoaiDiem LIKE '%Thi%'
+                                AND dd.TrangThai = 'Initialize'
+                                AND ld.TrangThai = 'Initialize'
+                        ), 0) * 0.6
+                    ) AS DiemTrungBinhMon
+                FROM 
+                    Diem d
+                INNER JOIN 
+                    LopHoc_SinhVien lhs ON d.MaSV = lhs.MaSV
+                INNER JOIN 
+                    LopHoc lh ON lhs.MaLop = lh.MaLop
+                INNER JOIN 
+                    HocKy h ON lh.IDHocKy = h.IDHocKy
+                INNER JOIN 
+                    MonHoc mh ON d.MaMon = mh.MaMon
+                WHERE 
+                    d.TrangThai = 'Initialize'
+                    AND mh.TrangThai = 'Initialize'
+            ),
+            KetQuaTheoHocKy AS (
                 SELECT 
                     HocKyNam,
-                    SUM(Pass) AS SoLuongPass,
-                    COUNT(*) - SUM(Pass) AS SoLuongFail
+                    MaSV,
+                    CASE 
+                        WHEN DiemTrungBinhMon >= 4.0 THEN 1 ELSE 0
+                    END AS Pass
                 FROM 
-                    KetQuaTheoHocKy
-                GROUP BY 
-                    HocKyNam
-                ORDER BY 
-                    HocKyNam;";
+                    DiemTheoMon
+            )
+            SELECT 
+                HocKyNam,
+                SUM(Pass) AS SoLuongPass,
+                COUNT(*) - SUM(Pass) AS SoLuongFail
+            FROM 
+                KetQuaTheoHocKy
+            GROUP BY 
+                HocKyNam
+            ORDER BY 
+                HocKyNam;";
             }
             else if (comboBox.SelectedItem.ToString() == "Theo ngành")
             {
-                return @"WITH DiemDieuChinh AS (
-                    SELECT 
-                        d.MaSV,
-                        cn.TenChuyenNganh,
-                        mh.TenMon,
-                        ld.TenLoaiDiem,
-                        d.GiaTriDiem,
-                        ld.TiLe,
-                        CASE 
-                            WHEN ld.TenLoaiDiem LIKE '%thi%' THEN 1 ELSE 0
-                        END AS IsDiemThi
-                    FROM 
-                        Diem d
-                    INNER JOIN 
-                        LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
-                    INNER JOIN 
-                        SinhVien sv ON d.MaSV = sv.MaSV
-                    INNER JOIN 
-                        ChuyenNganh cn ON sv.MaChuyenNganh = cn.MaChuyenNganh
-                    INNER JOIN 
-                        MonHoc mh ON d.MaMon = mh.MaMon
-                    WHERE 
-                        d.TrangThai = 'Initialize'
-                        AND ld.TrangThai = 'Initialize'
-                ),
-                DiemThiMax AS (
-                    SELECT 
-                        MaSV,
-                        TenChuyenNganh,
-                        TenMon,
-                        MAX(GiaTriDiem) AS GiaTriDiemMax
-                    FROM 
-                        DiemDieuChinh
-                    WHERE 
-                        IsDiemThi = 1
-                    GROUP BY 
-                        MaSV, TenChuyenNganh, TenMon
-                ),
-                DiemDaDieuChinh AS (
-                    SELECT 
-                        dd.MaSV,
-                        dd.TenChuyenNganh,
-                        dd.TenMon,
-                        CASE 
-                            WHEN dd.IsDiemThi = 1 THEN dtm.GiaTriDiemMax
-                            ELSE dd.GiaTriDiem
-                        END AS GiaTriDiem,
-                        dd.TiLe
-                    FROM 
-                        DiemDieuChinh dd
-                    LEFT JOIN 
-                        DiemThiMax dtm ON dd.MaSV = dtm.MaSV AND dd.TenChuyenNganh = dtm.TenChuyenNganh AND dd.TenMon = dtm.TenMon
-                ),
-                DiemTheoMon AS (
-                    SELECT 
-                        MaSV,
-                        TenChuyenNganh,
-                        TenMon,
-                        SUM(GiaTriDiem * TiLe) / SUM(TiLe) AS DiemTrungBinhMon
-                    FROM 
-                        DiemDaDieuChinh
-                    GROUP BY 
-                        MaSV, TenChuyenNganh, TenMon
-                ),
-                KetQuaTheoNganh AS (
-                    SELECT 
-                        TenChuyenNganh,
-                        MaSV,
-                        CASE 
-                            WHEN MIN(DiemTrungBinhMon) >= 4.0 THEN 1 ELSE 0
-                        END AS Pass
-                    FROM 
-                        DiemTheoMon
-                    GROUP BY 
-                        TenChuyenNganh, MaSV
-                )
+                return @"WITH DiemTheoMon AS (
+                SELECT 
+                    d.MaSV,
+                    cn.TenChuyenNganh,
+                    d.MaMon,
+                    (
+                        -- Điểm thường kỳ (40%)
+                        ISNULL((
+                            SELECT 
+                                SUM(dd.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                            FROM 
+                                Diem dd
+                            JOIN 
+                                LoaiDiem ld ON dd.IDLoaiDiem = ld.IDLoaiDiem
+                            WHERE 
+                                dd.MaSV = d.MaSV 
+                                AND dd.MaMon = d.MaMon
+                                AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                AND dd.TrangThai = 'Initialize'
+                                AND ld.TrangThai = 'Initialize'
+                        ), 0) * 0.4
+                    ) +
+                    (
+                        -- Điểm cuối kỳ (60%)
+                        ISNULL((
+                            SELECT 
+                                MAX(dd.GiaTriDiem)
+                            FROM 
+                                Diem dd
+                            JOIN 
+                                LoaiDiem ld ON dd.IDLoaiDiem = ld.IDLoaiDiem
+                            WHERE 
+                                dd.MaSV = d.MaSV 
+                                AND dd.MaMon = d.MaMon
+                                AND ld.TenLoaiDiem LIKE '%Thi%'
+                                AND dd.TrangThai = 'Initialize'
+                                AND ld.TrangThai = 'Initialize'
+                        ), 0) * 0.6
+                    ) AS DiemTrungBinhMon
+                FROM 
+                    Diem d
+                INNER JOIN 
+                    SinhVien sv ON d.MaSV = sv.MaSV
+                INNER JOIN 
+                    ChuyenNganh cn ON sv.MaChuyenNganh = cn.MaChuyenNganh
+                INNER JOIN 
+                    MonHoc mh ON d.MaMon = mh.MaMon
+                WHERE 
+                    d.TrangThai = 'Initialize'
+                    AND mh.TrangThai = 'Initialize'
+            ),
+            KetQuaTheoNganh AS (
                 SELECT 
                     TenChuyenNganh,
-                    SUM(Pass) AS SoLuongPass,
-                    COUNT(*) - SUM(Pass) AS SoLuongFail
+                    MaSV,
+                    CASE 
+                        WHEN MIN(DiemTrungBinhMon) >= 4.0 THEN 1 ELSE 0
+                    END AS Pass
                 FROM 
-                    KetQuaTheoNganh
+                    DiemTheoMon
                 GROUP BY 
-                    TenChuyenNganh
-                ORDER BY 
-                    TenChuyenNganh;";
+                    TenChuyenNganh, MaSV
+            )
+            SELECT 
+                TenChuyenNganh,
+                SUM(Pass) AS SoLuongPass,
+                COUNT(*) - SUM(Pass) AS SoLuongFail
+            FROM 
+                KetQuaTheoNganh
+            GROUP BY 
+                TenChuyenNganh
+            ORDER BY 
+                TenChuyenNganh;";
             }
             else if (comboBox.SelectedItem.ToString() == "Theo lớp")
             {
-                return @"WITH DiemDieuChinh AS (
-                    SELECT 
-                        d.MaSV,
-                        lh.TenLop,
-                        mh.TenMon,
-                        ld.TenLoaiDiem,
-                        d.GiaTriDiem,
-                        ld.TiLe,
-                        CASE 
-                            WHEN ld.TenLoaiDiem LIKE '%thi%' THEN 1 ELSE 0
-                        END AS IsDiemThi
-                    FROM 
-                        Diem d
-                    INNER JOIN 
-                        LoaiDiem ld ON d.IDLoaiDiem = ld.IDLoaiDiem
-                    INNER JOIN 
-                        LopHoc_SinhVien lhs ON d.MaSV = lhs.MaSV
-                    INNER JOIN 
-                        LopHoc lh ON lhs.MaLop = lh.MaLop
-                    INNER JOIN 
-                        MonHoc mh ON d.MaMon = mh.MaMon
-                    WHERE 
-                        d.TrangThai = 'Initialize'
-                        AND ld.TrangThai = 'Initialize'
-                        AND lh.TrangThai = 'Initialize'
-                ),
-                DiemThiMax AS (
-                    SELECT 
-                        MaSV,
-                        TenLop,
-                        TenMon,
-                        MAX(GiaTriDiem) AS GiaTriDiemMax
-                    FROM 
-                        DiemDieuChinh
-                    WHERE 
-                        IsDiemThi = 1
-                    GROUP BY 
-                        MaSV, TenLop, TenMon
-                ),
-                DiemDaDieuChinh AS (
-                    SELECT 
-                        dd.MaSV,
-                        dd.TenLop,
-                        dd.TenMon,
-                        CASE 
-                            WHEN dd.IsDiemThi = 1 THEN dtm.GiaTriDiemMax
-                            ELSE dd.GiaTriDiem
-                        END AS GiaTriDiem,
-                        dd.TiLe
-                    FROM 
-                        DiemDieuChinh dd
-                    LEFT JOIN 
-                        DiemThiMax dtm ON dd.MaSV = dtm.MaSV AND dd.TenLop = dtm.TenLop AND dd.TenMon = dtm.TenMon
-                ),
-                DiemTheoMon AS (
-                    SELECT 
-                        MaSV,
-                        TenLop,
-                        TenMon,
-                        SUM(GiaTriDiem * TiLe) / SUM(TiLe) AS DiemTrungBinhMon
-                    FROM 
-                        DiemDaDieuChinh
-                    GROUP BY 
-                        MaSV, TenLop, TenMon
-                ),
-                KetQuaTheoLop AS (
-                    SELECT 
-                        TenLop,
-                        MaSV,
-                        CASE 
-                            WHEN MIN(DiemTrungBinhMon) >= 4.0 THEN 1 ELSE 0
-                        END AS Pass
-                    FROM 
-                        DiemTheoMon
-                    GROUP BY 
-                        TenLop, MaSV
-                )
+                return @"WITH DiemTheoMon AS (
+                SELECT 
+                    d.MaSV,
+                    lh.TenLop,
+                    d.MaMon,
+                    (
+                        -- Điểm thường kỳ (40%)
+                        ISNULL((
+                            SELECT 
+                                SUM(dd.GiaTriDiem * ld.TiLe) * 1.0 / NULLIF(SUM(ld.TiLe), 0)
+                            FROM 
+                                Diem dd
+                            JOIN 
+                                LoaiDiem ld ON dd.IDLoaiDiem = ld.IDLoaiDiem
+                            WHERE 
+                                dd.MaSV = d.MaSV 
+                                AND dd.MaMon = d.MaMon
+                                AND ld.TenLoaiDiem NOT LIKE '%Thi%'
+                                AND dd.TrangThai = 'Initialize'
+                                AND ld.TrangThai = 'Initialize'
+                        ), 0) * 0.4
+                    ) +
+                    (
+                        -- Điểm cuối kỳ (60%)
+                        ISNULL((
+                            SELECT 
+                                MAX(dd.GiaTriDiem)
+                            FROM 
+                                Diem dd
+                            JOIN 
+                                LoaiDiem ld ON dd.IDLoaiDiem = ld.IDLoaiDiem
+                            WHERE 
+                                dd.MaSV = d.MaSV 
+                                AND dd.MaMon = d.MaMon
+                                AND ld.TenLoaiDiem LIKE '%Thi%'
+                                AND dd.TrangThai = 'Initialize'
+                                AND ld.TrangThai = 'Initialize'
+                        ), 0) * 0.6
+                    ) AS DiemTrungBinhMon
+                FROM 
+                    Diem d
+                INNER JOIN 
+                    LopHoc_SinhVien lhs ON d.MaSV = lhs.MaSV
+                INNER JOIN 
+                    LopHoc lh ON lhs.MaLop = lh.MaLop
+                INNER JOIN 
+                    MonHoc mh ON d.MaMon = mh.MaMon
+                WHERE 
+                    d.TrangThai = 'Initialize'
+                    AND mh.TrangThai = 'Initialize'
+            ),
+            KetQuaTheoLop AS (
                 SELECT 
                     TenLop,
-                    SUM(Pass) AS SoLuongPass,
-                    COUNT(*) - SUM(Pass) AS SoLuongFail
+                    MaSV,
+                    CASE 
+                        WHEN MIN(DiemTrungBinhMon) >= 4.0 THEN 1 ELSE 0
+                    END AS Pass
                 FROM 
-                    KetQuaTheoLop
+                    DiemTheoMon
                 GROUP BY 
-                    TenLop
-                ORDER BY 
-                    TenLop;";
+                    TenLop, MaSV
+            )
+            SELECT 
+                TenLop,
+                SUM(Pass) AS SoLuongPass,
+                COUNT(*) - SUM(Pass) AS SoLuongFail
+            FROM 
+                KetQuaTheoLop
+            GROUP BY 
+                TenLop
+            ORDER BY 
+                TenLop;";
             }
             else
             {
