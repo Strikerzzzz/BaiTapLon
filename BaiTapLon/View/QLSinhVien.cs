@@ -65,9 +65,9 @@ namespace BaiTapLon
         private void LoadKhoaHocComboBox()
         {
             cboKhoaHoc.Items.Add("Chọn khóa học");
-            for (int i = 1; i <= 19; i++)
+            for (int i = 1; i <= 25; i++)
             {
-                cboKhoaHoc.Items.Add("Khóa " + i);
+                cboKhoaHoc.Items.Add("K" + i);
             }
             cboKhoaHoc.SelectedIndex = 0;
         }
