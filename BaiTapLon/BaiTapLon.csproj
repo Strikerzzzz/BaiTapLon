@@ -316,8 +316,29 @@
     <EmbeddedResource Include="View\ThungRac.resx">
       <DependentUpon>ThungRac.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\TimKiem\TKChuyenNganh.resx">
+      <DependentUpon>TKChuyenNganh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TimKiem\TKDiem.resx">
+      <DependentUpon>TKDiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TimKiem\TKDiemDanh.resx">
+      <DependentUpon>TKDiemDanh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TimKiem\TKHocKy.resx">
+      <DependentUpon>TKHocKy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TimKiem\TKLoaiDiem.resx">
+      <DependentUpon>TKLoaiDiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TimKiem\TKLoaiMon.resx">
+      <DependentUpon>TKLoaiMon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\TimKiem\TKLopHoc.resx">
       <DependentUpon>TKLopHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TimKiem\TKLopHocSinhVien.resx">
+      <DependentUpon>TKLopHocSinhVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TimKiem\TKMonHoc.resx">
       <DependentUpon>TKMonHoc.cs</DependentUpon>

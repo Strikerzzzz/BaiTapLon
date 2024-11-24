@@ -196,5 +196,61 @@ namespace BaiTapLon
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void họcKỳToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CloseAllChildForms();
+            TKHocKy frm = new TKHocKy();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void loạiMônToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CloseAllChildForms();
+            TKLoaiMon frm = new TKLoaiMon();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void chuyênNgànhToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CloseAllChildForms();
+            TKChuyenNganh frm = new TKChuyenNganh();
+            frm.MdiParent = this; 
+            frm.Show();
+        }
+
+        private void điểmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CloseAllChildForms();
+            TKDiem frm = new TKDiem();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void điểmDanhToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CloseAllChildForms();
+            TKDiemDanh frm = new TKDiemDanh();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void lớpHọcSinhViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CloseAllChildForms();
+            TKLopHocSinhVien frm = new TKLopHocSinhVien();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void loạiĐiểmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CloseAllChildForms();
+            TKLoaiDiem frm = new TKLoaiDiem();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }
