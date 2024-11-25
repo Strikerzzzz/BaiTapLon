@@ -46,6 +46,11 @@ namespace BaiTapLon.View.TimKiem
 
         private void btnTK_Click(object sender, EventArgs e)
         {
+            if (cboSinhVien.SelectedIndex == 0)
+            {
+                MessageBox.Show("Vui lòng chọn tiêu chí tìm kiếm.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             string value = txtTK.Text.Trim(); 
             string selected = "";
 
