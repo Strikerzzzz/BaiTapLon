@@ -25,6 +25,7 @@ namespace BaiTapLon.View.TimKiem
 
         private void TKMonHoc_Load(object sender, EventArgs e)
         {
+            comboBox.Items.Add("Vui lòng chọn lựa chọn của bạn");
             comboBox.Items.Add("Mã môn");
             comboBox.Items.Add("Tên môn");
             comboBox.Items.Add("Số tín chỉ");
@@ -35,6 +36,11 @@ namespace BaiTapLon.View.TimKiem
 
         private void btnTK_Click(object sender, EventArgs e)
         {
+            if (comboBox.SelectedIndex == 0)
+            {
+                MessageBox.Show("Vui lòng chọn tiêu chí tìm kiếm.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             string value = txtTK.Text;
             string selected = "MaMon";
             switch (comboBox.SelectedItem.ToString())

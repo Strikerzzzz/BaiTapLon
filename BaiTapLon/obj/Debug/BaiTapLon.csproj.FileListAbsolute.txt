@@ -93,3 +93,4 @@ D:\THNet\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.csproj.GenerateResource.cache
 D:\THNet\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.csproj.CoreCompileInputs.cache
 D:\THNet\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.exe
 D:\THNet\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.pdb
+F:\learn\university\THLT.Net\BTL\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.View.NangCao.NC9.resources
